@@ -428,6 +428,70 @@
       color: #a0a8f0;
     }
 
+    .btn-demo {
+      margin-top: 1.25rem;
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem; letter-spacing: .08em;
+      text-transform: uppercase;
+      background: rgba(0,217,184,.08);
+      border: 1px solid rgba(0,217,184,.25);
+      color: #00d9b8;
+      padding: .5rem 1rem;
+      border-radius: 3px;
+      cursor: none;
+      transition: all .2s;
+    }
+    .btn-demo:hover {
+      background: rgba(0,217,184,.15);
+      border-color: rgba(0,217,184,.5);
+    }
+
+    /* ── PROJECT MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,.85);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: #0e1118;
+      border: 1px solid rgba(0,217,184,.2);
+      border-radius: 6px;
+      padding: 1.5rem;
+      width: 90vw; max-width: 900px;
+      position: relative;
+      transform: scale(.95);
+      opacity: 0;
+      transition: transform .3s, opacity .3s;
+    }
+    .modal-overlay.active .modal-box {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none;
+      color: #6b7280; font-size: 1.5rem;
+      cursor: none; transition: color .2s;
+    }
+    .modal-close:hover { color: #00d9b8; }
+    .modal-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      margin-bottom: 1rem;
+      color: #e8eaf0;
+    }
+    .modal-iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 4px;
+    }
+
     /* ── CONTACT ── */
     #contact {
       border-top: 1px solid var(--border);
@@ -502,6 +566,15 @@
 
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
+
+<!-- PROJECT MODAL -->
+<div id="modal-overlay" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-title" class="modal-title"></div>
+    <div id="modal-body"></div>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -706,6 +779,75 @@
           <span class="stack-tag">LinkedIn</span>
         </div>
       </div>
+      <div class="project-card reveal">
+        <div class="project-type">Power BI · Vendas</div>
+        <div class="project-name">Dashboard Ambev</div>
+        <div class="project-desc">Dashboard de performance comercial com análise de vendas, mix de produtos e acompanhamento de metas. Desenvolvido como projeto de portfólio com dados simulados.</div>
+        <div class="project-stack">
+          <span class="stack-tag">Power BI</span>
+          <span class="stack-tag">DAX</span>
+          <span class="stack-tag">Data Modeling</span>
+        </div>
+        <button class="btn-demo" onclick="openModal('01_Dashboard_Ambev', 'https://app.powerbi.com/view?r=eyJrIjoiMjk4MTI0ZGYtYzAyYy00YTQ1LWE4YTItMjY2ZTZmNGFkZmI1IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-type">Power BI · Logística</div>
+        <div class="project-name">Dashboard Logística</div>
+        <div class="project-desc">Painel de controle logístico com monitoramento de entregas, SLA, rotas e performance operacional. Projeto de portfólio com dados simulados.</div>
+        <div class="project-stack">
+          <span class="stack-tag">Power BI</span>
+          <span class="stack-tag">DAX</span>
+          <span class="stack-tag">Data Modeling</span>
+        </div>
+        <button class="btn-demo" onclick="openModal('01_Dashboard_Logistica', 'https://app.powerbi.com/view?r=eyJrIjoiMmYyMTZkNDItOWRkYS00MTMxLWIzOGEtNmE0MmI1ZmI5M2ZlIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-type">Power BI · FP&amp;A</div>
+        <div class="project-name">DRE · Orçamento · Forecast</div>
+        <div class="project-desc">Modelo integrado de DRE Gerencial com orçamento e forecast. Visão consolidada de resultado com análise de variância Budget vs Actual vs Forecast.</div>
+        <div class="project-stack">
+          <span class="stack-tag">Power BI</span>
+          <span class="stack-tag">DAX</span>
+          <span class="stack-tag">FP&amp;A</span>
+          <span class="stack-tag">Orçamento</span>
+        </div>
+        <button class="btn-demo" onclick="openModal('base_orc_dre_fc', 'https://app.powerbi.com/view?r=eyJrIjoiOWY3NjBlZjUtNjQ5NC00Y2UxLWJkNWQtZTc1MGVlMTA5YjExIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-type">Power BI · Comercial</div>
+        <div class="project-name">Dashboard Vendas x Meta</div>
+        <div class="project-desc">Acompanhamento de vendas vs metas com visão por vendedor, região e período. Indicadores de atingimento e ranking de performance comercial.</div>
+        <div class="project-stack">
+          <span class="stack-tag">Power BI</span>
+          <span class="stack-tag">DAX</span>
+          <span class="stack-tag">Vendas</span>
+        </div>
+        <button class="btn-demo" onclick="openModal('Dashboard Vendas x Meta', 'https://app.powerbi.com/view?r=eyJrIjoiYjJkNGUxZjQtZTQwMy00OTk5LTk4M2UtMTlmNjZkODczNmI0IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-type">Python · Streamlit</div>
+        <div class="project-name">App Sucos Elizabeth</div>
+        <div class="project-desc">Aplicação web interativa desenvolvida em Streamlit para análise de dados da promotoria Elizabeth. Visualizações dinâmicas e filtros por região e produto.</div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Streamlit</span>
+          <span class="stack-tag">Pandas</span>
+          <span class="stack-tag">Plotly</span>
+        </div>
+        <button class="btn-demo" onclick="openModal('App Sucos Elizabeth', 'https://appsucos-elizabethpromotoria.streamlit.app/', 'link')">Ver demo →</button>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-type">Python · Streamlit · Dados</div>
+        <div class="project-name">FIFA 23 Data Explorer</div>
+        <div class="project-desc">Explorador de dados do FIFA 23 com filtros por jogador, clube, nacionalidade e atributos. Análises estatísticas e visualizações comparativas de performance.</div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Streamlit</span>
+          <span class="stack-tag">Pandas</span>
+          <span class="stack-tag">Plotly</span>
+        </div>
+        <button class="btn-demo" onclick="openModal('FIFA 23 Data Explorer', 'https://fifa23datasetkaique.streamlit.app/', 'link')">Ver demo →</button>
+      </div>
     </div>
   </div>
 </section>
@@ -765,6 +907,35 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+
+  // Project preview modal
+  function openModal(title, src, type = 'iframe') {
+    document.getElementById('modal-title').textContent = title;
+    const body = document.getElementById('modal-body');
+    if (type === 'iframe') {
+      body.innerHTML = `<iframe class="modal-iframe" src="${src}" allowfullscreen></iframe>`;
+    } else {
+      body.innerHTML = `
+        <div style="text-align:center; padding: 3rem 1rem;">
+          <p style="color:#6b7280; margin-bottom:1.5rem; font-size:.95rem;">
+            Esta aplicação abre em uma nova aba.
+          </p>
+          <a href="${src}" target="_blank" class="btn btn-primary">Acessar aplicação →</a>
+        </div>`;
+    }
+    document.getElementById('modal-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('active');
+    document.getElementById('modal-body').innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
 </script>
 </body>
 </html>
