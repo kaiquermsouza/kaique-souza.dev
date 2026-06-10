@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kaique Roberto Machado Souza — FP&A & Dados</title>
+  <meta name="description" content="Kaique Souza — Analista de FP&A e Dados. Power BI, Microsoft Fabric, Python e automação financeira. Portfólio em kaique-souza.dev." />
+  <meta property="og:title" content="Kaique Souza — FP&A & Dados" />
+  <meta property="og:description" content="Analista de FP&A e Dados. Power BI, Microsoft Fabric, Python e automação financeira aplicada ao setor industrial." />
+  <meta property="og:url" content="https://kaique-souza.dev" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://github.com/kaiquermsouza.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kaique Souza — FP&A & Dados" />
+  <meta name="twitter:description" content="Analista de FP&A e Dados. Power BI, Microsoft Fabric, Python." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -263,9 +272,33 @@
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
+      grid-template-columns: 180px 1fr 1fr;
+      gap: 3.5rem;
       align-items: start;
+    }
+
+    .about-photo {
+      position: sticky; top: 6rem;
+    }
+
+    .about-photo img {
+      width: 180px; height: 180px;
+      border-radius: 6px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      filter: grayscale(20%);
+      transition: filter .3s;
+    }
+
+    .about-photo img:hover { filter: grayscale(0%); }
+
+    .about-photo-name {
+      font-family: 'DM Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin-top: .75rem;
+      text-align: center;
     }
 
     .about-text p {
@@ -307,6 +340,63 @@
       letter-spacing: .1em;
       text-transform: uppercase;
       color: var(--muted);
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { border-top: 1px solid var(--border); background: var(--bg2); }
+
+    .timeline { display: flex; flex-direction: column; gap: 2rem; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .timeline-period {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      color: var(--accent);
+      padding-top: .2rem;
+    }
+
+    .timeline-content {
+      border-left: 1px solid var(--border);
+      padding-left: 2rem;
+      position: relative;
+    }
+
+    .timeline-content::before {
+      content: '';
+      position: absolute;
+      left: -5px; top: .4rem;
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .timeline-role {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -.02em;
+      margin-bottom: .25rem;
+    }
+
+    .timeline-company {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      color: var(--accent2);
+      margin-bottom: .75rem;
+    }
+
+    .timeline-desc {
+      font-size: .92rem;
+      color: var(--muted);
+      line-height: 1.7;
     }
 
     /* ── SKILLS ── */
@@ -587,6 +677,10 @@
       .hero-scroll { left: 1.5rem; }
       .section-inner { padding: 4rem 1.5rem; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-photo { display: none; }
+      .timeline-item { grid-template-columns: 1fr; gap: .5rem; }
+      .timeline-content { border-left: none; padding-left: 0; }
+      .timeline-content::before { display: none; }
       footer { padding: 1.5rem; flex-direction: column; gap: .75rem; text-align: center; }
       .contact-inner { padding: 5rem 1.5rem; }
     }
@@ -611,6 +705,7 @@
   <a href="#hero" class="nav-logo">KS<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#about">Sobre</a></li>
+    <li><a href="#experience">Experiência</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projetos</a></li>
     <li><a href="#contact">Contato</a></li>
@@ -630,8 +725,6 @@
     <div class="hero-ctas">
       <a href="#projects" class="btn btn-primary">Ver projetos →</a>
       <a href="#contact" class="btn btn-ghost">Entre em contato</a>
-      <!-- TODO: adicionar o arquivo curriculo.pdf na raiz do projeto (mesma pasta do index.html) -->
-      <a href="/curriculo.pdf" class="btn btn-ghost" download>Baixar currículo</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -646,10 +739,14 @@
     <div class="section-label reveal">// sobre mim</div>
     <div class="divider reveal"></div>
     <div class="about-grid">
+      <div class="about-photo reveal">
+        <img src="https://github.com/kaiquermsouza.png" alt="Kaique Souza" />
+        <div class="about-photo-name">Kaique Souza<br>Contagem · MG</div>
+      </div>
       <div class="about-text reveal">
-        <p>Atuo na interseção entre <strong>FP&amp;A, Controladoria e Dados</strong>, no setor industrial, com ênfase em infraestrutura de transmissão de energia — conectando negócio, finanças e tecnologia.</p>
-        <p>Desenvolvo relatórios financeiros gerenciais, dashboards e automações que <strong>reduzem o retrabalho manual</strong>, aumentam a confiabilidade das informações e dão à gestão uma visão executiva clara para a tomada de decisão.</p>
-        <p>Conecto <strong>FP&amp;A, Controladoria e Dados</strong> para padronizar indicadores (DRE, EBITDA, GP, Backlog), automatizar processos recorrentes e acelerar análises gerenciais — do dado bruto à decisão.</p>
+        <p>Atuo como Analista de FP&amp;A e Dados na <strong>SAE Towers</strong>, empresa do setor de infraestrutura de transmissão de energia, conectando finanças e tecnologia para transformar dados em decisões executivas.</p>
+        <p>Desenvolvo relatórios financeiros gerenciais, dashboards e automações que <strong>reduzem retrabalho manual</strong>, aumentam a confiabilidade das informações e aceleram a análise da gestão — do dado bruto ao insight executivo.</p>
+        <p>Combino <strong>visão de Controladoria e FP&amp;A</strong> (DRE, EBITDA, GP, Backlog, NCG) com stack técnica moderna (Power BI, Microsoft Fabric, Python), criando soluções que realmente movem o negócio.</p>
       </div>
       <div class="about-stats reveal">
         <div class="stat-card">
@@ -667,6 +764,24 @@
         <div class="stat-card">
           <div class="stat-num">Auto</div>
           <div class="stat-label">Power Automate · AI Builder</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label reveal">// experiência</div>
+    <div class="divider reveal"></div>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-period">2022 — atual</div>
+        <div class="timeline-content">
+          <div class="timeline-role">Analista de FP&amp;A e Dados</div>
+          <div class="timeline-company">SAE Towers · Contagem, MG</div>
+          <div class="timeline-desc">Modelagem financeira gerencial, dashboards em Power BI, pipelines de dados em Microsoft Fabric e automação de processos com Power Automate e AI Builder. Foco em DRE, EBITDA, Backlog e acompanhamento de resultado.</div>
         </div>
       </div>
     </div>
@@ -867,9 +982,6 @@
     <div class="contact-links reveal">
       <a href="https://www.linkedin.com/in/kaique-roberto-analista-de-dados/" target="_blank" class="btn btn-primary">LinkedIn →</a>
       <a href="https://github.com/kaiquermsouza" target="_blank" class="btn btn-ghost">GitHub</a>
-      <!-- TODO: substituir pelo e-mail profissional real -->
-      <a href="mailto:contato@kaique-souza.dev" class="btn btn-ghost">E-mail</a>
-      <a href="/curriculo.pdf" class="btn btn-ghost" download>Baixar currículo</a>
     </div>
   </div>
 </section>
