@@ -105,6 +105,24 @@
     }
     .nav-links a:hover { color: var(--accent); }
 
+    .lang-toggle {
+      font-family: 'DM Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: .35rem .75rem;
+      cursor: none;
+      transition: all .2s;
+    }
+    .lang-toggle:hover {
+      border-color: rgba(0,217,184,.4);
+      color: var(--accent);
+    }
+
     /* ── HERO ── */
     #hero {
       position: relative;
@@ -686,7 +704,7 @@
     .project-card:hover::before { transform: scaleX(1); }
 
     .project-card[data-preview]::after {
-      content: '◆ preview ao vivo';
+      content: attr(data-preview-label);
       position: absolute;
       top: 1.5rem; right: 1.5rem;
       font-family: 'DM Mono', monospace;
@@ -1071,22 +1089,23 @@
     <div id="hp-label" class="hp-label"></div>
   </div>
   <div class="hp-body">
-    <div id="hp-loading" class="hp-loading">carregando preview</div>
+    <div id="hp-loading" class="hp-loading" data-i18n="preview.loading">carregando preview</div>
     <iframe id="hp-iframe" class="hp-iframe" src="about:blank" loading="lazy"></iframe>
   </div>
-  <div class="hp-foot">// preview ao vivo — clique em "ver demo" para abrir</div>
+  <div class="hp-foot" data-i18n="preview.foot">// preview ao vivo — clique em "ver demo" para abrir</div>
 </div>
 
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">KS<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#about">Sobre</a></li>
-    <li><a href="#segments">Segmentos</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projetos</a></li>
-    <li><a href="#contact">Contato</a></li>
+    <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
+    <li><a href="#segments" data-i18n="nav.segments">Segmentos</a></li>
+    <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+    <li><a href="#projects" data-i18n="nav.projects">Projetos</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contato</a></li>
   </ul>
+  <button id="lang-toggle" class="lang-toggle" aria-label="Switch language / Mudar idioma">EN</button>
 </nav>
 
 <!-- HERO -->
@@ -1095,15 +1114,15 @@
   <div class="hero-glow2"></div>
   <div class="hero-grid">
     <div class="hero-content">
-      <div class="hero-tag">Disponível para projetos</div>
-      <div class="hero-byline">Kaique Souza <strong>·</strong> Analista de FP&amp;A &amp; Dados</div>
-      <h1>Dados financeiros,<br>decisões <em>executivas</em>.</h1>
-      <p class="hero-sub">
+      <div class="hero-tag" data-i18n="hero.tag">Disponível para projetos</div>
+      <div class="hero-byline" data-i18n-html="hero.byline">Kaique Souza <strong>·</strong> Analista de FP&amp;A &amp; Dados</div>
+      <h1 data-i18n-html="hero.title">Dados financeiros,<br>decisões <em>executivas</em>.</h1>
+      <p class="hero-sub" data-i18n="hero.sub">
         Power BI, Microsoft Fabric e Python para transformar indicadores financeiros em relatórios, dashboards e automações — do dado bruto à decisão do comitê.
       </p>
       <div class="hero-ctas">
-        <a href="#projects" class="btn btn-primary">Ver projetos →</a>
-        <a href="#contact" class="btn btn-ghost">Entre em contato</a>
+        <a href="#projects" class="btn btn-primary" data-i18n="hero.ctaProjects">Ver projetos →</a>
+        <a href="#contact" class="btn btn-ghost" data-i18n="hero.ctaContact">Entre em contato</a>
       </div>
     </div>
 
@@ -1114,38 +1133,38 @@
           <span class="win-dot yellow"></span>
           <span class="win-dot green"></span>
         </div>
-        <div class="hero-panel-label">dre_gerencial.pbix — painel executivo</div>
-        <div class="hero-panel-live"><span class="live-dot"></span>ao vivo</div>
+        <div class="hero-panel-label" data-i18n="panel.label">dre_gerencial.pbix — painel executivo</div>
+        <div class="hero-panel-live"><span class="live-dot"></span><span data-i18n="panel.live">ao vivo</span></div>
       </div>
       <div class="hero-panel-body">
         <div class="kpi-grid">
           <div class="kpi-card">
-            <div class="kpi-label">Receita líquida</div>
+            <div class="kpi-label" data-i18n="panel.kpi1.label">Receita líquida</div>
             <div class="kpi-value"><span class="kpi-prefix">R$</span><span data-count="12.4" data-decimals="1">0</span><small>M</small></div>
             <div class="kpi-track"><span class="kpi-fill" style="--target:78%"></span></div>
-            <div class="kpi-delta">▲ 12,4% vs orçado</div>
+            <div class="kpi-delta" data-i18n="panel.kpi1.delta">▲ 12,4% vs orçado</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-label">EBITDA</div>
+            <div class="kpi-label" data-i18n="panel.kpi2.label">EBITDA</div>
             <div class="kpi-value"><span data-count="18.2" data-decimals="1">0</span><small>%</small></div>
             <div class="kpi-track"><span class="kpi-fill" style="--target:62%"></span></div>
-            <div class="kpi-delta">▲ 2,1 p.p. a/a</div>
+            <div class="kpi-delta" data-i18n="panel.kpi2.delta">▲ 2,1 p.p. a/a</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-label">Backlog</div>
+            <div class="kpi-label" data-i18n="panel.kpi3.label">Backlog</div>
             <div class="kpi-value"><span class="kpi-prefix">R$</span><span data-count="8.7" data-decimals="1">0</span><small>M</small></div>
             <div class="kpi-track"><span class="kpi-fill" style="--target:85%"></span></div>
-            <div class="kpi-delta">▲ 6% no mês</div>
+            <div class="kpi-delta" data-i18n="panel.kpi3.delta">▲ 6% no mês</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-label">NCG / Receita</div>
+            <div class="kpi-label" data-i18n="panel.kpi4.label">NCG / Receita</div>
             <div class="kpi-value"><span data-count="14.6" data-decimals="1">0</span><small>%</small></div>
             <div class="kpi-track"><span class="kpi-fill" style="--target:34%"></span></div>
-            <div class="kpi-delta">▼ 3,2 p.p. a/a</div>
+            <div class="kpi-delta" data-i18n="panel.kpi4.delta">▼ 3,2 p.p. a/a</div>
           </div>
         </div>
         <div class="hero-chart">
-          <div class="hero-chart-label">// faturamento mensal · dados ilustrativos</div>
+          <div class="hero-chart-label" data-i18n="panel.chartLabel">// faturamento mensal · dados ilustrativos</div>
           <div class="hero-chart-bars">
             <span style="--h:42%; --i:0"></span>
             <span style="--h:55%; --i:1"></span>
@@ -1169,34 +1188,34 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
-    <div class="section-label reveal">// sobre mim</div>
+    <div class="section-label reveal" data-i18n="about.label">// sobre mim</div>
     <div class="divider reveal"></div>
     <div class="about-grid">
       <div class="about-photo reveal">
         <img src="https://github.com/kaiquermsouza.png" alt="Kaique Souza" />
-        <div class="about-photo-name">Kaique Souza<br>Contagem · MG</div>
+        <div class="about-photo-name" data-i18n-html="about.photoName">Kaique Souza<br>Contagem · MG</div>
       </div>
       <div class="about-text reveal">
-        <p>Atuo como Analista e Consultor de FP&amp;A e Dados, com experiência aplicada aos segmentos de <strong>indústria, energia, varejo, logística e controladoria</strong> — conectando finanças e tecnologia para transformar dados em decisões executivas.</p>
-        <p>Desenvolvo relatórios financeiros gerenciais, dashboards e automações que <strong>reduzem retrabalho manual</strong>, aumentam a confiabilidade das informações e aceleram a análise da gestão — do dado bruto ao insight executivo.</p>
-        <p>Combino <strong>visão de Controladoria e FP&amp;A</strong> (DRE, EBITDA, GP, Backlog, NCG) com stack técnica moderna (Power BI, Microsoft Fabric, Python), criando soluções que realmente movem o negócio.</p>
+        <p data-i18n-html="about.p1">Atuo como Analista e Consultor de FP&amp;A e Dados, com experiência aplicada aos segmentos de <strong>indústria, energia, varejo, logística e controladoria</strong> — conectando finanças e tecnologia para transformar dados em decisões executivas.</p>
+        <p data-i18n-html="about.p2">Desenvolvo relatórios financeiros gerenciais, dashboards e automações que <strong>reduzem retrabalho manual</strong>, aumentam a confiabilidade das informações e aceleram a análise da gestão — do dado bruto ao insight executivo.</p>
+        <p data-i18n-html="about.p3">Combino <strong>visão de Controladoria e FP&amp;A</strong> (DRE, EBITDA, GP, Backlog, NCG) com stack técnica moderna (Power BI, Microsoft Fabric, Python), criando soluções que realmente movem o negócio.</p>
       </div>
       <div class="about-stats reveal">
         <div class="stat-card">
-          <div class="stat-num">Power<br>BI</div>
-          <div class="stat-label">Modelos PBIP / DAX / Calc. Groups</div>
+          <div class="stat-num" data-i18n-html="about.stat1.num">Power<br>BI</div>
+          <div class="stat-label" data-i18n="about.stat1.label">Modelos PBIP / DAX / Calc. Groups</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">Fabric</div>
-          <div class="stat-label">Lakehouse · Notebooks · Pipelines</div>
+          <div class="stat-label" data-i18n="about.stat2.label">Lakehouse · Notebooks · Pipelines</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">FP&amp;A</div>
-          <div class="stat-label">DRE · EBITDA · Backlog · PBT</div>
+          <div class="stat-label" data-i18n="about.stat3.label">DRE · EBITDA · Backlog · PBT</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">Auto</div>
-          <div class="stat-label">Power Automate · AI Builder</div>
+          <div class="stat-label" data-i18n="about.stat4.label">Power Automate · AI Builder</div>
         </div>
       </div>
     </div>
@@ -1206,18 +1225,18 @@
 <!-- SEGMENTS -->
 <section id="segments">
   <div class="section-inner">
-    <div class="section-label reveal">// segmentos</div>
-    <h2 class="section-title reveal">Onde posso<br>fazer a diferença</h2>
-    <p class="segments-intro reveal">
+    <div class="section-label reveal" data-i18n="segments.label">// segmentos</div>
+    <h2 class="section-title reveal" data-i18n-html="segments.title">Onde posso<br>fazer a diferença</h2>
+    <p class="segments-intro reveal" data-i18n="segments.intro">
       Atuo como consultor de FP&amp;A, Controladoria e Power BI para empresas que precisam transformar dados financeiros e operacionais em decisões — com experiência aplicada a estes segmentos:
     </p>
     <div class="segments-grid">
       <div class="segment-card reveal seg-industry">
         <div class="segment-icon">⚡</div>
-        <div class="segment-name">Indústria &amp; Energia</div>
-        <div class="segment-desc">DRE gerencial, EBITDA, Backlog e acompanhamento de resultado para empresas de manufatura e infraestrutura de energia — conectando dados de produção, faturamento e resultado em uma visão executiva única.</div>
+        <div class="segment-name" data-i18n="segments.industry.name">Indústria &amp; Energia</div>
+        <div class="segment-desc" data-i18n="segments.industry.desc">DRE gerencial, EBITDA, Backlog e acompanhamento de resultado para empresas de manufatura e infraestrutura de energia — conectando dados de produção, faturamento e resultado em uma visão executiva única.</div>
         <div class="segment-tags">
-          <span class="stack-tag">DRE Gerencial</span>
+          <span class="stack-tag" data-i18n="segments.industry.tag1">DRE Gerencial</span>
           <span class="stack-tag">EBITDA</span>
           <span class="stack-tag">Backlog</span>
           <span class="stack-tag">Power BI</span>
@@ -1225,34 +1244,34 @@
       </div>
       <div class="segment-card reveal seg-retail">
         <div class="segment-icon">🛒</div>
-        <div class="segment-name">Varejo &amp; Comercial</div>
-        <div class="segment-desc">Painéis de performance comercial: vendas vs. meta, mix de produtos, ranking de vendedores e margem por canal — indicadores que ajudam a liderança comercial a decidir com dados, não com planilhas soltas.</div>
+        <div class="segment-name" data-i18n="segments.retail.name">Varejo &amp; Comercial</div>
+        <div class="segment-desc" data-i18n="segments.retail.desc">Painéis de performance comercial: vendas vs. meta, mix de produtos, ranking de vendedores e margem por canal — indicadores que ajudam a liderança comercial a decidir com dados, não com planilhas soltas.</div>
         <div class="segment-tags">
-          <span class="stack-tag">Vendas x Meta</span>
-          <span class="stack-tag">Mix de Produtos</span>
+          <span class="stack-tag" data-i18n="segments.retail.tag1">Vendas x Meta</span>
+          <span class="stack-tag" data-i18n="segments.retail.tag2">Mix de Produtos</span>
           <span class="stack-tag">Power BI</span>
           <span class="stack-tag">DAX</span>
         </div>
       </div>
       <div class="segment-card reveal seg-logistics">
         <div class="segment-icon">🚚</div>
-        <div class="segment-name">Logística &amp; Operações</div>
-        <div class="segment-desc">Monitoramento de entregas, SLA, rotas e custos operacionais — pipelines que automatizam a coleta de dados e transformam informação operacional em indicadores de performance para reduzir atrasos e custos.</div>
+        <div class="segment-name" data-i18n="segments.logistics.name">Logística &amp; Operações</div>
+        <div class="segment-desc" data-i18n="segments.logistics.desc">Monitoramento de entregas, SLA, rotas e custos operacionais — pipelines que automatizam a coleta de dados e transformam informação operacional em indicadores de performance para reduzir atrasos e custos.</div>
         <div class="segment-tags">
           <span class="stack-tag">SLA</span>
-          <span class="stack-tag">Rotas</span>
-          <span class="stack-tag">Automação</span>
+          <span class="stack-tag" data-i18n="segments.logistics.tag2">Rotas</span>
+          <span class="stack-tag" data-i18n="segments.logistics.tag3">Automação</span>
           <span class="stack-tag">Fabric · PySpark</span>
         </div>
       </div>
       <div class="segment-card reveal seg-finance">
         <div class="segment-icon">📊</div>
-        <div class="segment-name">Controladoria &amp; Finanças</div>
-        <div class="segment-desc">Orçamento, forecast e análise de variação (Budget vs. Actual vs. Forecast), além de diagnóstico de geração de caixa (NCG, FCO, CCR) para identificar onde o crescimento está consumindo caixa.</div>
+        <div class="segment-name" data-i18n="segments.finance.name">Controladoria &amp; Finanças</div>
+        <div class="segment-desc" data-i18n="segments.finance.desc">Orçamento, forecast e análise de variação (Budget vs. Actual vs. Forecast), além de diagnóstico de geração de caixa (NCG, FCO, CCR) para identificar onde o crescimento está consumindo caixa.</div>
         <div class="segment-tags">
-          <span class="stack-tag">Orçamento</span>
+          <span class="stack-tag" data-i18n="segments.finance.tag1">Orçamento</span>
           <span class="stack-tag">Forecast</span>
-          <span class="stack-tag">NCG · FCO</span>
+          <span class="stack-tag" data-i18n="segments.finance.tag3">NCG · FCO</span>
           <span class="stack-tag">Budget vs Actual</span>
         </div>
       </div>
@@ -1263,15 +1282,15 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="section-inner">
-    <div class="section-label reveal">// stack técnica</div>
-    <h2 class="section-title reveal">Ferramentas &amp;<br>Tecnologias</h2>
+    <div class="section-label reveal" data-i18n="skills.label">// stack técnica</div>
+    <h2 class="section-title reveal" data-i18n-html="skills.title">Ferramentas &amp;<br>Tecnologias</h2>
     <div class="skills-grid">
       <div class="skill-group reveal">
         <div class="skill-group-title">
           <div class="skill-icon">🎯</div>
-          Core — FP&amp;A, BI &amp; Dados
+          <span data-i18n="skills.core.title">Core — FP&amp;A, BI &amp; Dados</span>
         </div>
-        <div class="skill-group-note">// foco principal de atuação</div>
+        <div class="skill-group-note" data-i18n="skills.core.note">// foco principal de atuação</div>
         <div class="skill-tags">
           <span class="skill-tag skill-tag-core">FP&amp;A</span>
           <span class="skill-tag skill-tag-core">Power BI</span>
@@ -1287,9 +1306,9 @@
       <div class="skill-group reveal">
         <div class="skill-group-title">
           <div class="skill-icon">🔧</div>
-          Complementares
+          <span data-i18n="skills.complementary.title">Complementares</span>
         </div>
-        <div class="skill-group-note">// stack de apoio e automação</div>
+        <div class="skill-group-note" data-i18n="skills.complementary.note">// stack de apoio e automação</div>
         <div class="skill-tags">
           <span class="skill-tag">Streamlit</span>
           <span class="skill-tag">Git / GitHub</span>
@@ -1297,7 +1316,7 @@
           <span class="skill-tag">HTML / CSS</span>
           <span class="skill-tag">JavaScript</span>
           <span class="skill-tag">Azure</span>
-          <span class="skill-tag">IA Generativa</span>
+          <span class="skill-tag" data-i18n="skills.complementary.tagAI">IA Generativa</span>
         </div>
       </div>
     </div>
@@ -1307,16 +1326,16 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-inner">
-    <div class="section-label reveal">// projetos</div>
-    <h2 class="section-title reveal">O que tenho<br>construído</h2>
+    <div class="section-label reveal" data-i18n="projects.label">// projetos</div>
+    <h2 class="section-title reveal" data-i18n-html="projects.title">O que tenho<br>construído</h2>
 
     <div class="project-group reveal">
-      <div class="project-group-title">Projetos profissionais</div>
+      <div class="project-group-title" data-i18n="projects.group1.title">Projetos profissionais</div>
       <div class="projects-grid">
         <div class="project-card reveal">
           <div class="project-type">Power BI · DAX</div>
-          <div class="project-name">DRE Gerencial</div>
-          <div class="project-desc">A consolidação mensal do resultado era manual e sujeita a erro. Construí um modelo de DRE Gerencial em Power BI (PBIP) com DAX avançado e Calculation Groups, padronizando os indicadores financeiros e entregando uma visão única do resultado — com redução de retrabalho manual e mais confiabilidade nos números levados ao comitê.</div>
+          <div class="project-name" data-i18n="projects.dre.name">DRE Gerencial</div>
+          <div class="project-desc" data-i18n="projects.dre.desc">A consolidação mensal do resultado era manual e sujeita a erro. Construí um modelo de DRE Gerencial em Power BI (PBIP) com DAX avançado e Calculation Groups, padronizando os indicadores financeiros e entregando uma visão única do resultado — com redução de retrabalho manual e mais confiabilidade nos números levados ao comitê.</div>
           <div class="project-stack">
             <span class="stack-tag">Power BI</span>
             <span class="stack-tag">DAX</span>
@@ -1326,8 +1345,8 @@
         </div>
         <div class="project-card reveal">
           <div class="project-type">Microsoft Fabric · Python</div>
-          <div class="project-name">Pipeline Faturamento Diário</div>
-          <div class="project-desc">O acompanhamento de faturamento dependia de planilhas atualizadas manualmente, com defasagem. Construí um pipeline de faturamento diário em Microsoft Fabric (Lakehouse + PySpark), automatizando a transformação dos dados e entregando uma visão executiva em Power BI para acompanhamento diário de receita, variações e atingimento de metas — com mais confiabilidade dos dados e menos esforço de consolidação.</div>
+          <div class="project-name" data-i18n="projects.pipeline.name">Pipeline Faturamento Diário</div>
+          <div class="project-desc" data-i18n="projects.pipeline.desc">O acompanhamento de faturamento dependia de planilhas atualizadas manualmente, com defasagem. Construí um pipeline de faturamento diário em Microsoft Fabric (Lakehouse + PySpark), automatizando a transformação dos dados e entregando uma visão executiva em Power BI para acompanhamento diário de receita, variações e atingimento de metas — com mais confiabilidade dos dados e menos esforço de consolidação.</div>
           <div class="project-stack">
             <span class="stack-tag">Fabric</span>
             <span class="stack-tag">PySpark</span>
@@ -1337,8 +1356,8 @@
         </div>
         <div class="project-card reveal">
           <div class="project-type">Power Automate · AI Builder</div>
-          <div class="project-name">Registro de Novos Pedidos</div>
-          <div class="project-desc">O cadastro de novos pedidos era feito via formulário básico, com digitação manual de dados de PDFs e alto risco de erro. Redesenhei o processo migrando para uma SharePoint List com extração automática de dados de PDF via Power Automate e AI Builder — eliminando retrabalho operacional e padronizando o registro de pedidos.</div>
+          <div class="project-name" data-i18n="projects.orders.name">Registro de Novos Pedidos</div>
+          <div class="project-desc" data-i18n="projects.orders.desc">O cadastro de novos pedidos era feito via formulário básico, com digitação manual de dados de PDFs e alto risco de erro. Redesenhei o processo migrando para uma SharePoint List com extração automática de dados de PDF via Power Automate e AI Builder — eliminando retrabalho operacional e padronizando o registro de pedidos.</div>
           <div class="project-stack">
             <span class="stack-tag">Power Automate</span>
             <span class="stack-tag">AI Builder</span>
@@ -1350,12 +1369,12 @@
     </div>
 
     <div class="project-group reveal">
-      <div class="project-group-title">Cases de FP&amp;A</div>
+      <div class="project-group-title" data-i18n="projects.group2.title">Cases de FP&amp;A</div>
       <div class="projects-grid">
         <div class="project-card reveal">
           <div class="project-type">FP&amp;A · Streamlit</div>
-          <div class="project-name">A Armadilha do Crescimento</div>
-          <div class="project-desc">Uma empresa cresce em receita, mas destrói caixa — e o resultado contábil não mostra isso. Neste case publicado no LinkedIn, analisei PMR, NCG, FCO e CCR para explicar a causa raiz do problema e construí um app interativo em Streamlit para visualizar o diagnóstico, reforçando a importância de olhar geração de caixa, não só resultado, na tomada de decisão.</div>
+          <div class="project-name" data-i18n="projects.growthTrap.name">A Armadilha do Crescimento</div>
+          <div class="project-desc" data-i18n="projects.growthTrap.desc">Uma empresa cresce em receita, mas destrói caixa — e o resultado contábil não mostra isso. Neste case publicado no LinkedIn, analisei PMR, NCG, FCO e CCR para explicar a causa raiz do problema e construí um app interativo em Streamlit para visualizar o diagnóstico, reforçando a importância de olhar geração de caixa, não só resultado, na tomada de decisão.</div>
           <div class="project-stack">
             <span class="stack-tag">Python</span>
             <span class="stack-tag">Streamlit</span>
@@ -1363,121 +1382,121 @@
             <span class="stack-tag">LinkedIn</span>
           </div>
         </div>
-        <div class="project-card reveal" data-preview="https://app.powerbi.com/view?r=eyJrIjoiOWY3NjBlZjUtNjQ5NC00Y2UxLWJkNWQtZTc1MGVlMTA5YjExIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9">
+        <div class="project-card reveal" data-preview="https://app.powerbi.com/view?r=eyJrIjoiOWY3NjBlZjUtNjQ5NC00Y2UxLWJkNWQtZTc1MGVlMTA5YjExIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="◆ preview ao vivo">
           <div class="project-type">Power BI · FP&amp;A</div>
-          <div class="project-name">DRE · Orçamento · Forecast</div>
-          <div class="project-desc">DRE, orçamento e forecast viviam em planilhas separadas, dificultando a análise de variação. Construí um modelo integrado em Power BI com análise Budget vs Actual vs Forecast, padronizando indicadores entre as áreas e dando à gestão uma visão executiva única para acompanhar desvios e antecipar decisões.</div>
+          <div class="project-name" data-i18n="projects.dreOrcFc.name">DRE · Orçamento · Forecast</div>
+          <div class="project-desc" data-i18n="projects.dreOrcFc.desc">DRE, orçamento e forecast viviam em planilhas separadas, dificultando a análise de variação. Construí um modelo integrado em Power BI com análise Budget vs Actual vs Forecast, padronizando indicadores entre as áreas e dando à gestão uma visão executiva única para acompanhar desvios e antecipar decisões.</div>
           <div class="project-stack">
             <span class="stack-tag">Power BI</span>
             <span class="stack-tag">DAX</span>
             <span class="stack-tag">FP&amp;A</span>
-            <span class="stack-tag">Orçamento</span>
+            <span class="stack-tag" data-i18n="segments.finance.tag1">Orçamento</span>
           </div>
-          <button class="btn-demo" onclick="openModal('base_orc_dre_fc', 'https://app.powerbi.com/view?r=eyJrIjoiOWY3NjBlZjUtNjQ5NC00Y2UxLWJkNWQtZTc1MGVlMTA5YjExIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
+          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('base_orc_dre_fc', 'https://app.powerbi.com/view?r=eyJrIjoiOWY3NjBlZjUtNjQ5NC00Y2UxLWJkNWQtZTc1MGVlMTA5YjExIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
         </div>
       </div>
     </div>
 
     <div class="project-group reveal">
-      <div class="project-group-title">Projetos de portfólio</div>
+      <div class="project-group-title" data-i18n="projects.group3.title">Projetos de portfólio</div>
       <div class="projects-grid">
-        <div class="project-card reveal" data-preview="https://app.powerbi.com/view?r=eyJrIjoiMjk4MTI0ZGYtYzAyYy00YTQ1LWE4YTItMjY2ZTZmNGFkZmI1IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9">
-          <div class="project-type">Power BI · Vendas</div>
+        <div class="project-card reveal" data-preview="https://app.powerbi.com/view?r=eyJrIjoiMjk4MTI0ZGYtYzAyYy00YTQ1LWE4YTItMjY2ZTZmNGFkZmI1IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="◆ preview ao vivo">
+          <div class="project-type" data-i18n="projects.ambev.type">Power BI · Vendas</div>
           <div class="project-name">Dashboard Ambev</div>
-          <div class="project-desc">Projeto de portfólio com dados simulados: dashboard de performance comercial com análise de vendas, mix de produtos e acompanhamento de metas, demonstrando modelagem de dados e construção de indicadores para apoiar a gestão comercial.</div>
+          <div class="project-desc" data-i18n="projects.ambev.desc">Projeto de portfólio com dados simulados: dashboard de performance comercial com análise de vendas, mix de produtos e acompanhamento de metas, demonstrando modelagem de dados e construção de indicadores para apoiar a gestão comercial.</div>
           <div class="project-stack">
             <span class="stack-tag">Power BI</span>
             <span class="stack-tag">DAX</span>
             <span class="stack-tag">Data Modeling</span>
           </div>
-          <button class="btn-demo" onclick="openModal('01_Dashboard_Ambev', 'https://app.powerbi.com/view?r=eyJrIjoiMjk4MTI0ZGYtYzAyYy00YTQ1LWE4YTItMjY2ZTZmNGFkZmI1IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
+          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('01_Dashboard_Ambev', 'https://app.powerbi.com/view?r=eyJrIjoiMjk4MTI0ZGYtYzAyYy00YTQ1LWE4YTItMjY2ZTZmNGFkZmI1IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
         </div>
-        <div class="project-card reveal" data-preview="https://app.powerbi.com/view?r=eyJrIjoiMmYyMTZkNDItOWRkYS00MTMxLWIzOGEtNmE0MmI1ZmI5M2ZlIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9">
-          <div class="project-type">Power BI · Logística</div>
-          <div class="project-name">Dashboard Logística</div>
-          <div class="project-desc">Projeto de portfólio com dados simulados: painel de controle logístico com monitoramento de entregas, SLA e rotas, transformando dados operacionais em indicadores de performance para apoiar a gestão logística.</div>
+        <div class="project-card reveal" data-preview="https://app.powerbi.com/view?r=eyJrIjoiMmYyMTZkNDItOWRkYS00MTMxLWIzOGEtNmE0MmI1ZmI5M2ZlIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="◆ preview ao vivo">
+          <div class="project-type" data-i18n="projects.logisticsDashboard.type">Power BI · Logística</div>
+          <div class="project-name" data-i18n="projects.logisticsDashboard.name">Dashboard Logística</div>
+          <div class="project-desc" data-i18n="projects.logisticsDashboard.desc">Projeto de portfólio com dados simulados: painel de controle logístico com monitoramento de entregas, SLA e rotas, transformando dados operacionais em indicadores de performance para apoiar a gestão logística.</div>
           <div class="project-stack">
             <span class="stack-tag">Power BI</span>
             <span class="stack-tag">DAX</span>
             <span class="stack-tag">Data Modeling</span>
           </div>
-          <button class="btn-demo" onclick="openModal('01_Dashboard_Logistica', 'https://app.powerbi.com/view?r=eyJrIjoiMmYyMTZkNDItOWRkYS00MTMxLWIzOGEtNmE0MmI1ZmI5M2ZlIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
+          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('01_Dashboard_Logistica', 'https://app.powerbi.com/view?r=eyJrIjoiMmYyMTZkNDItOWRkYS00MTMxLWIzOGEtNmE0MmI1ZmI5M2ZlIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
         </div>
-        <div class="project-card reveal" data-preview="https://app.powerbi.com/view?r=eyJrIjoiYjJkNGUxZjQtZTQwMy00OTk5LTk4M2UtMTlmNjZkODczNmI0IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9">
-          <div class="project-type">Power BI · Comercial</div>
-          <div class="project-name">Dashboard Vendas x Meta</div>
-          <div class="project-desc">Projeto de portfólio: painel de acompanhamento de vendas vs. metas por vendedor, região e período, com indicadores de atingimento e ranking de performance — demonstrando como padronizar indicadores comerciais para apoiar decisões da liderança de vendas.</div>
+        <div class="project-card reveal" data-preview="https://app.powerbi.com/view?r=eyJrIjoiYjJkNGUxZjQtZTQwMy00OTk5LTk4M2UtMTlmNjZkODczNmI0IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="◆ preview ao vivo">
+          <div class="project-type" data-i18n="projects.salesTarget.type">Power BI · Comercial</div>
+          <div class="project-name" data-i18n="projects.salesTarget.name">Dashboard Vendas x Meta</div>
+          <div class="project-desc" data-i18n="projects.salesTarget.desc">Projeto de portfólio: painel de acompanhamento de vendas vs. metas por vendedor, região e período, com indicadores de atingimento e ranking de performance — demonstrando como padronizar indicadores comerciais para apoiar decisões da liderança de vendas.</div>
           <div class="project-stack">
             <span class="stack-tag">Power BI</span>
             <span class="stack-tag">DAX</span>
-            <span class="stack-tag">Vendas</span>
+            <span class="stack-tag" data-i18n="projects.salesTarget.tag3">Vendas</span>
           </div>
-          <button class="btn-demo" onclick="openModal('Dashboard Vendas x Meta', 'https://app.powerbi.com/view?r=eyJrIjoiYjJkNGUxZjQtZTQwMy00OTk5LTk4M2UtMTlmNjZkODczNmI0IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
+          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('Dashboard Vendas x Meta', 'https://app.powerbi.com/view?r=eyJrIjoiYjJkNGUxZjQtZTQwMy00OTk5LTk4M2UtMTlmNjZkODczNmI0IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
         </div>
-        <div class="project-card reveal" data-preview="https://appsucos-elizabethpromotoria.streamlit.app/">
+        <div class="project-card reveal" data-preview="https://appsucos-elizabethpromotoria.streamlit.app/" data-preview-label="◆ preview ao vivo">
           <div class="project-type">Python · Streamlit</div>
           <div class="project-name">App Sucos Elizabeth</div>
-          <div class="project-desc">Aplicação interativa em Streamlit para análise de dados de uma promotoria comercial, com visualizações dinâmicas e filtros por região e produto — projeto de portfólio que demonstra construção de ferramentas de análise sob medida em Python.</div>
+          <div class="project-desc" data-i18n="projects.sucos.desc">Aplicação interativa em Streamlit para análise de dados de uma promotoria comercial, com visualizações dinâmicas e filtros por região e produto — projeto de portfólio que demonstra construção de ferramentas de análise sob medida em Python.</div>
           <div class="project-stack">
             <span class="stack-tag">Python</span>
             <span class="stack-tag">Streamlit</span>
             <span class="stack-tag">Pandas</span>
             <span class="stack-tag">Plotly</span>
           </div>
-          <button class="btn-demo" onclick="openModal('App Sucos Elizabeth', 'https://appsucos-elizabethpromotoria.streamlit.app/', 'link')">Ver demo →</button>
+          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('App Sucos Elizabeth', 'https://appsucos-elizabethpromotoria.streamlit.app/', 'link')">Ver demo →</button>
         </div>
-        <div class="project-card reveal" data-preview="https://fifa23datasetkaique.streamlit.app/">
-          <div class="project-type">Python · Streamlit · Dados</div>
+        <div class="project-card reveal" data-preview="https://fifa23datasetkaique.streamlit.app/" data-preview-label="◆ preview ao vivo">
+          <div class="project-type" data-i18n="projects.fifa.type">Python · Streamlit · Dados</div>
           <div class="project-name">FIFA 23 Data Explorer</div>
-          <div class="project-desc">Explorador de dados do FIFA 23 com filtros por jogador, clube, nacionalidade e atributos, incluindo análises estatísticas e comparativas de performance — projeto de portfólio para praticar manipulação e visualização de dados em Python.</div>
+          <div class="project-desc" data-i18n="projects.fifa.desc">Explorador de dados do FIFA 23 com filtros por jogador, clube, nacionalidade e atributos, incluindo análises estatísticas e comparativas de performance — projeto de portfólio para praticar manipulação e visualização de dados em Python.</div>
           <div class="project-stack">
             <span class="stack-tag">Python</span>
             <span class="stack-tag">Streamlit</span>
             <span class="stack-tag">Pandas</span>
             <span class="stack-tag">Plotly</span>
           </div>
-          <button class="btn-demo" onclick="openModal('FIFA 23 Data Explorer', 'https://fifa23datasetkaique.streamlit.app/', 'link')">Ver demo →</button>
+          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('FIFA 23 Data Explorer', 'https://fifa23datasetkaique.streamlit.app/', 'link')">Ver demo →</button>
         </div>
       </div>
     </div>
 
     <div class="project-group reveal">
-      <div class="project-group-title">Automação &amp; Open Source</div>
+      <div class="project-group-title" data-i18n="projects.group4.title">Automação &amp; Open Source</div>
       <div class="projects-grid">
         <div class="project-card reveal">
-          <div class="project-type">Python · API · Automação</div>
-          <div class="project-name">Pipeline de Automação FP&amp;A</div>
-          <div class="project-desc">Acompanhar indicadores macroeconômicos para premissas de orçamento e forecast exigia consulta manual em vários sites. Construí um pipeline em Python que consome a API do Banco Central, calcula variações (M/M, A/A, YTD) e gera relatórios em Excel formatados — automatizando uma rotina recorrente de FP&amp;A.</div>
+          <div class="project-type" data-i18n="projects.fpaPipeline.type">Python · API · Automação</div>
+          <div class="project-name" data-i18n="projects.fpaPipeline.name">Pipeline de Automação FP&amp;A</div>
+          <div class="project-desc" data-i18n="projects.fpaPipeline.desc">Acompanhar indicadores macroeconômicos para premissas de orçamento e forecast exigia consulta manual em vários sites. Construí um pipeline em Python que consome a API do Banco Central, calcula variações (M/M, A/A, YTD) e gera relatórios em Excel formatados — automatizando uma rotina recorrente de FP&amp;A.</div>
           <div class="project-stack">
             <span class="stack-tag">Python</span>
             <span class="stack-tag">API BCB</span>
             <span class="stack-tag">Pandas</span>
             <span class="stack-tag">Excel</span>
           </div>
-          <a href="https://github.com/kaiquermsouza/fpa-automation-pipeline" target="_blank" class="btn-code">Ver código →</a>
+          <a href="https://github.com/kaiquermsouza/fpa-automation-pipeline" target="_blank" class="btn-code" data-i18n="projects.btnCode">Ver código →</a>
         </div>
         <div class="project-card reveal">
-          <div class="project-type">IA · Power BI · Claude Code</div>
-          <div class="project-name">Claude Skills para Power BI</div>
-          <div class="project-desc">Tarefas repetitivas de modelagem em Power BI (auditoria de modelo, documentação, criação de medidas DAX) consomem tempo de análise. Desenvolvi um conjunto de Skills para Claude Code que faz auditoria de modelos PBIP com scorecard, gera documentação automática e cria medidas DAX a partir de descrições em português.</div>
+          <div class="project-type" data-i18n="projects.claudeSkills.type">IA · Power BI · Claude Code</div>
+          <div class="project-name" data-i18n="projects.claudeSkills.name">Claude Skills para Power BI</div>
+          <div class="project-desc" data-i18n="projects.claudeSkills.desc">Tarefas repetitivas de modelagem em Power BI (auditoria de modelo, documentação, criação de medidas DAX) consomem tempo de análise. Desenvolvi um conjunto de Skills para Claude Code que faz auditoria de modelos PBIP com scorecard, gera documentação automática e cria medidas DAX a partir de descrições em português.</div>
           <div class="project-stack">
             <span class="stack-tag">Claude Code</span>
             <span class="stack-tag">Power BI</span>
             <span class="stack-tag">DAX</span>
-            <span class="stack-tag">Automação</span>
+            <span class="stack-tag" data-i18n="segments.logistics.tag3">Automação</span>
           </div>
-          <a href="https://github.com/kaiquermsouza/claude-code-powerbi-skills" target="_blank" class="btn-code">Ver código →</a>
+          <a href="https://github.com/kaiquermsouza/claude-code-powerbi-skills" target="_blank" class="btn-code" data-i18n="projects.btnCode">Ver código →</a>
         </div>
         <div class="project-card reveal">
           <div class="project-type">Python · Streamlit</div>
-          <div class="project-name">Planner de Controladoria</div>
-          <div class="project-desc">A rotina de Controladoria envolve múltiplas tarefas recorrentes (fechamentos, conciliações, prazos) difíceis de acompanhar em planilhas. Desenvolvi um app em Streamlit para organizar e acompanhar essas tarefas por status e prazo, dando visibilidade do andamento do fechamento para a área.</div>
+          <div class="project-name" data-i18n="projects.controllingPlanner.name">Planner de Controladoria</div>
+          <div class="project-desc" data-i18n="projects.controllingPlanner.desc">A rotina de Controladoria envolve múltiplas tarefas recorrentes (fechamentos, conciliações, prazos) difíceis de acompanhar em planilhas. Desenvolvi um app em Streamlit para organizar e acompanhar essas tarefas por status e prazo, dando visibilidade do andamento do fechamento para a área.</div>
           <div class="project-stack">
             <span class="stack-tag">Python</span>
             <span class="stack-tag">Streamlit</span>
-            <span class="stack-tag">Controladoria</span>
+            <span class="stack-tag" data-i18n="projects.controllingPlanner.tag3">Controladoria</span>
           </div>
-          <a href="https://github.com/kaiquermsouza/planner_controladoria" target="_blank" class="btn-code">Ver código →</a>
+          <a href="https://github.com/kaiquermsouza/planner_controladoria" target="_blank" class="btn-code" data-i18n="projects.btnCode">Ver código →</a>
         </div>
       </div>
     </div>
@@ -1487,52 +1506,52 @@
 <!-- FAQ -->
 <section id="faq">
   <div class="section-inner">
-    <div class="section-label reveal">// perguntas frequentes</div>
-    <h2 class="section-title reveal">Antes de<br>conversarmos</h2>
+    <div class="section-label reveal" data-i18n="faq.label">// perguntas frequentes</div>
+    <h2 class="section-title reveal" data-i18n-html="faq.title">Antes de<br>conversarmos</h2>
     <div class="faq-list reveal">
       <div class="faq-item">
         <button class="faq-question">
-          Quais tipos de projeto você atende?
+          <span data-i18n="faq.q1">Quais tipos de projeto você atende?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Dashboards e relatórios gerenciais em Power BI, modelagem de DRE/orçamento/forecast, pipelines de dados em Microsoft Fabric/Python e automação de processos com Power Automate e AI Builder — para os segmentos de indústria, energia, varejo, logística e controladoria.</div>
+          <div class="faq-answer-inner" data-i18n="faq.a1">Dashboards e relatórios gerenciais em Power BI, modelagem de DRE/orçamento/forecast, pipelines de dados em Microsoft Fabric/Python e automação de processos com Power Automate e AI Builder — para os segmentos de indústria, energia, varejo, logística e controladoria.</div>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-question">
-          Como funciona o processo de trabalho?
+          <span data-i18n="faq.q2">Como funciona o processo de trabalho?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Começamos com um briefing para entender o problema e os dados disponíveis. Em seguida, faço o levantamento e modelagem dos dados, desenvolvo o dashboard/automação, valido com o time e entrego com documentação básica para manutenção futura.</div>
+          <div class="faq-answer-inner" data-i18n="faq.a2">Começamos com um briefing para entender o problema e os dados disponíveis. Em seguida, faço o levantamento e modelagem dos dados, desenvolvo o dashboard/automação, valido com o time e entrego com documentação básica para manutenção futura.</div>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-question">
-          Atende empresas de qualquer lugar do Brasil?
+          <span data-i18n="faq.q3">Atende empresas de qualquer lugar do Brasil?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Sim, o trabalho é 100% remoto. Reuniões e alinhamentos são feitos por chamada de vídeo ou WhatsApp, com entregas e validações assíncronas.</div>
+          <div class="faq-answer-inner" data-i18n="faq.a3">Sim, o trabalho é 100% remoto. Reuniões e alinhamentos são feitos por chamada de vídeo ou WhatsApp, com entregas e validações assíncronas.</div>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-question">
-          Quanto tempo leva um projeto?
+          <span data-i18n="faq.q4">Quanto tempo leva um projeto?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Depende do escopo. Dashboards pontuais e automações simples costumam levar de 1 a 3 semanas. Projetos maiores, como pipelines de dados ou modelagem financeira completa, têm prazo combinado após o briefing inicial.</div>
+          <div class="faq-answer-inner" data-i18n="faq.a4">Depende do escopo. Dashboards pontuais e automações simples costumam levar de 1 a 3 semanas. Projetos maiores, como pipelines de dados ou modelagem financeira completa, têm prazo combinado após o briefing inicial.</div>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-question">
-          Como entro em contato?
+          <span data-i18n="faq.q5">Como entro em contato?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Pelo WhatsApp ou e-mail, disponíveis na seção de contato abaixo. Conte um pouco sobre o desafio e te respondo com os próximos passos.</div>
+          <div class="faq-answer-inner" data-i18n="faq.a5">Pelo WhatsApp ou e-mail, disponíveis na seção de contato abaixo. Conte um pouco sobre o desafio e te respondo com os próximos passos.</div>
         </div>
       </div>
     </div>
@@ -1542,13 +1561,13 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
-    <span class="section-label reveal">// contato</span>
-    <h2 class="section-title reveal">Vamos conversar<em style="color:var(--accent)">?</em></h2>
-    <p class="contact-sub reveal">
+    <span class="section-label reveal" data-i18n="contact.label">// contato</span>
+    <h2 class="section-title reveal" data-i18n-html="contact.title">Vamos conversar<em style="color:var(--accent)">?</em></h2>
+    <p class="contact-sub reveal" data-i18n="contact.sub">
       Tem um desafio de FP&amp;A, Controladoria, Power BI ou automação financeira? Me conta o que está acontecendo — atendo empresas de qualquer lugar do Brasil, 100% remoto.
     </p>
     <div class="contact-links reveal">
-      <a href="https://wa.me/5531971473725?text=Ol%C3%A1%2C%20Kaique!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" class="btn btn-primary">WhatsApp →</a>
+      <a id="whatsapp-link" href="https://wa.me/5531971473725?text=Ol%C3%A1%2C%20Kaique!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" class="btn btn-primary" data-i18n="contact.whatsapp">WhatsApp →</a>
       <a href="mailto:kaiquerobertosouza@gmail.com" class="btn btn-ghost">Email</a>
       <a href="https://www.linkedin.com/in/kaique-roberto-analista-de-dados/" target="_blank" class="btn btn-ghost">LinkedIn</a>
       <a href="https://github.com/kaiquermsouza" target="_blank" class="btn btn-ghost">GitHub</a>
@@ -1559,10 +1578,332 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-copy">© 2026 Kaique Souza<span>.</span> kaique-souza.dev</div>
-  <div class="footer-copy">Feito com HTML · CSS · GitHub Pages</div>
+  <div class="footer-copy" data-i18n="footer.made">Feito com HTML · CSS · GitHub Pages</div>
 </footer>
 
 <script>
+  // ── i18n: PT/EN language toggle ──
+  let currentLang = localStorage.getItem('site-lang') || 'pt';
+
+  const translations = {
+    pt: {
+      'nav.about': 'Sobre',
+      'nav.segments': 'Segmentos',
+      'nav.skills': 'Skills',
+      'nav.projects': 'Projetos',
+      'nav.contact': 'Contato',
+
+      'hero.tag': 'Disponível para projetos',
+      'hero.byline': 'Kaique Souza <strong>·</strong> Analista de FP&A & Dados',
+      'hero.title': 'Dados financeiros,<br>decisões <em>executivas</em>.',
+      'hero.sub': 'Power BI, Microsoft Fabric e Python para transformar indicadores financeiros em relatórios, dashboards e automações — do dado bruto à decisão do comitê.',
+      'hero.ctaProjects': 'Ver projetos →',
+      'hero.ctaContact': 'Entre em contato',
+
+      'panel.label': 'dre_gerencial.pbix — painel executivo',
+      'panel.live': 'ao vivo',
+      'panel.kpi1.label': 'Receita líquida',
+      'panel.kpi1.delta': '▲ 12,4% vs orçado',
+      'panel.kpi2.label': 'EBITDA',
+      'panel.kpi2.delta': '▲ 2,1 p.p. a/a',
+      'panel.kpi3.label': 'Backlog',
+      'panel.kpi3.delta': '▲ 6% no mês',
+      'panel.kpi4.label': 'NCG / Receita',
+      'panel.kpi4.delta': '▼ 3,2 p.p. a/a',
+      'panel.chartLabel': '// faturamento mensal · dados ilustrativos',
+
+      'about.label': '// sobre mim',
+      'about.photoName': 'Kaique Souza<br>Contagem · MG',
+      'about.p1': 'Atuo como Analista e Consultor de FP&A e Dados, com experiência aplicada aos segmentos de <strong>indústria, energia, varejo, logística e controladoria</strong> — conectando finanças e tecnologia para transformar dados em decisões executivas.',
+      'about.p2': 'Desenvolvo relatórios financeiros gerenciais, dashboards e automações que <strong>reduzem retrabalho manual</strong>, aumentam a confiabilidade das informações e aceleram a análise da gestão — do dado bruto ao insight executivo.',
+      'about.p3': 'Combino <strong>visão de Controladoria e FP&A</strong> (DRE, EBITDA, GP, Backlog, NCG) com stack técnica moderna (Power BI, Microsoft Fabric, Python), criando soluções que realmente movem o negócio.',
+      'about.stat1.num': 'Power<br>BI',
+      'about.stat1.label': 'Modelos PBIP / DAX / Calc. Groups',
+      'about.stat2.label': 'Lakehouse · Notebooks · Pipelines',
+      'about.stat3.label': 'DRE · EBITDA · Backlog · PBT',
+      'about.stat4.label': 'Power Automate · AI Builder',
+
+      'segments.label': '// segmentos',
+      'segments.title': 'Onde posso<br>fazer a diferença',
+      'segments.intro': 'Atuo como consultor de FP&A, Controladoria e Power BI para empresas que precisam transformar dados financeiros e operacionais em decisões — com experiência aplicada a estes segmentos:',
+      'segments.industry.name': 'Indústria & Energia',
+      'segments.industry.desc': 'DRE gerencial, EBITDA, Backlog e acompanhamento de resultado para empresas de manufatura e infraestrutura de energia — conectando dados de produção, faturamento e resultado em uma visão executiva única.',
+      'segments.industry.tag1': 'DRE Gerencial',
+      'segments.retail.name': 'Varejo & Comercial',
+      'segments.retail.desc': 'Painéis de performance comercial: vendas vs. meta, mix de produtos, ranking de vendedores e margem por canal — indicadores que ajudam a liderança comercial a decidir com dados, não com planilhas soltas.',
+      'segments.retail.tag1': 'Vendas x Meta',
+      'segments.retail.tag2': 'Mix de Produtos',
+      'segments.logistics.name': 'Logística & Operações',
+      'segments.logistics.desc': 'Monitoramento de entregas, SLA, rotas e custos operacionais — pipelines que automatizam a coleta de dados e transformam informação operacional em indicadores de performance para reduzir atrasos e custos.',
+      'segments.logistics.tag2': 'Rotas',
+      'segments.logistics.tag3': 'Automação',
+      'segments.finance.name': 'Controladoria & Finanças',
+      'segments.finance.desc': 'Orçamento, forecast e análise de variação (Budget vs. Actual vs. Forecast), além de diagnóstico de geração de caixa (NCG, FCO, CCR) para identificar onde o crescimento está consumindo caixa.',
+      'segments.finance.tag1': 'Orçamento',
+      'segments.finance.tag3': 'NCG · FCO',
+
+      'skills.label': '// stack técnica',
+      'skills.title': 'Ferramentas &<br>Tecnologias',
+      'skills.core.title': 'Core — FP&A, BI & Dados',
+      'skills.core.note': '// foco principal de atuação',
+      'skills.complementary.title': 'Complementares',
+      'skills.complementary.note': '// stack de apoio e automação',
+      'skills.complementary.tagAI': 'IA Generativa',
+
+      'projects.label': '// projetos',
+      'projects.title': 'O que tenho<br>construído',
+      'projects.group1.title': 'Projetos profissionais',
+      'projects.dre.name': 'DRE Gerencial',
+      'projects.dre.desc': 'A consolidação mensal do resultado era manual e sujeita a erro. Construí um modelo de DRE Gerencial em Power BI (PBIP) com DAX avançado e Calculation Groups, padronizando os indicadores financeiros e entregando uma visão única do resultado — com redução de retrabalho manual e mais confiabilidade nos números levados ao comitê.',
+      'projects.pipeline.name': 'Pipeline Faturamento Diário',
+      'projects.pipeline.desc': 'O acompanhamento de faturamento dependia de planilhas atualizadas manualmente, com defasagem. Construí um pipeline de faturamento diário em Microsoft Fabric (Lakehouse + PySpark), automatizando a transformação dos dados e entregando uma visão executiva em Power BI para acompanhamento diário de receita, variações e atingimento de metas — com mais confiabilidade dos dados e menos esforço de consolidação.',
+      'projects.orders.name': 'Registro de Novos Pedidos',
+      'projects.orders.desc': 'O cadastro de novos pedidos era feito via formulário básico, com digitação manual de dados de PDFs e alto risco de erro. Redesenhei o processo migrando para uma SharePoint List com extração automática de dados de PDF via Power Automate e AI Builder — eliminando retrabalho operacional e padronizando o registro de pedidos.',
+
+      'projects.group2.title': 'Cases de FP&A',
+      'projects.growthTrap.name': 'A Armadilha do Crescimento',
+      'projects.growthTrap.desc': 'Uma empresa cresce em receita, mas destrói caixa — e o resultado contábil não mostra isso. Neste case publicado no LinkedIn, analisei PMR, NCG, FCO e CCR para explicar a causa raiz do problema e construí um app interativo em Streamlit para visualizar o diagnóstico, reforçando a importância de olhar geração de caixa, não só resultado, na tomada de decisão.',
+      'projects.dreOrcFc.name': 'DRE · Orçamento · Forecast',
+      'projects.dreOrcFc.desc': 'DRE, orçamento e forecast viviam em planilhas separadas, dificultando a análise de variação. Construí um modelo integrado em Power BI com análise Budget vs Actual vs Forecast, padronizando indicadores entre as áreas e dando à gestão uma visão executiva única para acompanhar desvios e antecipar decisões.',
+      'projects.btnDemo': 'Ver demo →',
+
+      'projects.group3.title': 'Projetos de portfólio',
+      'projects.ambev.type': 'Power BI · Vendas',
+      'projects.ambev.desc': 'Projeto de portfólio com dados simulados: dashboard de performance comercial com análise de vendas, mix de produtos e acompanhamento de metas, demonstrando modelagem de dados e construção de indicadores para apoiar a gestão comercial.',
+      'projects.logisticsDashboard.type': 'Power BI · Logística',
+      'projects.logisticsDashboard.name': 'Dashboard Logística',
+      'projects.logisticsDashboard.desc': 'Projeto de portfólio com dados simulados: painel de controle logístico com monitoramento de entregas, SLA e rotas, transformando dados operacionais em indicadores de performance para apoiar a gestão logística.',
+      'projects.salesTarget.type': 'Power BI · Comercial',
+      'projects.salesTarget.name': 'Dashboard Vendas x Meta',
+      'projects.salesTarget.desc': 'Projeto de portfólio: painel de acompanhamento de vendas vs. metas por vendedor, região e período, com indicadores de atingimento e ranking de performance — demonstrando como padronizar indicadores comerciais para apoiar decisões da liderança de vendas.',
+      'projects.salesTarget.tag3': 'Vendas',
+      'projects.sucos.desc': 'Aplicação interativa em Streamlit para análise de dados de uma promotoria comercial, com visualizações dinâmicas e filtros por região e produto — projeto de portfólio que demonstra construção de ferramentas de análise sob medida em Python.',
+      'projects.fifa.type': 'Python · Streamlit · Dados',
+      'projects.fifa.desc': 'Explorador de dados do FIFA 23 com filtros por jogador, clube, nacionalidade e atributos, incluindo análises estatísticas e comparativas de performance — projeto de portfólio para praticar manipulação e visualização de dados em Python.',
+
+      'projects.group4.title': 'Automação & Open Source',
+      'projects.fpaPipeline.type': 'Python · API · Automação',
+      'projects.fpaPipeline.name': 'Pipeline de Automação FP&A',
+      'projects.fpaPipeline.desc': 'Acompanhar indicadores macroeconômicos para premissas de orçamento e forecast exigia consulta manual em vários sites. Construí um pipeline em Python que consome a API do Banco Central, calcula variações (M/M, A/A, YTD) e gera relatórios em Excel formatados — automatizando uma rotina recorrente de FP&A.',
+      'projects.claudeSkills.type': 'IA · Power BI · Claude Code',
+      'projects.claudeSkills.name': 'Claude Skills para Power BI',
+      'projects.claudeSkills.desc': 'Tarefas repetitivas de modelagem em Power BI (auditoria de modelo, documentação, criação de medidas DAX) consomem tempo de análise. Desenvolvi um conjunto de Skills para Claude Code que faz auditoria de modelos PBIP com scorecard, gera documentação automática e cria medidas DAX a partir de descrições em português.',
+      'projects.controllingPlanner.name': 'Planner de Controladoria',
+      'projects.controllingPlanner.desc': 'A rotina de Controladoria envolve múltiplas tarefas recorrentes (fechamentos, conciliações, prazos) difíceis de acompanhar em planilhas. Desenvolvi um app em Streamlit para organizar e acompanhar essas tarefas por status e prazo, dando visibilidade do andamento do fechamento para a área.',
+      'projects.controllingPlanner.tag3': 'Controladoria',
+      'projects.btnCode': 'Ver código →',
+
+      'preview.loading': 'carregando preview',
+      'preview.foot': '// preview ao vivo — clique em "ver demo" para abrir',
+      'preview.label': '◆ preview ao vivo',
+
+      'faq.label': '// perguntas frequentes',
+      'faq.title': 'Antes de<br>conversarmos',
+      'faq.q1': 'Quais tipos de projeto você atende?',
+      'faq.a1': 'Dashboards e relatórios gerenciais em Power BI, modelagem de DRE/orçamento/forecast, pipelines de dados em Microsoft Fabric/Python e automação de processos com Power Automate e AI Builder — para os segmentos de indústria, energia, varejo, logística e controladoria.',
+      'faq.q2': 'Como funciona o processo de trabalho?',
+      'faq.a2': 'Começamos com um briefing para entender o problema e os dados disponíveis. Em seguida, faço o levantamento e modelagem dos dados, desenvolvo o dashboard/automação, valido com o time e entrego com documentação básica para manutenção futura.',
+      'faq.q3': 'Atende empresas de qualquer lugar do Brasil?',
+      'faq.a3': 'Sim, o trabalho é 100% remoto. Reuniões e alinhamentos são feitos por chamada de vídeo ou WhatsApp, com entregas e validações assíncronas.',
+      'faq.q4': 'Quanto tempo leva um projeto?',
+      'faq.a4': 'Depende do escopo. Dashboards pontuais e automações simples costumam levar de 1 a 3 semanas. Projetos maiores, como pipelines de dados ou modelagem financeira completa, têm prazo combinado após o briefing inicial.',
+      'faq.q5': 'Como entro em contato?',
+      'faq.a5': 'Pelo WhatsApp ou e-mail, disponíveis na seção de contato abaixo. Conte um pouco sobre o desafio e te respondo com os próximos passos.',
+
+      'contact.label': '// contato',
+      'contact.title': 'Vamos conversar<em style="color:var(--accent)">?</em>',
+      'contact.sub': 'Tem um desafio de FP&A, Controladoria, Power BI ou automação financeira? Me conta o que está acontecendo — atendo empresas de qualquer lugar do Brasil, 100% remoto.',
+      'contact.whatsapp': 'WhatsApp →',
+      'contact.whatsappHref': 'https://wa.me/5531971473725?text=Ol%C3%A1%2C%20Kaique!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.',
+
+      'footer.made': 'Feito com HTML · CSS · GitHub Pages',
+
+      'doc.title': 'Kaique Roberto Machado Souza — FP&A & Dados',
+    },
+    en: {
+      'nav.about': 'About',
+      'nav.segments': 'Segments',
+      'nav.skills': 'Skills',
+      'nav.projects': 'Projects',
+      'nav.contact': 'Contact',
+
+      'hero.tag': 'Available for projects',
+      'hero.byline': 'Kaique Souza <strong>·</strong> FP&A & Data Analyst',
+      'hero.title': 'Financial data,<br><em>executive</em> decisions.',
+      'hero.sub': 'Power BI, Microsoft Fabric and Python to turn financial indicators into reports, dashboards and automations — from raw data to boardroom decisions.',
+      'hero.ctaProjects': 'View projects →',
+      'hero.ctaContact': 'Get in touch',
+
+      'panel.label': 'managerial_pnl.pbix — executive dashboard',
+      'panel.live': 'live',
+      'panel.kpi1.label': 'Net revenue',
+      'panel.kpi1.delta': '▲ 12.4% vs budget',
+      'panel.kpi2.label': 'EBITDA',
+      'panel.kpi2.delta': '▲ 2.1 p.p. YoY',
+      'panel.kpi3.label': 'Backlog',
+      'panel.kpi3.delta': '▲ 6% MoM',
+      'panel.kpi4.label': 'WCR / Revenue',
+      'panel.kpi4.delta': '▼ 3.2 p.p. YoY',
+      'panel.chartLabel': '// monthly revenue · illustrative data',
+
+      'about.label': '// about me',
+      'about.photoName': 'Kaique Souza<br>Contagem, Brazil',
+      'about.p1': 'I work as an FP&A and Data Analyst/Consultant, with experience across <strong>industry, energy, retail, logistics and corporate controlling</strong> — connecting finance and technology to turn data into executive decisions.',
+      'about.p2': 'I build managerial financial reports, dashboards and automations that <strong>reduce manual rework</strong>, improve data reliability and speed up management analysis — from raw data to executive insight.',
+      'about.p3': 'I combine a <strong>Controlling and FP&A mindset</strong> (P&L, EBITDA, Gross Profit, Backlog, Working Capital) with a modern technical stack (Power BI, Microsoft Fabric, Python), building solutions that truly move the business.',
+      'about.stat1.num': 'Power<br>BI',
+      'about.stat1.label': 'PBIP Models / DAX / Calc. Groups',
+      'about.stat2.label': 'Lakehouse · Notebooks · Pipelines',
+      'about.stat3.label': 'P&L · EBITDA · Backlog · PBT',
+      'about.stat4.label': 'Power Automate · AI Builder',
+
+      'segments.label': '// segments',
+      'segments.title': 'Where I can<br>make a difference',
+      'segments.intro': 'I work as an FP&A, Controlling and Power BI consultant for companies that need to turn financial and operational data into decisions — with experience across these segments:',
+      'segments.industry.name': 'Industry & Energy',
+      'segments.industry.desc': 'Managerial P&L, EBITDA, Backlog and results tracking for manufacturing and energy infrastructure companies — connecting production, revenue and results data into a single executive view.',
+      'segments.industry.tag1': 'Managerial P&L',
+      'segments.retail.name': 'Retail & Sales',
+      'segments.retail.desc': 'Sales performance dashboards: sales vs. target, product mix, sales rep rankings and margin by channel — indicators that help sales leadership decide with data, not loose spreadsheets.',
+      'segments.retail.tag1': 'Sales vs Target',
+      'segments.retail.tag2': 'Product Mix',
+      'segments.logistics.name': 'Logistics & Operations',
+      'segments.logistics.desc': 'Delivery, SLA, route and operating cost monitoring — pipelines that automate data collection and turn operational information into performance indicators to reduce delays and costs.',
+      'segments.logistics.tag2': 'Routes',
+      'segments.logistics.tag3': 'Automation',
+      'segments.finance.name': 'Controlling & Finance',
+      'segments.finance.desc': 'Budgeting, forecasting and variance analysis (Budget vs. Actual vs. Forecast), plus cash generation diagnostics (Working Capital, Operating Cash Flow, Cash Conversion Cycle) to identify where growth is consuming cash.',
+      'segments.finance.tag1': 'Budget',
+      'segments.finance.tag3': 'WCR · OCF',
+
+      'skills.label': '// tech stack',
+      'skills.title': 'Tools &<br>Technologies',
+      'skills.core.title': 'Core — FP&A, BI & Data',
+      'skills.core.note': '// main area of focus',
+      'skills.complementary.title': 'Complementary',
+      'skills.complementary.note': '// supporting & automation stack',
+      'skills.complementary.tagAI': 'Generative AI',
+
+      'projects.label': '// projects',
+      'projects.title': "What I've<br>built",
+      'projects.group1.title': 'Professional projects',
+      'projects.dre.name': 'Managerial P&L',
+      'projects.dre.desc': 'Monthly results consolidation was manual and error-prone. I built a Managerial P&L model in Power BI (PBIP) with advanced DAX and Calculation Groups, standardizing financial indicators and delivering a single view of results — reducing manual rework and increasing reliability of the numbers presented to the board.',
+      'projects.pipeline.name': 'Daily Revenue Pipeline',
+      'projects.pipeline.desc': 'Revenue tracking depended on manually updated spreadsheets with lag. I built a daily revenue pipeline in Microsoft Fabric (Lakehouse + PySpark), automating data transformation and delivering an executive view in Power BI for daily tracking of revenue, variances and target attainment — improving data reliability and reducing consolidation effort.',
+      'projects.orders.name': 'New Order Registration',
+      'projects.orders.desc': 'New order registration was done via a basic form, with manual data entry from PDFs and high error risk. I redesigned the process by migrating to a SharePoint List with automatic PDF data extraction via Power Automate and AI Builder — eliminating operational rework and standardizing order registration.',
+
+      'projects.group2.title': 'FP&A Case Studies',
+      'projects.growthTrap.name': 'The Growth Trap',
+      'projects.growthTrap.desc': "A company grows revenue but burns cash — and accounting results don't show it. In this case published on LinkedIn, I analyzed DSO, Working Capital, OCF and the Cash Conversion Cycle to explain the root cause and built an interactive Streamlit app to visualize the diagnosis, reinforcing the importance of looking at cash generation, not just accounting results, for decision-making.",
+      'projects.dreOrcFc.name': 'P&L · Budget · Forecast',
+      'projects.dreOrcFc.desc': 'P&L, budget and forecast lived in separate spreadsheets, making variance analysis difficult. I built an integrated Power BI model with Budget vs Actual vs Forecast analysis, standardizing indicators across departments and giving management a single executive view to track deviations and anticipate decisions.',
+      'projects.btnDemo': 'View demo →',
+
+      'projects.group3.title': 'Portfolio projects',
+      'projects.ambev.type': 'Power BI · Sales',
+      'projects.ambev.desc': 'Portfolio project with simulated data: sales performance dashboard with sales analysis, product mix and target tracking, demonstrating data modeling and indicator design to support sales management.',
+      'projects.logisticsDashboard.type': 'Power BI · Logistics',
+      'projects.logisticsDashboard.name': 'Logistics Dashboard',
+      'projects.logisticsDashboard.desc': 'Portfolio project with simulated data: logistics control dashboard with delivery, SLA and route monitoring, turning operational data into performance indicators to support logistics management.',
+      'projects.salesTarget.type': 'Power BI · Sales',
+      'projects.salesTarget.name': 'Sales vs Target Dashboard',
+      'projects.salesTarget.desc': 'Portfolio project: dashboard tracking sales vs. targets by rep, region and period, with attainment indicators and performance rankings — demonstrating how to standardize sales indicators to support sales leadership decisions.',
+      'projects.salesTarget.tag3': 'Sales',
+      'projects.sucos.desc': 'Interactive Streamlit app for analyzing sales promotion data, with dynamic visualizations and filters by region and product — a portfolio project demonstrating the development of custom analysis tools in Python.',
+      'projects.fifa.type': 'Python · Streamlit · Data',
+      'projects.fifa.desc': 'FIFA 23 data explorer with filters by player, club, nationality and attributes, including statistical and performance comparison analyses — a portfolio project to practice data manipulation and visualization in Python.',
+
+      'projects.group4.title': 'Automation & Open Source',
+      'projects.fpaPipeline.type': 'Python · API · Automation',
+      'projects.fpaPipeline.name': 'FP&A Automation Pipeline',
+      'projects.fpaPipeline.desc': 'Tracking macroeconomic indicators for budget and forecast assumptions required manual lookups across multiple websites. I built a Python pipeline that consumes the Brazilian Central Bank API, calculates variances (MoM, YoY, YTD) and generates formatted Excel reports — automating a recurring FP&A routine.',
+      'projects.claudeSkills.type': 'AI · Power BI · Claude Code',
+      'projects.claudeSkills.name': 'Claude Skills for Power BI',
+      'projects.claudeSkills.desc': 'Repetitive Power BI modeling tasks (model auditing, documentation, DAX measure creation) eat into analysis time. I developed a set of Claude Code Skills that audits PBIP models with a scorecard, generates automatic documentation and creates DAX measures from natural language descriptions.',
+      'projects.controllingPlanner.name': 'Controlling Planner',
+      'projects.controllingPlanner.desc': 'Controlling routines involve multiple recurring tasks (closings, reconciliations, deadlines) that are hard to track in spreadsheets. I developed a Streamlit app to organize and track these tasks by status and deadline, giving the team visibility into closing progress.',
+      'projects.controllingPlanner.tag3': 'Controlling',
+      'projects.btnCode': 'View code →',
+
+      'preview.loading': 'loading preview',
+      'preview.foot': '// live preview — click "view demo" to open',
+      'preview.label': '◆ live preview',
+
+      'faq.label': '// frequently asked questions',
+      'faq.title': 'Before we<br>talk',
+      'faq.q1': 'What types of projects do you take on?',
+      'faq.a1': 'Managerial dashboards and reports in Power BI, P&L/budget/forecast modeling, data pipelines in Microsoft Fabric/Python, and process automation with Power Automate and AI Builder — for the industry, energy, retail, logistics and controlling segments.',
+      'faq.q2': 'How does the work process flow?',
+      'faq.a2': 'We start with a briefing to understand the problem and the available data. I then gather and model the data, build the dashboard/automation, validate it with the team, and deliver it with basic documentation for future maintenance.',
+      'faq.q3': 'Do you work with companies outside Brazil?',
+      'faq.a3': 'Yes — all work is 100% remote. Meetings happen via video call or WhatsApp, with asynchronous deliveries and reviews.',
+      'faq.q4': 'How long does a project take?',
+      'faq.a4': 'It depends on the scope. One-off dashboards and simple automations usually take 1 to 3 weeks. Larger projects, such as data pipelines or full financial modeling, have a timeline agreed after the initial briefing.',
+      'faq.q5': 'How do I get in touch?',
+      'faq.a5': "Via WhatsApp or email, available in the contact section below. Tell me a bit about your challenge and I'll get back to you with next steps.",
+
+      'contact.label': '// contact',
+      'contact.title': 'Let\'s talk<em style="color:var(--accent)">?</em>',
+      'contact.sub': "Got an FP&A, Controlling, Power BI or financial automation challenge? Tell me what's going on — I work with clients from anywhere, 100% remote.",
+      'contact.whatsapp': 'WhatsApp →',
+      'contact.whatsappHref': 'https://wa.me/5531971473725?text=Hi%20Kaique!%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20project.',
+
+      'footer.made': 'Built with HTML · CSS · GitHub Pages',
+
+      'doc.title': 'Kaique Roberto Machado Souza — FP&A & Data',
+    }
+  };
+
+  function applyLanguage(lang) {
+    const dict = translations[lang];
+
+    document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
+    document.title = dict['doc.title'];
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.dataset.i18nHtml;
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+
+    document.querySelectorAll('[data-preview]').forEach(el => {
+      el.setAttribute('data-preview-label', dict['preview.label']);
+    });
+
+    const whatsapp = document.getElementById('whatsapp-link');
+    if (whatsapp) whatsapp.href = dict['contact.whatsappHref'];
+
+    // Only reformat KPI numbers if the count-up animation already finished —
+    // otherwise it would skip straight to the final values on first load.
+    const heroPanel = document.getElementById('hero-panel');
+    if (heroPanel && heroPanel.classList.contains('animate')) {
+      document.querySelectorAll('[data-count]').forEach(el => {
+        const target = parseFloat(el.dataset.count);
+        const decimals = parseInt(el.dataset.decimals || '0', 10);
+        const formatted = target.toFixed(decimals);
+        el.textContent = lang === 'en' ? formatted : formatted.replace('.', ',');
+      });
+    }
+
+    const toggleBtn = document.getElementById('lang-toggle');
+    if (toggleBtn) toggleBtn.textContent = lang === 'pt' ? 'EN' : 'PT';
+
+    currentLang = lang;
+    localStorage.setItem('site-lang', lang);
+  }
+
+  applyLanguage(currentLang);
+
+  document.getElementById('lang-toggle').addEventListener('click', () => {
+    applyLanguage(currentLang === 'pt' ? 'en' : 'pt');
+  });
+
   // Custom cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursor-ring');
@@ -1599,7 +1940,8 @@
       function tick(now) {
         const p = Math.min(1, (now - start) / duration);
         const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = (target * eased).toFixed(decimals).replace('.', ',');
+        const formatted = (target * eased).toFixed(decimals);
+        el.textContent = currentLang === 'en' ? formatted : formatted.replace('.', ',');
         if (p < 1) requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
