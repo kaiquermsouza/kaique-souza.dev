@@ -3,1072 +3,612 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kaique Roberto Machado Souza — FP&A & Dados</title>
-  <meta name="description" content="Kaique Souza — Analista de FP&A e Dados. Power BI, Microsoft Fabric, Python e automação financeira. Portfólio em kaique-souza.dev." />
-  <meta property="og:title" content="Kaique Souza — FP&A & Dados" />
-  <meta property="og:description" content="Analista de FP&A e Dados. Power BI, Microsoft Fabric, Python e automação financeira aplicada ao setor industrial." />
+  <title>Kaique Roberto Machado Souza — FP&A Sênior & Dados</title>
+  <meta name="description" content="Kaique Souza — Analista de FP&A Sênior e Analista de Dados Sênior. Power BI, SQL, Python, Databricks, Microsoft Fabric, Excel e automação financeira. Portfólio em kaique-souza.dev." />
+  <meta property="og:title" content="Kaique Souza — FP&A Sênior & Dados" />
+  <meta property="og:description" content="FP&A · Controladoria · BI · Dados · Automação financeira. Power BI, SQL, Python, Databricks e Microsoft Fabric." />
   <meta property="og:url" content="https://kaique-souza.dev" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://github.com/kaiquermsouza.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kaique Souza — FP&A & Dados" />
-  <meta name="twitter:description" content="Analista de FP&A e Dados. Power BI, Microsoft Fabric, Python." />
+  <meta name="twitter:title" content="Kaique Souza — FP&A Sênior & Dados" />
+  <meta name="twitter:description" content="FP&A Sênior & Analista de Dados Sênior. Power BI, SQL, Python, Databricks, Fabric." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;0,900;1,500;1,600&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;0,900;1,500;1,600&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #090b10;
-      --bg2:       #0e1118;
-      --bg3:       #13161f;
-      --border:    rgba(255,255,255,0.07);
-      --accent:    #00d9b8;
-      --accent2:   #5b6af0;
-      --text:      #e8eaf0;
-      --muted:     #6b7280;
-      --card-bg:   rgba(255,255,255,0.03);
+      /* light / executive palette */
+      --bg:       #ffffff;
+      --bg-soft:  #f6f8fb;   /* off-white sections */
+      --bg-tint:  #eef2f7;   /* tinted band */
+      --card:     #ffffff;
+      --line:     #e3e8f0;
+      --line-2:   #d3dae6;
+      --ink:      #141a2b;   /* primary text (deep navy) */
+      --ink-2:    #3a4257;
+      --muted:    #6b7488;
+      --accent:   #0c9a89;   /* premium teal */
+      --accent-d: #097a6d;
+      --accent-2: #3a4fd4;   /* blue */
+      --soft-accent: rgba(12,154,137,.10);
+      --wa:       #25d366;
+      /* dark contrast section */
+      --dark:     #0e1422;
+      --dark-2:   #161e30;
+      --dark-line:rgba(255,255,255,.10);
+      --on-dark:  #e8ecf3;
+      --on-dark-muted: #8b94a8;
+      --shadow:   0 1px 2px rgba(20,26,43,.04), 0 8px 24px rgba(20,26,43,.06);
+      --shadow-lg:0 12px 40px rgba(20,26,43,.10);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
-      color: var(--text);
+      color: var(--ink);
       font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
+      font-weight: 400;
+      line-height: 1.5;
       overflow-x: hidden;
-      cursor: none;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Custom cursor ── */
-    #cursor {
-      position: fixed; top: 0; left: 0; z-index: 9999;
-      width: 10px; height: 10px;
-      background: var(--accent);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      transition: transform .12s ease, width .2s, height .2s, opacity .2s;
-      mix-blend-mode: screen;
-    }
-    #cursor-ring {
-      position: fixed; top: 0; left: 0; z-index: 9998;
-      width: 36px; height: 36px;
-      border: 1px solid rgba(0,217,184,.4);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      transition: transform .35s ease, width .3s, height .3s;
-    }
-    body:hover #cursor { opacity: 1; }
-
-    /* ── Grid noise overlay ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0;
-      background-image:
-        linear-gradient(rgba(0,217,184,.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,217,184,.015) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none;
-    }
+    a { color: inherit; }
 
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.25rem 4rem;
-      border-bottom: 1px solid var(--border);
-      background: rgba(9,11,16,.8);
-      backdrop-filter: blur(16px);
+      gap: 1rem;
+      padding: 1rem 3rem;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(10px);
     }
     .nav-logo {
       font-family: 'Fraunces', serif;
       font-weight: 900;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       letter-spacing: -.02em;
-      color: var(--text);
+      color: var(--ink);
       text-decoration: none;
     }
     .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
+    .nav-mid { display: flex; gap: 2rem; list-style: none; }
+    .nav-mid a {
       font-family: 'DM Mono', monospace;
-      font-size: .75rem;
-      letter-spacing: .1em;
+      font-size: .74rem;
+      letter-spacing: .08em;
       text-transform: uppercase;
       color: var(--muted);
       text-decoration: none;
       transition: color .2s;
     }
-    .nav-links a:hover { color: var(--accent); }
+    .nav-mid a:hover { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: .6rem; }
 
     .lang-toggle {
       font-family: 'DM Mono', monospace;
-      font-size: .72rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
+      font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
       color: var(--muted);
       background: none;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      padding: .35rem .75rem;
-      cursor: none;
+      border: 1px solid var(--line-2);
+      border-radius: 5px;
+      padding: .42rem .7rem;
+      cursor: pointer;
       transition: all .2s;
     }
-    .lang-toggle:hover {
-      border-color: rgba(0,217,184,.4);
-      color: var(--accent);
+    .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .72rem 1.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: .9rem;
+      letter-spacing: .01em;
+      text-decoration: none;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s, background .2s, border-color .2s, color .2s;
+      white-space: nowrap;
     }
+    .btn svg { width: 16px; height: 16px; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-d); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(12,154,137,.28); }
+    .btn-dark { background: var(--ink); color: #fff; }
+    .btn-dark:hover { background: #000; transform: translateY(-2px); }
+    .btn-wa { background: var(--wa); color: #fff; }
+    .btn-wa:hover { background: #1eb858; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,.3); }
+    .btn-ghost { background: #fff; color: var(--ink-2); border-color: var(--line-2); }
+    .btn-ghost:hover { border-color: var(--ink-2); color: var(--ink); transform: translateY(-2px); }
+    .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+    /* ghost on dark bg */
+    .on-dark .btn-ghost { background: transparent; color: var(--on-dark); border-color: var(--dark-line); }
+    .on-dark .btn-ghost:hover { border-color: var(--on-dark); }
 
     /* ── HERO ── */
     #hero {
       position: relative;
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 8rem 4rem 4rem;
-      overflow: hidden;
+      padding: 8.5rem 3rem 5rem;
+      background:
+        radial-gradient(1100px 480px at 85% -10%, rgba(12,154,137,.06), transparent 60%),
+        radial-gradient(900px 420px at 5% 110%, rgba(58,79,212,.05), transparent 60%),
+        var(--bg-soft);
+      border-bottom: 1px solid var(--line);
     }
-
-    .hero-glow {
-      position: absolute;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,217,184,.12) 0%, transparent 70%);
-      top: -100px; right: -100px;
-      pointer-events: none;
-      animation: pulse 6s ease-in-out infinite alternate;
-    }
-    .hero-glow2 {
-      position: absolute;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(91,106,240,.1) 0%, transparent 70%);
-      bottom: 50px; left: -50px;
-      pointer-events: none;
-      animation: pulse 8s ease-in-out infinite alternate-reverse;
-    }
-    @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.15); } }
-
     .hero-grid {
-      position: relative; z-index: 1;
+      max-width: 1180px; margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 4.5rem;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 4rem;
       align-items: center;
-      width: 100%;
     }
-
-    .hero-content { max-width: 540px; }
-
-    .hero-byline {
-      font-family: 'DM Mono', monospace;
-      font-size: .78rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.1rem;
-      animation: fadeUp .8s .05s ease both;
-    }
-    .hero-byline strong { color: var(--accent); font-weight: 400; }
+    .hero-content { max-width: 580px; }
 
     .hero-tag {
-      display: inline-flex; align-items: center; gap: .5rem;
+      display: inline-flex; align-items: center; gap: .55rem;
       font-family: 'DM Mono', monospace;
-      font-size: .72rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid rgba(0,217,184,.25);
-      border-radius: 2px;
-      padding: .35rem .75rem;
-      margin-bottom: 2rem;
-      animation: fadeUp .8s ease both;
+      font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--accent-d);
+      background: var(--soft-accent);
+      border: 1px solid rgba(12,154,137,.25);
+      border-radius: 100px;
+      padding: .4rem .85rem;
+      margin-bottom: 1.5rem;
     }
     .hero-tag::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: blink 1.5s step-end infinite;
+      content: ''; width: 7px; height: 7px;
+      background: var(--accent); border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(12,154,137,.2);
     }
-    @keyframes blink { 50% { opacity: 0; } }
+    .hero-byline {
+      font-family: 'DM Mono', monospace;
+      font-size: .82rem; letter-spacing: .04em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .hero-byline strong { color: var(--accent); font-weight: 500; }
 
     h1 {
       font-family: 'Fraunces', serif;
       font-weight: 600;
-      font-size: clamp(2.4rem, 4.4vw, 3.75rem);
-      line-height: 1.1;
+      font-size: clamp(2.3rem, 4.4vw, 3.5rem);
+      line-height: 1.08;
       letter-spacing: -.02em;
-      margin-bottom: 1.5rem;
-      animation: fadeUp .8s .1s ease both;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
     }
     h1 em {
       font-style: italic;
-      font-weight: 600;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--accent);
     }
 
     .hero-sub {
       font-size: 1.05rem;
-      color: var(--muted);
+      color: var(--ink-2);
       line-height: 1.7;
-      max-width: 480px;
-      margin-bottom: 2.5rem;
-      animation: fadeUp .8s .2s ease both;
+      max-width: 510px;
+      margin-bottom: 1.75rem;
     }
 
-    .hero-ctas {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-      animation: fadeUp .8s .3s ease both;
+    .hero-ctas { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+
+    .hero-roles {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+    }
+    .role-chip {
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem; letter-spacing: .04em;
+      color: var(--ink-2);
+      background: #fff;
+      border: 1px solid var(--line-2);
+      border-radius: 6px;
+      padding: .35rem .7rem;
     }
 
-    /* ── HERO PANEL (interactive FP&A dashboard) ── */
+    /* ── HERO SIDE: profile card + KPI panel ── */
+    .hero-side { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .profile-card {
+      display: flex; align-items: center; gap: 1.1rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+    }
+    .profile-card img {
+      width: 88px; height: 88px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+    }
+    .profile-info { flex: 1; }
+    .profile-name {
+      font-family: 'Fraunces', serif; font-weight: 700;
+      font-size: 1.15rem; color: var(--ink); letter-spacing: -.01em;
+      margin-bottom: .15rem;
+    }
+    .profile-role { font-size: .85rem; color: var(--ink-2); margin-bottom: .5rem; }
+    .profile-meta {
+      display: flex; align-items: center; gap: .4rem;
+      font-family: 'DM Mono', monospace; font-size: .68rem;
+      color: var(--muted);
+    }
+    .profile-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+
     .hero-panel {
-      position: relative;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 10px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,.45);
-      animation: fadeUp .9s .35s ease both;
+      box-shadow: var(--shadow);
     }
     .hero-panel-bar {
-      display: flex; align-items: center; gap: .75rem;
-      padding: .85rem 1.1rem;
-      background: var(--bg3);
-      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: .65rem;
+      padding: .7rem .95rem;
+      background: var(--bg-soft);
+      border-bottom: 1px solid var(--line);
     }
     .hero-panel-label {
       flex: 1;
-      font-family: 'DM Mono', monospace;
-      font-size: .68rem;
-      letter-spacing: .04em;
+      font-family: 'DM Mono', monospace; font-size: .66rem;
       color: var(--muted);
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     .hero-panel-live {
-      display: flex; align-items: center; gap: .4rem;
-      font-family: 'DM Mono', monospace;
-      font-size: .62rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      white-space: nowrap;
+      display: flex; align-items: center; gap: .35rem;
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent-d);
     }
-    .live-dot {
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: blink 1.5s step-end infinite;
-    }
-    .hero-panel-body { padding: 1.5rem; }
+    .live-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: blink 1.6s step-end infinite; }
+    @keyframes blink { 50% { opacity: .25; } }
+    .hero-panel-body { padding: 1.1rem; }
 
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
+    .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: 1.1rem; }
     .kpi-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem 1.1rem;
-      transition: border-color .25s, transform .25s;
-    }
-    .kpi-card:hover {
-      border-color: rgba(0,217,184,.3);
-      transform: translateY(-2px);
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: .85rem .9rem;
     }
     .kpi-label {
-      font-family: 'DM Mono', monospace;
-      font-size: .62rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: .6rem;
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: .45rem;
     }
     .kpi-value {
-      display: flex; align-items: baseline; gap: .15rem;
-      font-family: 'Fraunces', serif;
-      font-weight: 700;
-      font-size: 1.85rem;
-      letter-spacing: -.02em;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: .7rem;
+      display: flex; align-items: baseline; gap: .12rem;
+      font-family: 'Fraunces', serif; font-weight: 700;
+      font-size: 1.5rem; letter-spacing: -.02em; color: var(--ink);
+      line-height: 1; margin-bottom: .55rem;
     }
-    .kpi-value .kpi-prefix {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--muted);
-    }
-    .kpi-value small {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--muted);
-    }
-    .kpi-track {
-      height: 4px;
-      background: rgba(255,255,255,.06);
-      border-radius: 2px;
-      overflow: hidden;
-      margin-bottom: .65rem;
-    }
+    .kpi-value .kpi-prefix, .kpi-value small { font-size: .85rem; font-weight: 500; color: var(--muted); }
+    .kpi-track { height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; margin-bottom: .5rem; }
     .kpi-fill {
-      display: block;
-      height: 100%;
-      width: 0%;
-      border-radius: 2px;
-      background: linear-gradient(to right, var(--accent), var(--accent2));
-      transition: width 1.4s cubic-bezier(.16,1,.3,1);
+      display: block; height: 100%; width: 0%; border-radius: 2px;
+      background: linear-gradient(to right, var(--accent), var(--accent-2));
+      transition: width 1.3s cubic-bezier(.16,1,.3,1);
     }
     .hero-panel.animate .kpi-fill { width: var(--target); }
-    .kpi-delta {
-      font-family: 'DM Mono', monospace;
-      font-size: .65rem;
-      letter-spacing: .02em;
-      color: var(--accent);
-    }
+    .kpi-delta { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--accent-d); }
+    .kpi-delta.down { color: #c0392b; }
 
-    .hero-chart {
-      border-top: 1px solid var(--border);
-      padding-top: 1.25rem;
-    }
+    .hero-chart { border-top: 1px solid var(--line); padding-top: .95rem; }
     .hero-chart-label {
-      font-family: 'DM Mono', monospace;
-      font-size: .62rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: .9rem;
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+      margin-bottom: .7rem;
     }
-    .hero-chart-bars {
-      display: flex; align-items: flex-end; gap: .5rem;
-      height: 90px;
-    }
+    .hero-chart-bars { display: flex; align-items: flex-end; gap: .4rem; height: 70px; }
     .hero-chart-bars span {
-      flex: 1;
-      height: 4px;
-      border-radius: 3px 3px 0 0;
-      background: linear-gradient(to top, var(--accent2), var(--accent));
-      opacity: .85;
-      transition: height 1.1s cubic-bezier(.16,1,.3,1);
-      transition-delay: calc(var(--i, 0) * 60ms);
+      flex: 1; height: 4px; border-radius: 3px 3px 0 0;
+      background: linear-gradient(to top, var(--accent-2), var(--accent));
+      transition: height 1s cubic-bezier(.16,1,.3,1);
+      transition-delay: calc(var(--i, 0) * 55ms);
     }
     .hero-panel.animate .hero-chart-bars span { height: var(--h); }
-    .btn {
-      display: inline-flex; align-items: center; gap: .5rem;
-      padding: .75rem 1.75rem;
-      font-family: 'DM Mono', monospace;
-      font-size: .78rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      transition: all .25s;
-      cursor: none;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #090b10;
-      font-weight: 400;
-    }
-    .btn-primary:hover {
-      background: #00f0ce;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0,217,184,.3);
-    }
-    .btn-ghost {
-      border: 1px solid var(--border);
-      color: var(--muted);
-    }
-    .btn-ghost:hover {
-      border-color: rgba(255,255,255,.2);
-      color: var(--text);
-      transform: translateY(-2px);
-    }
-
-    .hero-scroll {
-      position: absolute; bottom: 2.5rem; left: 4rem;
-      display: flex; align-items: center; gap: .75rem;
-      font-family: 'DM Mono', monospace;
-      font-size: .68rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      animation: fadeUp .8s .5s ease both;
-    }
-    .scroll-line {
-      width: 40px; height: 1px;
-      background: linear-gradient(to right, var(--accent), transparent);
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
 
     /* ── SECTIONS ── */
-    section { position: relative; z-index: 1; }
-
-    .section-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 7.5rem 4rem;
-    }
-
+    section { position: relative; }
+    .section-inner { max-width: 1180px; margin: 0 auto; padding: 6rem 3rem; }
     .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: .7rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
+      font-family: 'DM Mono', monospace; font-size: .72rem;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--accent-d);
+      margin-bottom: .9rem;
     }
-
     .section-title {
-      font-family: 'Fraunces', serif;
-      font-weight: 700;
-      font-size: clamp(2.1rem, 4.4vw, 3.2rem);
-      letter-spacing: -.03em;
-      margin-bottom: 3.5rem;
-      line-height: 1.1;
+      font-family: 'Fraunces', serif; font-weight: 700;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      letter-spacing: -.02em; color: var(--ink); line-height: 1.12;
+      margin-bottom: .75rem;
     }
+    .section-intro { color: var(--ink-2); font-size: 1rem; line-height: 1.7; max-width: 620px; margin-bottom: 3rem; }
+    .divider { width: 44px; height: 3px; border-radius: 2px; background: linear-gradient(to right, var(--accent), var(--accent-2)); margin-bottom: 2rem; }
 
     /* ── ABOUT ── */
-    #about { border-top: 1px solid var(--border); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 180px 1fr 1fr;
-      gap: 3.5rem;
-      align-items: start;
-    }
-
-    .about-photo {
-      position: sticky; top: 6rem;
-    }
-
+    #about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 200px 1fr; gap: 3.5rem; align-items: start; }
     .about-photo img {
-      width: 180px; height: 180px;
-      border-radius: 6px;
-      object-fit: cover;
-      border: 1px solid var(--border);
-      filter: grayscale(20%);
-      transition: filter .3s;
+      width: 200px; height: 240px; object-fit: cover;
+      border-radius: 14px; border: 1px solid var(--line);
+      box-shadow: var(--shadow);
     }
-
-    .about-photo img:hover { filter: grayscale(0%); }
-
     .about-photo-name {
-      font-family: 'DM Mono', monospace;
-      font-size: .68rem;
-      letter-spacing: .08em;
-      color: var(--muted);
-      margin-top: .75rem;
-      text-align: center;
+      font-family: 'DM Mono', monospace; font-size: .68rem;
+      color: var(--muted); margin-top: .75rem; text-align: center;
     }
-
-    .about-text p {
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 1rem;
-      font-size: .97rem;
-    }
-    .about-text p strong { color: var(--text); font-weight: 500; }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
+    .about-text p { color: var(--ink-2); line-height: 1.8; margin-bottom: 1.1rem; font-size: 1rem; }
+    .about-text p strong { color: var(--ink); font-weight: 600; }
+    .about-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
     .stat-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.5rem;
-      transition: border-color .25s, transform .25s;
+      background: var(--bg-soft); border: 1px solid var(--line);
+      border-radius: 12px; padding: 1.25rem;
+      transition: transform .25s, box-shadow .25s;
     }
-    .stat-card:hover {
-      border-color: rgba(0,217,184,.3);
-      transform: translateY(-3px);
-    }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
     .stat-num {
-      font-family: 'Fraunces', serif;
-      font-weight: 900;
-      font-size: 2.5rem;
-      color: var(--accent);
-      letter-spacing: -.04em;
-      line-height: 1;
-      margin-bottom: .35rem;
-    }
-    .stat-label {
-      font-family: 'DM Mono', monospace;
-      font-size: .68rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* ── PROJECTS · professional experience band (3a) ── */
-    .exp-note {
-      font-family: 'DM Mono', monospace;
-      font-size: .68rem;
-      letter-spacing: .1em;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-    }
-    .exp-band {
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .exp-row {
-      display: grid;
-      grid-template-columns: 250px 1fr;
-      gap: 1.75rem;
-      align-items: baseline;
-      padding: 1.4rem 1.6rem;
-      border-left: 2px solid var(--accent);
-      background: var(--card-bg);
-      transition: background .25s;
-    }
-    .exp-row + .exp-row { border-top: 1px solid var(--border); }
-    .exp-row:hover { background: rgba(0,217,184,.05); }
-    .exp-head { display: flex; flex-direction: column; gap: .35rem; }
-    .exp-type {
-      font-family: 'DM Mono', monospace;
-      font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--accent);
-    }
-    .exp-name {
       font-family: 'Fraunces', serif; font-weight: 700;
-      font-size: 1.05rem; letter-spacing: -.02em; color: var(--text);
+      font-size: 1.5rem; color: var(--accent-d); letter-spacing: -.02em;
+      line-height: 1.05; margin-bottom: .4rem;
     }
-    .exp-impact { font-size: .9rem; color: var(--muted); line-height: 1.65; }
-
-    /* ── PROJECTS · featured / highlight (3b) ── */
-    .projects-featured {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    .project-card.featured {
-      border-color: rgba(0,217,184,.35);
-      background: linear-gradient(180deg, rgba(0,217,184,.06), var(--card-bg) 55%);
-      padding: 2.25rem;
-    }
-    .project-card.featured::before { transform: scaleX(1); height: 3px; }
-    .project-card.featured .project-name { font-size: 1.45rem; margin-bottom: .9rem; }
-    .project-card.featured:hover {
-      border-color: rgba(0,217,184,.55);
-      box-shadow: 0 28px 60px rgba(0,0,0,.5);
-    }
-
-    /* ── PROJECTS · compact grid / others (3c) ── */
-    .projects-compact {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-    .project-card.compact { padding: 1.5rem; }
-    .project-card.compact .project-type { margin-bottom: .5rem; }
-    .project-card.compact .project-name { font-size: 1.05rem; margin-bottom: .5rem; }
-    .project-card.compact .project-desc { font-size: .82rem; line-height: 1.6; margin-bottom: 1rem; }
-    .project-card.compact .btn-demo,
-    .project-card.compact .btn-code { margin-top: .85rem; font-size: .68rem; padding: .4rem .8rem; }
+    .stat-label { font-family: 'DM Mono', monospace; font-size: .64rem; letter-spacing: .04em; color: var(--muted); }
 
     /* ── SKILLS ── */
-    #skills { border-top: 1px solid var(--border); background: var(--bg2); }
-
-    .skill-rows { display: flex; flex-direction: column; gap: 1.75rem; }
-    .skill-row {
-      display: grid;
-      grid-template-columns: 210px 1fr;
-      gap: 1.75rem;
-      align-items: start;
-      padding-bottom: 1.75rem;
-      border-bottom: 1px solid var(--border);
+    #skills { background: var(--bg-tint); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .skill-block {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 14px; padding: 1.6rem;
+      transition: transform .25s, box-shadow .25s;
     }
-    .skill-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .skill-row-label {
-      font-family: 'DM Mono', monospace;
-      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--accent2);
-      padding-top: .3rem;
+    .skill-block:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .skill-block-head { display: flex; align-items: center; gap: .65rem; margin-bottom: 1.1rem; }
+    .skill-block-icon {
+      width: 34px; height: 34px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 8px; background: var(--soft-accent); color: var(--accent-d);
     }
+    .skill-block-icon svg { width: 18px; height: 18px; }
+    .skill-block-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.15rem; color: var(--ink); letter-spacing: -.01em; }
+    .skill-block-desc { font-size: .92rem; color: var(--ink-2); line-height: 1.65; margin-bottom: 1.25rem; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
     .skill-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: .68rem;
-      letter-spacing: .05em;
-      padding: .3rem .7rem;
-      border-radius: 2px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      transition: all .2s;
+      font-family: 'DM Mono', monospace; font-size: .74rem; letter-spacing: .02em;
+      padding: .4rem .75rem; border-radius: 6px;
+      background: var(--bg-soft); border: 1px solid var(--line); color: var(--ink-2);
+      transition: all .18s;
     }
-    .skill-tag:hover {
-      background: rgba(0,217,184,.08);
-      border-color: rgba(0,217,184,.3);
-      color: var(--accent);
-    }
-    .skill-tag-core {
-      background: rgba(0,217,184,.08);
-      border-color: rgba(0,217,184,.3);
-      color: var(--accent);
-    }
-    .skill-tag-core:hover {
-      background: rgba(0,217,184,.15);
-      border-color: rgba(0,217,184,.5);
-    }
+    .skill-tag:hover { border-color: var(--accent); color: var(--accent-d); }
 
     /* ── PROJECTS ── */
-    #projects { border-top: 1px solid var(--border); }
-
-    .project-group { margin-bottom: 4.5rem; }
-    .project-group:last-child { margin-bottom: 0; }
-    .project-group-title {
-      font-family: 'DM Mono', monospace;
-      font-size: .75rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--accent2);
-      padding-bottom: .75rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
+    #projects { background: var(--bg); }
+    .proj-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2.5rem; }
+    .proj-tab {
+      font-family: 'DM Mono', monospace; font-size: .76rem; letter-spacing: .03em;
+      padding: .5rem 1rem; border-radius: 100px; cursor: pointer;
+      background: #fff; border: 1px solid var(--line-2); color: var(--ink-2);
+      transition: all .2s;
     }
+    .proj-tab:hover { border-color: var(--accent); color: var(--accent-d); }
+    .proj-tab.active { background: var(--ink); border-color: var(--ink); color: #fff; }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 1.25rem; }
     .project-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 2rem;
-      transition: all .3s;
+      display: flex; flex-direction: column;
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 14px; padding: 1.6rem;
+      box-shadow: var(--shadow);
+      transition: transform .25s, box-shadow .25s, border-color .25s;
       position: relative;
-      overflow: hidden;
     }
-    .project-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(to right, var(--accent), var(--accent2));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .3s;
-    }
-    .project-card:hover {
-      border-color: rgba(0,217,184,.2);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,.4);
-    }
-    .project-card:hover::before { transform: scaleX(1); }
+    .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--line-2); }
+    .project-card.is-case { border-left: 3px solid var(--accent); }
 
-    .project-card[data-preview]::after {
-      content: attr(data-preview-label);
-      position: absolute;
-      top: 1.5rem; right: 1.5rem;
-      font-family: 'DM Mono', monospace;
-      font-size: .6rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0;
-      transform: translateY(-4px);
-      transition: opacity .25s, transform .25s, color .25s;
-    }
-    @media (hover: hover) and (pointer: fine) {
-      .project-card[data-preview]:hover::after {
-        opacity: 1;
-        transform: translateY(0);
-        color: var(--accent);
-      }
-    }
-
+    .project-head { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; margin-bottom: .85rem; }
     .project-type {
-      font-family: 'DM Mono', monospace;
-      font-size: .65rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: .75rem;
+      font-family: 'DM Mono', monospace; font-size: .66rem;
+      letter-spacing: .06em; text-transform: uppercase; color: var(--accent-d);
+    }
+    .project-badge {
+      font-family: 'DM Mono', monospace; font-size: .58rem; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--muted);
+      background: var(--bg-soft); border: 1px solid var(--line);
+      border-radius: 5px; padding: .25rem .5rem; white-space: nowrap;
     }
     .project-name {
-      font-family: 'Fraunces', serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      letter-spacing: -.02em;
-      margin-bottom: .75rem;
+      font-family: 'Fraunces', serif; font-weight: 700;
+      font-size: 1.25rem; letter-spacing: -.01em; color: var(--ink);
+      margin-bottom: .6rem;
     }
-    .project-desc {
-      font-size: .9rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
+    .project-desc { font-size: .9rem; color: var(--ink-2); line-height: 1.65; margin-bottom: 1.1rem; flex: 1; }
     .project-stack { display: flex; flex-wrap: wrap; gap: .4rem; }
     .stack-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: .63rem;
-      letter-spacing: .06em;
-      padding: .2rem .55rem;
-      border-radius: 2px;
-      background: rgba(91,106,240,.1);
-      border: 1px solid rgba(91,106,240,.2);
-      color: #a0a8f0;
+      font-family: 'DM Mono', monospace; font-size: .64rem; letter-spacing: .03em;
+      padding: .22rem .55rem; border-radius: 5px;
+      background: rgba(58,79,212,.07); border: 1px solid rgba(58,79,212,.18); color: var(--accent-2);
     }
-
-    .btn-demo {
-      margin-top: 1.25rem;
+    .project-actions { margin-top: 1.1rem; display: flex; gap: .6rem; flex-wrap: wrap; }
+    .btn-demo, .btn-code {
       display: inline-flex; align-items: center; gap: .4rem;
-      font-family: 'DM Mono', monospace;
-      font-size: .72rem; letter-spacing: .08em;
-      text-transform: uppercase;
-      background: rgba(0,217,184,.08);
-      border: 1px solid rgba(0,217,184,.25);
-      color: #00d9b8;
-      padding: .5rem 1rem;
-      border-radius: 3px;
-      cursor: none;
+      font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .04em;
+      padding: .5rem .9rem; border-radius: 7px; cursor: pointer; text-decoration: none;
       transition: all .2s;
     }
-    .btn-demo:hover {
-      background: rgba(0,217,184,.15);
-      border-color: rgba(0,217,184,.5);
-    }
+    .btn-demo { background: var(--soft-accent); border: 1px solid rgba(12,154,137,.3); color: var(--accent-d); }
+    .btn-demo:hover { background: rgba(12,154,137,.18); }
+    .btn-code { background: rgba(58,79,212,.07); border: 1px solid rgba(58,79,212,.2); color: var(--accent-2); }
+    .btn-code:hover { background: rgba(58,79,212,.14); }
 
-    .btn-code {
-      margin-top: 1.25rem;
-      display: inline-flex; align-items: center; gap: .4rem;
-      font-family: 'DM Mono', monospace;
-      font-size: .72rem; letter-spacing: .08em;
-      text-transform: uppercase;
-      background: rgba(91,106,240,.08);
-      border: 1px solid rgba(91,106,240,.25);
-      color: #a0a8f0;
-      padding: .5rem 1rem;
-      border-radius: 3px;
-      text-decoration: none;
-      transition: all .2s;
+    .project-card[data-preview]::after {
+      content: '◆ ' attr(data-preview-label);
+      position: absolute; top: 1.6rem; right: 1.6rem;
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--accent-d);
+      opacity: 0; transform: translateY(-4px); transition: opacity .25s, transform .25s;
+      pointer-events: none;
     }
-    .btn-code:hover {
-      background: rgba(91,106,240,.15);
-      border-color: rgba(91,106,240,.5);
+    @media (hover: hover) and (pointer: fine) {
+      .project-card[data-preview]:hover::after { opacity: .8; transform: translateY(0); }
     }
+    .project-card.placeholder { border-style: dashed; background: var(--bg-soft); box-shadow: none; }
+    .project-card.placeholder:hover { transform: none; box-shadow: var(--shadow); }
 
     /* ── FAQ ── */
-    #faq { border-top: 1px solid var(--border); background: var(--bg2); }
-
-    .faq-list {
-      max-width: 760px;
-      display: flex;
-      flex-direction: column;
-      gap: .85rem;
-    }
-    .faq-item {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      transition: border-color .25s;
-    }
-    .faq-item.open { border-color: rgba(0,217,184,.25); }
+    #faq { background: var(--bg-soft); border-top: 1px solid var(--line); }
+    .faq-list { max-width: 780px; display: flex; flex-direction: column; gap: .75rem; }
+    .faq-item { background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; transition: border-color .2s, box-shadow .2s; }
+    .faq-item.open { border-color: var(--line-2); box-shadow: var(--shadow); }
     .faq-question {
-      width: 100%;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem;
-      padding: 1.25rem 1.5rem;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: -.01em;
-      text-align: left;
-      cursor: none;
+      width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 1.15rem 1.4rem; background: none; border: none; color: var(--ink);
+      font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.02rem;
+      text-align: left; cursor: pointer;
     }
-    .faq-icon {
-      flex-shrink: 0;
-      width: 22px; height: 22px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'DM Mono', monospace;
-      font-size: .9rem;
-      color: var(--accent);
-      transition: transform .3s;
-    }
+    .faq-icon { flex-shrink: 0; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 1.1rem; color: var(--accent); transition: transform .3s; }
     .faq-item.open .faq-icon { transform: rotate(45deg); }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .35s ease;
-    }
-    .faq-item.open .faq-answer { max-height: 320px; }
-    .faq-answer-inner {
-      padding: 0 1.5rem 1.25rem;
-      color: var(--muted);
-      font-size: .92rem;
-      line-height: 1.7;
-    }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .faq-item.open .faq-answer { max-height: 340px; }
+    .faq-answer-inner { padding: 0 1.4rem 1.2rem; color: var(--ink-2); font-size: .95rem; line-height: 1.7; }
 
-    /* ── WINDOW CHROME (shared: modal + hover preview) ── */
+    /* ── WINDOW CHROME ── */
     .win-dots { display: flex; gap: .4rem; }
     .win-dot { width: 11px; height: 11px; border-radius: 50%; display: block; }
-    .win-dot.red    { background: #ff5f57; }
-    .win-dot.yellow { background: #febc2e; }
-    .win-dot.green  { background: #28c840; }
+    .win-dot.red { background: #ff5f57; } .win-dot.yellow { background: #febc2e; } .win-dot.green { background: #28c840; }
 
-    /* ── PROJECT MODAL ── */
+    /* ── MODAL ── */
     .modal-overlay {
       position: fixed; inset: 0; z-index: 1000;
-      background: rgba(0,0,0,.85);
-      backdrop-filter: blur(8px);
+      background: rgba(14,20,34,.55); backdrop-filter: blur(4px);
       display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
-      transition: opacity .3s;
+      opacity: 0; pointer-events: none; transition: opacity .3s;
     }
     .modal-overlay.active { opacity: 1; pointer-events: all; }
     .modal-box {
-      background: #0e1118;
-      border: 1px solid rgba(0,217,184,.2);
-      border-radius: 8px;
-      padding: 0;
-      width: 90vw; max-width: 900px;
-      position: relative;
-      transform: scale(.95);
-      opacity: 0;
-      transition: transform .3s, opacity .3s;
-      overflow: hidden;
+      background: #fff; border: 1px solid var(--line); border-radius: 12px;
+      width: 90vw; max-width: 940px; position: relative;
+      transform: scale(.96); opacity: 0; transition: transform .3s, opacity .3s; overflow: hidden;
+      box-shadow: var(--shadow-lg);
     }
-    .modal-overlay.active .modal-box {
-      transform: scale(1);
-      opacity: 1;
-    }
-    .modal-titlebar {
-      display: flex; align-items: center; gap: 1rem;
-      padding: .85rem 1.1rem;
-      background: var(--bg3);
-      border-bottom: 1px solid var(--border);
-    }
-    .modal-title {
-      flex: 1;
-      font-family: 'DM Mono', monospace;
-      font-size: .75rem;
-      letter-spacing: .05em;
-      color: var(--muted);
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .modal-close {
-      background: none; border: none;
-      color: #6b7280; font-size: 1.3rem;
-      line-height: 1;
-      cursor: none; transition: color .2s;
-    }
-    .modal-close:hover { color: #00d9b8; }
-    #modal-body { padding: 1.25rem; }
-    .modal-iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-      border-radius: 4px;
-      display: block;
-    }
+    .modal-overlay.active .modal-box { transform: scale(1); opacity: 1; }
+    .modal-titlebar { display: flex; align-items: center; gap: 1rem; padding: .8rem 1.1rem; background: var(--bg-soft); border-bottom: 1px solid var(--line); }
+    .modal-title { flex: 1; font-family: 'DM Mono', monospace; font-size: .74rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .modal-close { background: none; border: none; color: var(--muted); font-size: 1.3rem; line-height: 1; cursor: pointer; transition: color .2s; }
+    .modal-close:hover { color: var(--ink); }
+    #modal-body { padding: 1rem; }
+    .modal-iframe { width: 100%; height: 520px; border: none; border-radius: 6px; display: block; background: #fff; }
 
-    /* ── HOVER PREVIEW (floating window that follows the cursor) ── */
+    /* ── HOVER PREVIEW ── */
     .hover-preview {
-      position: fixed; top: 0; left: 0; z-index: 500;
-      width: 380px;
-      background: var(--bg3);
-      border: 1px solid rgba(0,217,184,.25);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0,0,0,.55);
-      opacity: 0;
-      transform: scale(.92);
-      transform-origin: top left;
-      transition: opacity .25s ease, transform .25s ease;
-      pointer-events: none;
+      position: fixed; top: 0; left: 0; z-index: 500; width: 380px;
+      background: #fff; border: 1px solid var(--line-2); border-radius: 10px; overflow: hidden;
+      box-shadow: var(--shadow-lg); opacity: 0; transform: scale(.94); transform-origin: top left;
+      transition: opacity .22s ease, transform .22s ease; pointer-events: none;
     }
     .hover-preview.active { opacity: 1; transform: scale(1); }
-    .hp-bar {
-      display: flex; align-items: center; gap: .65rem;
-      padding: .6rem .85rem;
-      background: var(--bg3);
-      border-bottom: 1px solid var(--border);
-    }
-    .hp-label {
-      font-family: 'DM Mono', monospace;
-      font-size: .65rem;
-      letter-spacing: .05em;
-      color: var(--muted);
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .hp-body { position: relative; width: 100%; height: 230px; background: #000; }
+    .hp-bar { display: flex; align-items: center; gap: .6rem; padding: .55rem .8rem; background: var(--bg-soft); border-bottom: 1px solid var(--line); }
+    .hp-label { font-family: 'DM Mono', monospace; font-size: .64rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .hp-body { position: relative; width: 100%; height: 230px; background: #fff; }
     .hp-iframe { width: 100%; height: 100%; border: none; display: block; }
     .hp-loading {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      gap: .5rem;
-      font-family: 'DM Mono', monospace;
-      font-size: .68rem; letter-spacing: .15em; text-transform: uppercase;
-      color: var(--accent);
-      background: var(--bg3);
-      transition: opacity .25s;
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: .5rem;
+      font-family: 'DM Mono', monospace; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--accent-d); background: var(--bg-soft); transition: opacity .25s;
     }
     .hp-loading.hidden { opacity: 0; pointer-events: none; }
-    .hp-loading::before {
-      content: '';
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: blink 1s step-end infinite;
-    }
-    .hp-foot {
-      padding: .5rem .85rem;
-      font-family: 'DM Mono', monospace;
-      font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--accent);
-      border-top: 1px solid var(--border);
-    }
-    @media (max-width: 1024px), (hover: none) {
-      .hover-preview { display: none !important; }
-    }
+    .hp-loading::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: blink 1s step-end infinite; }
+    .hp-foot { padding: .45rem .8rem; font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-d); border-top: 1px solid var(--line); }
+    @media (max-width: 1024px), (hover: none) { .hover-preview { display: none !important; } }
 
-    /* ── CONTACT ── */
-    #contact {
-      border-top: 1px solid var(--border);
-      background: var(--bg2);
-    }
-    .contact-inner {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 7rem 4rem;
-      text-align: center;
-    }
-    .contact-inner .section-label { display: block; }
-    .contact-inner .section-title { margin-bottom: 1rem; }
-    .contact-sub {
-      color: var(--muted);
-      margin-bottom: 3rem;
-      font-size: .97rem;
-      line-height: 1.7;
-    }
-    .contact-links {
-      display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
-    }
+    /* ── CONTACT (dark contrast section) ── */
+    #contact { background: var(--dark); color: var(--on-dark); }
+    #contact.on-dark .section-label { color: var(--accent); }
+    .contact-inner { max-width: 720px; margin: 0 auto; padding: 6rem 3rem; text-align: center; }
+    .contact-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(2rem, 4.4vw, 2.9rem); letter-spacing: -.02em; color: #fff; margin-bottom: 1rem; }
+    .contact-title em { color: var(--accent); font-style: normal; }
+    .contact-sub { color: var(--on-dark-muted); margin-bottom: 2.5rem; font-size: 1.02rem; line-height: 1.7; }
+    .contact-links { display: flex; justify-content: center; gap: .75rem; flex-wrap: wrap; }
 
     /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 4rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .footer-copy {
-      font-family: 'DM Mono', monospace;
-      font-size: .68rem;
-      letter-spacing: .08em;
-      color: var(--muted);
-    }
+    footer { background: var(--dark-2); color: var(--on-dark-muted); padding: 1.75rem 3rem; display: flex; align-items: center; justify-content: space-between; }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .04em; }
     .footer-copy span { color: var(--accent); }
 
-    /* ── DIVIDER LINE ── */
-    .divider {
-      width: 40px; height: 2px;
-      background: linear-gradient(to right, var(--accent), transparent);
-      margin-bottom: 2.5rem;
+    /* ── FLOATING WHATSAPP ── */
+    .wa-float {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 600;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--wa); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(37,211,102,.4);
+      transition: transform .2s, box-shadow .2s;
     }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 12px 30px rgba(37,211,102,.5); }
+    .wa-float svg { width: 30px; height: 30px; }
 
-    /* ── REVEAL ON SCROLL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      * { animation: none !important; }
     }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .hero-content { max-width: 640px; }
-      .hero-panel { max-width: 540px; width: 100%; }
-      #hero { min-height: auto; padding-top: 9rem; padding-bottom: 5rem; }
-      .projects-featured { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      #hero { padding: 7rem 1.5rem 4rem; }
-      .hero-scroll { left: 1.5rem; }
-      .hero-panel { max-width: 100%; }
-      .hero-panel-body { padding: 1.1rem; }
-      .kpi-grid { gap: .65rem; }
-      .kpi-card { padding: .85rem .9rem; }
-      .kpi-value { font-size: 1.5rem; }
-      .hero-chart-bars { height: 64px; }
+      .nav-mid { display: none; }
+      .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-side { max-width: 540px; }
+      #hero { padding: 7.5rem 1.5rem 4rem; }
       .section-inner { padding: 4.5rem 1.5rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .about-photo { display: none; }
-      .projects-featured { grid-template-columns: 1fr; }
-      .exp-row { grid-template-columns: 1fr; gap: .5rem; }
-      .skill-row { grid-template-columns: 1fr; gap: .85rem; padding-bottom: 1.5rem; }
-      footer { padding: 1.5rem; flex-direction: column; gap: .75rem; text-align: center; }
-      .contact-inner { padding: 5rem 1.5rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-photo { display: flex; flex-direction: column; align-items: center; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .contact-inner { padding: 4.5rem 1.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: .6rem; text-align: center; }
+    }
+    @media (max-width: 560px) {
+      .nav-right .btn { display: none; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .profile-card { flex-direction: column; text-align: center; }
+      .profile-meta { justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
-
 <!-- PROJECT MODAL -->
 <div id="modal-overlay" class="modal-overlay" onclick="if(event.target===this)closeModal()">
   <div class="modal-box">
     <div class="modal-titlebar">
-      <div class="win-dots">
-        <span class="win-dot red"></span>
-        <span class="win-dot yellow"></span>
-        <span class="win-dot green"></span>
-      </div>
+      <div class="win-dots"><span class="win-dot red"></span><span class="win-dot yellow"></span><span class="win-dot green"></span></div>
       <div id="modal-title" class="modal-title"></div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <button class="modal-close" onclick="closeModal()" aria-label="Fechar">✕</button>
     </div>
     <div id="modal-body"></div>
   </div>
 </div>
 
-<!-- HOVER PREVIEW WINDOW -->
+<!-- HOVER PREVIEW -->
 <div id="hover-preview" class="hover-preview">
   <div class="hp-bar">
-    <div class="win-dots">
-      <span class="win-dot red"></span>
-      <span class="win-dot yellow"></span>
-      <span class="win-dot green"></span>
-    </div>
+    <div class="win-dots"><span class="win-dot red"></span><span class="win-dot yellow"></span><span class="win-dot green"></span></div>
     <div id="hp-label" class="hp-label"></div>
   </div>
   <div class="hp-body">
     <div id="hp-loading" class="hp-loading" data-i18n="preview.loading">carregando preview</div>
-    <iframe id="hp-iframe" class="hp-iframe" src="about:blank" loading="lazy"></iframe>
+    <iframe id="hp-iframe" class="hp-iframe" src="about:blank" loading="lazy" title="preview"></iframe>
   </div>
   <div class="hp-foot" data-i18n="preview.foot">// preview ao vivo — clique em "ver demo" para abrir</div>
 </div>
@@ -1076,89 +616,103 @@
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">KS<span>.</span></a>
-  <ul class="nav-links">
+  <ul class="nav-mid">
     <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
     <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
     <li><a href="#projects" data-i18n="nav.projects">Projetos</a></li>
     <li><a href="#contact" data-i18n="nav.contact">Contato</a></li>
   </ul>
-  <button id="lang-toggle" class="lang-toggle" aria-label="Switch language / Mudar idioma">EN</button>
+  <div class="nav-right">
+    <a id="nav-whatsapp" href="https://wa.me/5531971473725?text=Ol%C3%A1%2C%20Kaique!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener" class="btn btn-wa btn-sm">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.207zm5.741-7.711c-.272-.061-.471-.092-.671.092-.197.184-.475.471-.475.471-.184.184-.359.205-.659.061-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+      WhatsApp
+    </a>
+    <button id="lang-toggle" class="lang-toggle" aria-label="Switch language / Mudar idioma">EN</button>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
   <div class="hero-grid">
     <div class="hero-content">
-      <div class="hero-tag" data-i18n="hero.tag">Disponível para projetos</div>
-      <div class="hero-byline" data-i18n-html="hero.byline">Kaique Souza <strong>·</strong> Analista de FP&amp;A &amp; Dados</div>
-      <h1 data-i18n-html="hero.title">Dados financeiros,<br>decisões <em>executivas</em>.</h1>
+      <div class="hero-tag" data-i18n="hero.tag">Disponível para novas oportunidades</div>
+      <div class="hero-byline" data-i18n-html="hero.byline">Kaique Souza <strong>·</strong> Analista de FP&amp;A Sênior &amp; Dados</div>
+      <h1 data-i18n-html="hero.title">Transformo dados financeiros em <em>decisões executivas</em>.</h1>
       <p class="hero-sub" data-i18n="hero.sub">
-        Power BI, Microsoft Fabric e Python para transformar indicadores financeiros em relatórios, dashboards e automações — do dado bruto à decisão do comitê.
+        Uno FP&amp;A, Controladoria e Business Intelligence a uma stack moderna de dados — Power BI, SQL, Python, Databricks e Microsoft Fabric — para entregar dashboards executivos, automações e análises confiáveis para a gestão.
       </p>
       <div class="hero-ctas">
-        <a href="#projects" class="btn btn-primary" data-i18n="hero.ctaProjects">Ver projetos →</a>
-        <a href="#contact" class="btn btn-ghost" data-i18n="hero.ctaContact">Entre em contato</a>
+        <a href="#projects" class="btn btn-primary" data-i18n="hero.ctaProjects">Ver projetos</a>
+        <a id="hero-whatsapp" href="https://wa.me/5531971473725?text=Ol%C3%A1%2C%20Kaique!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.207zm5.741-7.711c-.272-.061-.471-.092-.671.092-.197.184-.475.471-.475.471-.184.184-.359.205-.659.061-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://www.linkedin.com/in/kaique-roberto-analista-de-dados/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+        <a href="https://github.com/kaiquermsouza" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub</a>
+      </div>
+      <div class="hero-roles">
+        <span class="role-chip" data-i18n="hero.role1">FP&amp;A Sênior</span>
+        <span class="role-chip" data-i18n="hero.role2">Analista de Dados Sênior</span>
+        <span class="role-chip" data-i18n="hero.role3">Analista de BI</span>
+        <span class="role-chip" data-i18n="hero.role4">Automação financeira</span>
       </div>
     </div>
 
-    <div class="hero-panel" id="hero-panel">
-      <div class="hero-panel-bar">
-        <div class="win-dots">
-          <span class="win-dot red"></span>
-          <span class="win-dot yellow"></span>
-          <span class="win-dot green"></span>
+    <div class="hero-side">
+      <div class="profile-card">
+        <img src="https://github.com/kaiquermsouza.png" alt="Kaique Souza" loading="eager" />
+        <div class="profile-info">
+          <div class="profile-name">Kaique Souza</div>
+          <div class="profile-role" data-i18n="profile.role">Analista de FP&amp;A Sênior &amp; Dados</div>
+          <div class="profile-meta"><span class="profile-dot"></span><span data-i18n="profile.location">Contagem · MG · Brasil</span></div>
         </div>
-        <div class="hero-panel-label" data-i18n="panel.label">dre_gerencial.pbix — painel executivo</div>
-        <div class="hero-panel-live"><span class="live-dot"></span><span data-i18n="panel.live">ao vivo</span></div>
       </div>
-      <div class="hero-panel-body">
-        <div class="kpi-grid">
-          <div class="kpi-card">
-            <div class="kpi-label" data-i18n="panel.kpi1.label">Receita líquida</div>
-            <div class="kpi-value"><span class="kpi-prefix">R$</span><span data-count="12.4" data-decimals="1">0</span><small>M</small></div>
-            <div class="kpi-track"><span class="kpi-fill" style="--target:78%"></span></div>
-            <div class="kpi-delta" data-i18n="panel.kpi1.delta">▲ 12,4% vs orçado</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label" data-i18n="panel.kpi2.label">EBITDA</div>
-            <div class="kpi-value"><span data-count="18.2" data-decimals="1">0</span><small>%</small></div>
-            <div class="kpi-track"><span class="kpi-fill" style="--target:62%"></span></div>
-            <div class="kpi-delta" data-i18n="panel.kpi2.delta">▲ 2,1 p.p. a/a</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label" data-i18n="panel.kpi3.label">Backlog</div>
-            <div class="kpi-value"><span class="kpi-prefix">R$</span><span data-count="8.7" data-decimals="1">0</span><small>M</small></div>
-            <div class="kpi-track"><span class="kpi-fill" style="--target:85%"></span></div>
-            <div class="kpi-delta" data-i18n="panel.kpi3.delta">▲ 6% no mês</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label" data-i18n="panel.kpi4.label">NCG / Receita</div>
-            <div class="kpi-value"><span data-count="14.6" data-decimals="1">0</span><small>%</small></div>
-            <div class="kpi-track"><span class="kpi-fill" style="--target:34%"></span></div>
-            <div class="kpi-delta" data-i18n="panel.kpi4.delta">▼ 3,2 p.p. a/a</div>
-          </div>
+
+      <div class="hero-panel" id="hero-panel">
+        <div class="hero-panel-bar">
+          <div class="win-dots"><span class="win-dot red"></span><span class="win-dot yellow"></span><span class="win-dot green"></span></div>
+          <div class="hero-panel-label" data-i18n="panel.label">dre_gerencial.pbix — painel executivo</div>
+          <div class="hero-panel-live"><span class="live-dot"></span><span data-i18n="panel.live">ao vivo</span></div>
         </div>
-        <div class="hero-chart">
-          <div class="hero-chart-label" data-i18n="panel.chartLabel">// faturamento mensal · dados ilustrativos</div>
-          <div class="hero-chart-bars">
-            <span style="--h:42%; --i:0"></span>
-            <span style="--h:55%; --i:1"></span>
-            <span style="--h:48%; --i:2"></span>
-            <span style="--h:63%; --i:3"></span>
-            <span style="--h:71%; --i:4"></span>
-            <span style="--h:66%; --i:5"></span>
-            <span style="--h:80%; --i:6"></span>
-            <span style="--h:92%; --i:7"></span>
+        <div class="hero-panel-body">
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-label" data-i18n="panel.kpi1.label">Receita líquida</div>
+              <div class="kpi-value"><span class="kpi-prefix">R$</span><span data-count="12.4" data-decimals="1">0</span><small>M</small></div>
+              <div class="kpi-track"><span class="kpi-fill" style="--target:78%"></span></div>
+              <div class="kpi-delta" data-i18n="panel.kpi1.delta">▲ 12,4% vs orçado</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label" data-i18n="panel.kpi2.label">EBITDA</div>
+              <div class="kpi-value"><span data-count="18.2" data-decimals="1">0</span><small>%</small></div>
+              <div class="kpi-track"><span class="kpi-fill" style="--target:62%"></span></div>
+              <div class="kpi-delta" data-i18n="panel.kpi2.delta">▲ 2,1 p.p. a/a</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label" data-i18n="panel.kpi3.label">Backlog</div>
+              <div class="kpi-value"><span class="kpi-prefix">R$</span><span data-count="8.7" data-decimals="1">0</span><small>M</small></div>
+              <div class="kpi-track"><span class="kpi-fill" style="--target:85%"></span></div>
+              <div class="kpi-delta" data-i18n="panel.kpi3.delta">▲ 6% no mês</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label" data-i18n="panel.kpi4.label">NCG / Receita</div>
+              <div class="kpi-value"><span data-count="14.6" data-decimals="1">0</span><small>%</small></div>
+              <div class="kpi-track"><span class="kpi-fill" style="--target:34%"></span></div>
+              <div class="kpi-delta down" data-i18n="panel.kpi4.delta">▼ 3,2 p.p. a/a</div>
+            </div>
+          </div>
+          <div class="hero-chart">
+            <div class="hero-chart-label" data-i18n="panel.chartLabel">// faturamento mensal · dados ilustrativos</div>
+            <div class="hero-chart-bars">
+              <span style="--h:42%; --i:0"></span><span style="--h:55%; --i:1"></span>
+              <span style="--h:48%; --i:2"></span><span style="--h:63%; --i:3"></span>
+              <span style="--h:71%; --i:4"></span><span style="--h:66%; --i:5"></span>
+              <span style="--h:80%; --i:6"></span><span style="--h:92%; --i:7"></span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    scroll
   </div>
 </section>
 
@@ -1169,29 +723,17 @@
     <div class="divider reveal"></div>
     <div class="about-grid">
       <div class="about-photo reveal">
-        <img src="https://github.com/kaiquermsouza.png" alt="Kaique Souza" />
+        <img src="https://github.com/kaiquermsouza.png" alt="Kaique Souza" loading="lazy" />
         <div class="about-photo-name" data-i18n-html="about.photoName">Kaique Souza<br>Contagem · MG</div>
       </div>
       <div class="about-text reveal">
-        <p data-i18n-html="about.p1">Profissional na interseção entre <strong>Controladoria / FP&amp;A</strong> e <strong>dados</strong>, com cerca de 7 anos de experiência. Atuo de DRE, EBITDA, Backlog, NCG e orçamento/forecast até a construção de relatórios, dashboards e automações que sustentam a decisão da gestão.</p>
-        <p data-i18n-html="about.p2">Combino a visão financeira com uma stack moderna — <strong>Power BI/DAX, SQL, Python, Databricks, Microsoft Fabric, Streamlit e Power Automate</strong> — para reduzir retrabalho manual, dar confiabilidade aos números e acelerar a análise. Experiência aplicada a indústria, energia, varejo, logística e controladoria.</p>
-      </div>
-      <div class="about-stats reveal">
-        <div class="stat-card">
-          <div class="stat-num" data-i18n-html="about.stat1.num">Power<br>BI</div>
-          <div class="stat-label" data-i18n="about.stat1.label">Modelos PBIP / DAX / Calc. Groups</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">Fabric</div>
-          <div class="stat-label" data-i18n="about.stat2.label">Lakehouse · Notebooks · Pipelines</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">FP&amp;A</div>
-          <div class="stat-label" data-i18n="about.stat3.label">DRE · EBITDA · Backlog · PBT</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">Auto</div>
-          <div class="stat-label" data-i18n="about.stat4.label">Power Automate · AI Builder</div>
+        <p data-i18n-html="about.p1">Profissional de <strong>FP&amp;A</strong> e <strong>Controladoria</strong> com perfil analítico e mais de 7 anos de experiência na integração entre finanças corporativas e dados. Atuo na construção de previsões estratégicas, análises financeiras, relatórios executivos e automações que transformam informações complexas em suporte claro para a tomada de decisão.</p>
+        <p data-i18n-html="about.p2">Combino a visão financeira com uma stack moderna — <strong>Power BI/DAX, SQL, Python, Databricks, Microsoft Fabric, Excel/Power Query, Streamlit e Power Automate</strong> — para reduzir retrabalho manual, dar confiabilidade aos números e acelerar a análise. Experiência aplicada a indústria, energia, varejo, logística e controladoria.</p>
+        <div class="about-stats">
+          <div class="stat-card"><div class="stat-num" data-i18n-html="about.stat1.num">Power BI</div><div class="stat-label" data-i18n="about.stat1.label">DAX · Power Query / Power M</div></div>
+          <div class="stat-card"><div class="stat-num">Fabric</div><div class="stat-label" data-i18n="about.stat2.label">Lakehouse · Data Warehouse · PySpark</div></div>
+          <div class="stat-card"><div class="stat-num">FP&amp;A</div><div class="stat-label" data-i18n="about.stat3.label">DRE · EBITDA · Balance Sheet · Forecast</div></div>
+          <div class="stat-card"><div class="stat-num" data-i18n-html="about.stat4.num">Automação</div><div class="stat-label" data-i18n="about.stat4.label">Power Automate · AI Builder · Python</div></div>
         </div>
       </div>
     </div>
@@ -1202,42 +744,50 @@
 <section id="skills">
   <div class="section-inner">
     <div class="section-label reveal" data-i18n="skills.label">// stack técnica</div>
-    <h2 class="section-title reveal" data-i18n-html="skills.title">Ferramentas &amp;<br>Tecnologias</h2>
-    <div class="skill-rows reveal">
-      <div class="skill-row">
-        <div class="skill-row-label" data-i18n="skills.row1">FP&amp;A &amp; Controladoria</div>
+    <h2 class="section-title reveal" data-i18n-html="skills.title">Ferramentas &amp; Tecnologias</h2>
+    <p class="section-intro reveal" data-i18n="skills.intro">Competências organizadas por área para facilitar a leitura rápida do meu perfil técnico.</p>
+    <div class="skills-grid">
+      <!-- Bloco 1 — FP&A & Controladoria -->
+      <div class="skill-block reveal">
+        <div class="skill-block-head">
+          <span class="skill-block-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l3-4 3 3 4-6"/></svg></span>
+          <span class="skill-block-title" data-i18n="skills.cat1">FP&amp;A &amp; Controladoria</span>
+        </div>
+        <p class="skill-block-desc" data-i18n="skills.cat1desc">Atuação em planejamento financeiro, análise de resultados, orçamento, forecast e construção de relatórios gerenciais para apoio à decisão executiva.</p>
         <div class="skill-tags">
-          <span class="skill-tag skill-tag-core">FP&amp;A</span>
-          <span class="skill-tag skill-tag-core">DRE</span>
+          <span class="skill-tag">FP&amp;A</span>
+          <span class="skill-tag">DRE</span>
           <span class="skill-tag">EBITDA</span>
-          <span class="skill-tag">Backlog</span>
-          <span class="skill-tag">NCG</span>
-          <span class="skill-tag" data-i18n="skills.tagBudget">Orçamento</span>
+          <span class="skill-tag">Budget</span>
           <span class="skill-tag">Forecast</span>
+          <span class="skill-tag">Balance Sheet</span>
+          <span class="skill-tag" data-i18n="skills.tagVariance">Análise de Variação</span>
+          <span class="skill-tag" data-i18n="skills.tagReports">Relatórios Gerenciais</span>
+          <span class="skill-tag" data-i18n="skills.tagKpis">Indicadores Financeiros</span>
         </div>
       </div>
-      <div class="skill-row">
-        <div class="skill-row-label" data-i18n="skills.row2">Dados &amp; BI</div>
+      <!-- Bloco 2 — Análise de Dados -->
+      <div class="skill-block reveal">
+        <div class="skill-block-head">
+          <span class="skill-block-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg></span>
+          <span class="skill-block-title" data-i18n="skills.cat2">Análise de Dados</span>
+        </div>
+        <p class="skill-block-desc" data-i18n="skills.cat2desc">Construção de dashboards, automações, pipelines e análises com ferramentas modernas de BI, dados e programação.</p>
         <div class="skill-tags">
-          <span class="skill-tag skill-tag-core">Power BI</span>
-          <span class="skill-tag skill-tag-core">DAX</span>
+          <span class="skill-tag">Excel</span>
           <span class="skill-tag">Power Query</span>
-          <span class="skill-tag skill-tag-core">SQL</span>
-          <span class="skill-tag skill-tag-core">Python</span>
-          <span class="skill-tag skill-tag-core">Databricks</span>
-          <span class="skill-tag">Microsoft Fabric</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">DAX</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Pandas</span>
           <span class="skill-tag">Streamlit</span>
-        </div>
-      </div>
-      <div class="skill-row">
-        <div class="skill-row-label" data-i18n="skills.row3">Automação &amp; Apoio</div>
-        <div class="skill-tags">
+          <span class="skill-tag">Plotly</span>
+          <span class="skill-tag">Databricks</span>
+          <span class="skill-tag">PySpark</span>
+          <span class="skill-tag">Microsoft Fabric</span>
           <span class="skill-tag">Power Automate</span>
           <span class="skill-tag">AI Builder</span>
-          <span class="skill-tag">SAP</span>
-          <span class="skill-tag">SharePoint</span>
-          <span class="skill-tag">Git / GitHub</span>
-          <span class="skill-tag" data-i18n="skills.complementary.tagAI">IA Generativa</span>
         </div>
       </div>
     </div>
@@ -1248,181 +798,163 @@
 <section id="projects">
   <div class="section-inner">
     <div class="section-label reveal" data-i18n="projects.label">// projetos</div>
-    <h2 class="section-title reveal" data-i18n-html="projects.title">O que tenho<br>construído</h2>
+    <h2 class="section-title reveal" data-i18n-html="projects.title">O que tenho construído</h2>
+    <p class="section-intro reveal" data-i18n="projects.intro">Projetos públicos de portfólio e cases profissionais (descritos em alto nível por confidencialidade). Filtre por tecnologia abaixo.</p>
 
-    <!-- 3a · Experiência profissional -->
-    <div class="project-group reveal">
-      <div class="project-group-title" data-i18n="projects.expTitle">Experiência profissional</div>
-      <div class="exp-note" data-i18n="projects.expNote">// entregas reais em empresa</div>
-      <div class="exp-band">
-        <div class="exp-row reveal">
-          <div class="exp-head">
-            <span class="exp-type">Power BI · DAX · PBIP</span>
-            <span class="exp-name" data-i18n="projects.dre.name">DRE Gerencial</span>
-          </div>
-          <div class="exp-impact" data-i18n="exp.dre.impact">Modelo de DRE gerencial com DAX avançado e Calculation Groups, padronizando indicadores e a visão de resultado levada ao comitê.</div>
-        </div>
-        <div class="exp-row reveal">
-          <div class="exp-head">
-            <span class="exp-type">Microsoft Fabric · PySpark</span>
-            <span class="exp-name" data-i18n="projects.pipeline.name">Pipeline de Faturamento Diário</span>
-          </div>
-          <div class="exp-impact" data-i18n="exp.pipeline.impact">Pipeline diário em Lakehouse + PySpark automatizando a transformação dos dados e entregando visão executiva de receita em Power BI.</div>
-        </div>
-        <div class="exp-row reveal">
-          <div class="exp-head">
-            <span class="exp-type">Power Automate · AI Builder</span>
-            <span class="exp-name" data-i18n="projects.orders.name">Registro de Novos Pedidos</span>
-          </div>
-          <div class="exp-impact" data-i18n="exp.orders.impact">Extração automática de dados de PDF para SharePoint List, eliminando digitação manual e padronizando o registro de pedidos.</div>
-        </div>
-      </div>
+    <div class="proj-tabs reveal">
+      <button class="proj-tab active" data-cat="all" data-i18n="projects.filterAll">Todos</button>
+      <button class="proj-tab" data-cat="powerbi" data-i18n="projects.filterPowerbi">Power BI</button>
+      <button class="proj-tab" data-cat="python" data-i18n="projects.filterPython">Python &amp; Streamlit</button>
+      <button class="proj-tab" data-cat="sql" data-i18n="projects.filterSql">SQL</button>
+      <button class="proj-tab" data-cat="databricks" data-i18n="projects.filterDatabricks">Databricks / Fabric</button>
+      <button class="proj-tab" data-cat="cases" data-i18n="projects.filterCases">Cases profissionais</button>
     </div>
 
-    <!-- 3b · Destaque -->
-    <div class="project-group reveal">
-      <div class="project-group-title" data-i18n="projects.featuredTitle">Destaque — projetos interativos</div>
-      <div class="projects-featured">
-        <div class="project-card featured reveal" data-preview="https://app.powerbi.com/view?r=eyJrIjoiYjJkNGUxZjQtZTQwMy00OTk5LTk4M2UtMTlmNjZkODczNmI0IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="◆ preview ao vivo">
-          <div class="project-type" data-i18n="projects.salesTarget.type">Power BI · Comercial</div>
-          <div class="project-name" data-i18n="projects.salesTarget.name">Dashboard Vendas x Meta</div>
-          <div class="project-desc" data-i18n="projects.salesTarget.desc">Projeto de portfólio: painel de acompanhamento de vendas vs. metas por vendedor, região e período, com indicadores de atingimento e ranking de performance — demonstrando como padronizar indicadores comerciais para apoiar decisões da liderança de vendas.</div>
-          <div class="project-stack">
-            <span class="stack-tag">Power BI</span>
-            <span class="stack-tag">DAX</span>
-            <span class="stack-tag" data-i18n="projects.salesTarget.tag3">Vendas</span>
-          </div>
-          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('Dashboard Vendas x Meta', 'https://app.powerbi.com/view?r=eyJrIjoiYjJkNGUxZjQtZTQwMy00OTk5LTk4M2UtMTlmNjZkODczNmI0IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
-        </div>
-        <div class="project-card featured reveal" data-preview="https://app.powerbi.com/view?r=eyJrIjoiMjk4MTI0ZGYtYzAyYy00YTQ1LWE4YTItMjY2ZTZmNGFkZmI1IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="◆ preview ao vivo">
-          <div class="project-type" data-i18n="projects.ambev.type">Power BI · Vendas</div>
-          <div class="project-name">Dashboard Ambev</div>
-          <div class="project-desc" data-i18n="projects.ambev.desc">Projeto de portfólio com dados simulados: dashboard de performance comercial com análise de vendas, mix de produtos e acompanhamento de metas, demonstrando modelagem de dados e construção de indicadores para apoiar a gestão comercial.</div>
-          <div class="project-stack">
-            <span class="stack-tag">Power BI</span>
-            <span class="stack-tag">DAX</span>
-            <span class="stack-tag">Data Modeling</span>
-          </div>
-          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('01_Dashboard_Ambev', 'https://app.powerbi.com/view?r=eyJrIjoiMjk4MTI0ZGYtYzAyYy00YTQ1LWE4YTItMjY2ZTZmNGFkZmI1IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
-        </div>
-        <div class="project-card featured reveal" data-preview="https://carliquedash.streamlit.app/" data-preview-label="◆ preview ao vivo">
-          <div class="project-type">Python · Streamlit · Plotly</div>
-          <div class="project-name">CarIque — Dashboard de Vendas</div>
-          <div class="project-desc" data-i18n="projects.carique.desc">Dashboard analítico de vendas de veículos (2019–2021) em Streamlit + Plotly, com KPIs de receita, margem e ticket médio, análise de sazonalidade (mapa de calor hora × dia) e comparativo anual com crescimento YoY — projeto de portfólio com filtros interativos e visual escuro e clean.</div>
-          <div class="project-stack">
-            <span class="stack-tag">Python</span>
-            <span class="stack-tag">Streamlit</span>
-            <span class="stack-tag">Plotly</span>
-            <span class="stack-tag">Pandas</span>
-          </div>
-          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('CarIque — Dashboard de Vendas', 'https://carliquedash.streamlit.app/', 'link')">Ver demo →</button>
-        </div>
-      </div>
-    </div>
+    <div class="projects-grid" id="projects-grid">
 
-    <!-- 3c · Outros projetos -->
-    <div class="project-group reveal">
-      <div class="project-group-title" data-i18n="projects.othersTitle">Outros projetos</div>
-      <div class="projects-compact">
-        <div class="project-card compact reveal">
-          <div class="project-type">FP&amp;A · Streamlit</div>
-          <div class="project-name" data-i18n="projects.growthTrap.name">A Armadilha do Crescimento</div>
-          <div class="project-desc" data-i18n="projects.growthTrap.desc">Uma empresa cresce em receita, mas destrói caixa — e o resultado contábil não mostra isso. Neste case publicado no LinkedIn, analisei PMR, NCG, FCO e CCR para explicar a causa raiz do problema e construí um app interativo em Streamlit para visualizar o diagnóstico, reforçando a importância de olhar geração de caixa, não só resultado, na tomada de decisão.</div>
-          <div class="project-stack">
-            <span class="stack-tag">Python</span>
-            <span class="stack-tag">Streamlit</span>
-            <span class="stack-tag">FP&amp;A</span>
-          </div>
+      <!-- ===== CASES PROFISSIONAIS ===== -->
+      <div class="project-card is-case reveal" data-cat="cases">
+        <div class="project-head">
+          <span class="project-type">Power BI · DAX · PBIP</span>
+          <span class="project-badge" data-i18n="projects.caseBadge">Case · confidencial</span>
         </div>
-        <div class="project-card compact reveal" data-preview="https://app.powerbi.com/view?r=eyJrIjoiOWY3NjBlZjUtNjQ5NC00Y2UxLWJkNWQtZTc1MGVlMTA5YjExIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="◆ preview ao vivo">
-          <div class="project-type">Power BI · FP&amp;A</div>
-          <div class="project-name" data-i18n="projects.dreOrcFc.name">DRE · Orçamento · Forecast</div>
-          <div class="project-desc" data-i18n="projects.dreOrcFc.desc">DRE, orçamento e forecast viviam em planilhas separadas, dificultando a análise de variação. Construí um modelo integrado em Power BI com análise Budget vs Actual vs Forecast, padronizando indicadores entre as áreas e dando à gestão uma visão executiva única para acompanhar desvios e antecipar decisões.</div>
-          <div class="project-stack">
-            <span class="stack-tag">Power BI</span>
-            <span class="stack-tag">DAX</span>
-            <span class="stack-tag" data-i18n="skills.tagBudget">Orçamento</span>
-          </div>
-          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('base_orc_dre_fc', 'https://app.powerbi.com/view?r=eyJrIjoiOWY3NjBlZjUtNjQ5NC00Y2UxLWJkNWQtZTc1MGVlMTA5YjExIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
-        </div>
-        <div class="project-card compact reveal" data-preview="https://app.powerbi.com/view?r=eyJrIjoiMmYyMTZkNDItOWRkYS00MTMxLWIzOGEtNmE0MmI1ZmI5M2ZlIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="◆ preview ao vivo">
-          <div class="project-type" data-i18n="projects.logisticsDashboard.type">Power BI · Logística</div>
-          <div class="project-name" data-i18n="projects.logisticsDashboard.name">Dashboard Logística</div>
-          <div class="project-desc" data-i18n="projects.logisticsDashboard.desc">Projeto de portfólio com dados simulados: painel de controle logístico com monitoramento de entregas, SLA e rotas, transformando dados operacionais em indicadores de performance para apoiar a gestão logística.</div>
-          <div class="project-stack">
-            <span class="stack-tag">Power BI</span>
-            <span class="stack-tag">DAX</span>
-            <span class="stack-tag">Data Modeling</span>
-          </div>
-          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('01_Dashboard_Logistica', 'https://app.powerbi.com/view?r=eyJrIjoiMmYyMTZkNDItOWRkYS00MTMxLWIzOGEtNmE0MmI1ZmI5M2ZlIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
-        </div>
-        <div class="project-card compact reveal" data-preview="https://appsucos-elizabethpromotoria.streamlit.app/" data-preview-label="◆ preview ao vivo">
-          <div class="project-type">Python · Streamlit</div>
-          <div class="project-name">App Sucos Elizabeth</div>
-          <div class="project-desc" data-i18n="projects.sucos.desc">Aplicação interativa em Streamlit para análise de dados de uma promotoria comercial, com visualizações dinâmicas e filtros por região e produto — projeto de portfólio que demonstra construção de ferramentas de análise sob medida em Python.</div>
-          <div class="project-stack">
-            <span class="stack-tag">Python</span>
-            <span class="stack-tag">Streamlit</span>
-            <span class="stack-tag">Pandas</span>
-          </div>
-          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('App Sucos Elizabeth', 'https://appsucos-elizabethpromotoria.streamlit.app/', 'link')">Ver demo →</button>
-        </div>
-        <div class="project-card compact reveal" data-preview="https://fifa23datasetkaique.streamlit.app/" data-preview-label="◆ preview ao vivo">
-          <div class="project-type" data-i18n="projects.fifa.type">Python · Streamlit · Dados</div>
-          <div class="project-name">FIFA 23 Data Explorer</div>
-          <div class="project-desc" data-i18n="projects.fifa.desc">Explorador de dados do FIFA 23 com filtros por jogador, clube, nacionalidade e atributos, incluindo análises estatísticas e comparativas de performance — projeto de portfólio para praticar manipulação e visualização de dados em Python.</div>
-          <div class="project-stack">
-            <span class="stack-tag">Python</span>
-            <span class="stack-tag">Streamlit</span>
-            <span class="stack-tag">Pandas</span>
-          </div>
-          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('FIFA 23 Data Explorer', 'https://fifa23datasetkaique.streamlit.app/', 'link')">Ver demo →</button>
-        </div>
-        <div class="project-card compact reveal" data-preview="https://app.powerbi.com/view?r=eyJrIjoiZjFjMGYzNWYtMjk4Yi00MTg4LWE4ZjItODlmZjk5N2U4Nzc2IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="◆ preview ao vivo">
-          <div class="project-type" data-i18n="projects.pokemon.type">Power BI · Dados</div>
-          <div class="project-name" data-i18n="projects.pokemon.name">Dashboard Pokémon</div>
-          <div class="project-desc" data-i18n="projects.pokemon.desc">Projeto de portfólio para praticar modelagem de dados fora do contexto corporativo: análise da base completa de Pokémon, com indicadores de atributos, tipos e gerações em um painel interativo construído em Power BI.</div>
-          <div class="project-stack">
-            <span class="stack-tag">Power BI</span>
-            <span class="stack-tag">DAX</span>
-            <span class="stack-tag">Data Modeling</span>
-          </div>
-          <button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('Dash_Pokemon_Kaique', 'https://app.powerbi.com/view?r=eyJrIjoiZjFjMGYzNWYtMjk4Yi00MTg4LWE4ZjItODlmZjk5N2U4Nzc2IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button>
-        </div>
-        <div class="project-card compact reveal">
-          <div class="project-type" data-i18n="projects.fpaPipeline.type">Python · API · Automação</div>
-          <div class="project-name" data-i18n="projects.fpaPipeline.name">Pipeline de Automação FP&amp;A</div>
-          <div class="project-desc" data-i18n="projects.fpaPipeline.desc">Acompanhar indicadores macroeconômicos para premissas de orçamento e forecast exigia consulta manual em vários sites. Construí um pipeline em Python que consome a API do Banco Central, calcula variações (M/M, A/A, YTD) e gera relatórios em Excel formatados — automatizando uma rotina recorrente de FP&amp;A.</div>
-          <div class="project-stack">
-            <span class="stack-tag">Python</span>
-            <span class="stack-tag">API BCB</span>
-            <span class="stack-tag">Pandas</span>
-          </div>
-          <a href="https://github.com/kaiquermsouza/fpa-automation-pipeline" target="_blank" class="btn-code" data-i18n="projects.btnCode">Ver código →</a>
-        </div>
-        <div class="project-card compact reveal">
-          <div class="project-type" data-i18n="projects.claudeSkills.type">IA · Power BI · Claude Code</div>
-          <div class="project-name" data-i18n="projects.claudeSkills.name">Claude Skills para Power BI</div>
-          <div class="project-desc" data-i18n="projects.claudeSkills.desc">Tarefas repetitivas de modelagem em Power BI (auditoria de modelo, documentação, criação de medidas DAX) consomem tempo de análise. Desenvolvi um conjunto de Skills para Claude Code que faz auditoria de modelos PBIP com scorecard, gera documentação automática e cria medidas DAX a partir de descrições em português.</div>
-          <div class="project-stack">
-            <span class="stack-tag">Claude Code</span>
-            <span class="stack-tag">Power BI</span>
-            <span class="stack-tag">DAX</span>
-          </div>
-          <a href="https://github.com/kaiquermsouza/claude-code-powerbi-skills" target="_blank" class="btn-code" data-i18n="projects.btnCode">Ver código →</a>
-        </div>
-        <div class="project-card compact reveal">
-          <div class="project-type">Python · Streamlit</div>
-          <div class="project-name" data-i18n="projects.controllingPlanner.name">Planner de Controladoria</div>
-          <div class="project-desc" data-i18n="projects.controllingPlanner.desc">A rotina de Controladoria envolve múltiplas tarefas recorrentes (fechamentos, conciliações, prazos) difíceis de acompanhar em planilhas. Desenvolvi um app em Streamlit para organizar e acompanhar essas tarefas por status e prazo, dando visibilidade do andamento do fechamento para a área.</div>
-          <div class="project-stack">
-            <span class="stack-tag">Python</span>
-            <span class="stack-tag">Streamlit</span>
-            <span class="stack-tag" data-i18n="projects.controllingPlanner.tag3">Controladoria</span>
-          </div>
-          <a href="https://github.com/kaiquermsouza/planner_controladoria" target="_blank" class="btn-code" data-i18n="projects.btnCode">Ver código →</a>
-        </div>
+        <div class="project-name" data-i18n="projects.dre.name">DRE Gerencial</div>
+        <div class="project-desc" data-i18n="exp.dre.impact">Modelo de DRE gerencial com DAX avançado e Calculation Groups, padronizando indicadores e a visão de resultado levada ao comitê.</div>
+        <div class="project-stack"><span class="stack-tag">Power BI</span><span class="stack-tag">DAX</span><span class="stack-tag">FP&amp;A</span></div>
       </div>
+
+      <div class="project-card is-case reveal" data-cat="cases databricks">
+        <div class="project-head">
+          <span class="project-type">Microsoft Fabric · PySpark</span>
+          <span class="project-badge" data-i18n="projects.caseBadge">Case · confidencial</span>
+        </div>
+        <div class="project-name" data-i18n="projects.pipeline.name">Pipeline de Faturamento Diário</div>
+        <div class="project-desc" data-i18n="exp.pipeline.impact">Pipeline diário em Lakehouse + PySpark automatizando a transformação dos dados e entregando visão executiva de receita em Power BI.</div>
+        <div class="project-stack"><span class="stack-tag">Fabric</span><span class="stack-tag">PySpark</span><span class="stack-tag">Lakehouse</span></div>
+      </div>
+
+      <div class="project-card is-case reveal" data-cat="cases">
+        <div class="project-head">
+          <span class="project-type">Power Automate · AI Builder</span>
+          <span class="project-badge" data-i18n="projects.caseBadge">Case · confidencial</span>
+        </div>
+        <div class="project-name" data-i18n="projects.orders.name">Registro de Novos Pedidos</div>
+        <div class="project-desc" data-i18n="exp.orders.impact">Extração automática de dados de PDF para SharePoint List, eliminando digitação manual e padronizando o registro de pedidos.</div>
+        <div class="project-stack"><span class="stack-tag">Power Automate</span><span class="stack-tag">AI Builder</span><span class="stack-tag">SharePoint</span></div>
+      </div>
+
+      <!-- ===== POWER BI ===== -->
+      <div class="project-card reveal" data-cat="powerbi" data-preview="https://app.powerbi.com/view?r=eyJrIjoiYjJkNGUxZjQtZTQwMy00OTk5LTk4M2UtMTlmNjZkODczNmI0IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="preview ao vivo">
+        <div class="project-head"><span class="project-type" data-i18n="projects.salesTarget.type">Power BI · Comercial</span></div>
+        <div class="project-name" data-i18n="projects.salesTarget.name">Dashboard Vendas x Meta</div>
+        <div class="project-desc" data-i18n="projects.salesTarget.desc">Painel de acompanhamento de vendas vs. metas por vendedor, região e período, com indicadores de atingimento e ranking de performance — projeto de portfólio.</div>
+        <div class="project-stack"><span class="stack-tag">Power BI</span><span class="stack-tag">DAX</span><span class="stack-tag" data-i18n="projects.salesTarget.tag3">Vendas</span></div>
+        <div class="project-actions"><button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('Dashboard Vendas x Meta', 'https://app.powerbi.com/view?r=eyJrIjoiYjJkNGUxZjQtZTQwMy00OTk5LTk4M2UtMTlmNjZkODczNmI0IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button></div>
+      </div>
+
+      <div class="project-card reveal" data-cat="powerbi" data-preview="https://app.powerbi.com/view?r=eyJrIjoiMjk4MTI0ZGYtYzAyYy00YTQ1LWE4YTItMjY2ZTZmNGFkZmI1IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="preview ao vivo">
+        <div class="project-head"><span class="project-type" data-i18n="projects.ambev.type">Power BI · Vendas</span></div>
+        <div class="project-name">Dashboard Ambev</div>
+        <div class="project-desc" data-i18n="projects.ambev.desc">Projeto de portfólio com dados simulados: performance comercial com análise de vendas, mix de produtos e metas, demonstrando modelagem de dados e construção de indicadores.</div>
+        <div class="project-stack"><span class="stack-tag">Power BI</span><span class="stack-tag">DAX</span><span class="stack-tag">Data Modeling</span></div>
+        <div class="project-actions"><button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('01_Dashboard_Ambev', 'https://app.powerbi.com/view?r=eyJrIjoiMjk4MTI0ZGYtYzAyYy00YTQ1LWE4YTItMjY2ZTZmNGFkZmI1IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button></div>
+      </div>
+
+      <div class="project-card reveal" data-cat="powerbi" data-preview="https://app.powerbi.com/view?r=eyJrIjoiOWY3NjBlZjUtNjQ5NC00Y2UxLWJkNWQtZTc1MGVlMTA5YjExIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="preview ao vivo">
+        <div class="project-head"><span class="project-type">Power BI · FP&amp;A</span></div>
+        <div class="project-name" data-i18n="projects.dreOrcFc.name">DRE · Orçamento · Forecast</div>
+        <div class="project-desc" data-i18n="projects.dreOrcFc.desc">Modelo integrado em Power BI com análise Budget vs Actual vs Forecast, padronizando indicadores entre áreas e dando à gestão uma visão executiva única para acompanhar desvios.</div>
+        <div class="project-stack"><span class="stack-tag">Power BI</span><span class="stack-tag">DAX</span><span class="stack-tag" data-i18n="skills.tagBudget">Orçamento</span></div>
+        <div class="project-actions"><button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('base_orc_dre_fc', 'https://app.powerbi.com/view?r=eyJrIjoiOWY3NjBlZjUtNjQ5NC00Y2UxLWJkNWQtZTc1MGVlMTA5YjExIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button></div>
+      </div>
+
+      <div class="project-card reveal" data-cat="powerbi" data-preview="https://app.powerbi.com/view?r=eyJrIjoiMmYyMTZkNDItOWRkYS00MTMxLWIzOGEtNmE0MmI1ZmI5M2ZlIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="preview ao vivo">
+        <div class="project-head"><span class="project-type" data-i18n="projects.logisticsDashboard.type">Power BI · Logística</span></div>
+        <div class="project-name" data-i18n="projects.logisticsDashboard.name">Dashboard Logística</div>
+        <div class="project-desc" data-i18n="projects.logisticsDashboard.desc">Projeto de portfólio com dados simulados: monitoramento de entregas, SLA e rotas, transformando dados operacionais em indicadores de performance.</div>
+        <div class="project-stack"><span class="stack-tag">Power BI</span><span class="stack-tag">DAX</span><span class="stack-tag">Data Modeling</span></div>
+        <div class="project-actions"><button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('01_Dashboard_Logistica', 'https://app.powerbi.com/view?r=eyJrIjoiMmYyMTZkNDItOWRkYS00MTMxLWIzOGEtNmE0MmI1ZmI5M2ZlIiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button></div>
+      </div>
+
+      <div class="project-card reveal" data-cat="powerbi" data-preview="https://app.powerbi.com/view?r=eyJrIjoiZjFjMGYzNWYtMjk4Yi00MTg4LWE4ZjItODlmZjk5N2U4Nzc2IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" data-preview-label="preview ao vivo">
+        <div class="project-head"><span class="project-type" data-i18n="projects.pokemon.type">Power BI · Dados</span></div>
+        <div class="project-name" data-i18n="projects.pokemon.name">Dashboard Pokémon</div>
+        <div class="project-desc" data-i18n="projects.pokemon.desc">Projeto de portfólio para praticar modelagem fora do contexto corporativo: análise da base completa de Pokémon com indicadores de atributos, tipos e gerações.</div>
+        <div class="project-stack"><span class="stack-tag">Power BI</span><span class="stack-tag">DAX</span><span class="stack-tag">Data Modeling</span></div>
+        <div class="project-actions"><button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('Dash_Pokemon_Kaique', 'https://app.powerbi.com/view?r=eyJrIjoiZjFjMGYzNWYtMjk4Yi00MTg4LWE4ZjItODlmZjk5N2U4Nzc2IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9', 'iframe')">Ver demo →</button></div>
+      </div>
+
+      <!-- ===== PYTHON & STREAMLIT ===== -->
+      <div class="project-card reveal" data-cat="python" data-preview="https://carliquedash.streamlit.app/" data-preview-label="preview ao vivo">
+        <div class="project-head"><span class="project-type">Python · Streamlit · Plotly</span></div>
+        <div class="project-name">CarIque — Dashboard de Vendas</div>
+        <div class="project-desc" data-i18n="projects.carique.desc">Dashboard analítico de vendas de veículos (2019–2021) em Streamlit + Plotly, com KPIs de receita, margem e ticket médio, análise de sazonalidade e comparativo anual YoY.</div>
+        <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Streamlit</span><span class="stack-tag">Plotly</span><span class="stack-tag">Pandas</span></div>
+        <div class="project-actions"><button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('CarIque — Dashboard de Vendas', 'https://carliquedash.streamlit.app/', 'link')">Ver demo →</button></div>
+      </div>
+
+      <div class="project-card reveal" data-cat="python">
+        <div class="project-head"><span class="project-type">FP&amp;A · Python · Streamlit</span></div>
+        <div class="project-name" data-i18n="projects.growthTrap.name">A Armadilha do Crescimento</div>
+        <div class="project-desc" data-i18n="projects.growthTrap.desc">Case publicado no LinkedIn: análise de PMR, NCG, FCO e CCR para explicar por que uma empresa cresce em receita mas destrói caixa, com app interativo em Streamlit para o diagnóstico.</div>
+        <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Streamlit</span><span class="stack-tag">FP&amp;A</span></div>
+      </div>
+
+      <div class="project-card reveal" data-cat="python" data-preview="https://appsucos-elizabethpromotoria.streamlit.app/" data-preview-label="preview ao vivo">
+        <div class="project-head"><span class="project-type">Python · Streamlit</span></div>
+        <div class="project-name">App Sucos Elizabeth</div>
+        <div class="project-desc" data-i18n="projects.sucos.desc">Aplicação interativa em Streamlit para análise de dados de uma promotoria comercial, com visualizações dinâmicas e filtros por região e produto — projeto de portfólio.</div>
+        <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Streamlit</span><span class="stack-tag">Pandas</span></div>
+        <div class="project-actions"><button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('App Sucos Elizabeth', 'https://appsucos-elizabethpromotoria.streamlit.app/', 'link')">Ver demo →</button></div>
+      </div>
+
+      <div class="project-card reveal" data-cat="python" data-preview="https://fifa23datasetkaique.streamlit.app/" data-preview-label="preview ao vivo">
+        <div class="project-head"><span class="project-type" data-i18n="projects.fifa.type">Python · Streamlit · Dados</span></div>
+        <div class="project-name">FIFA 23 Data Explorer</div>
+        <div class="project-desc" data-i18n="projects.fifa.desc">Explorador de dados do FIFA 23 com filtros por jogador, clube, nacionalidade e atributos, incluindo análises estatísticas e comparativas — projeto de portfólio.</div>
+        <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Streamlit</span><span class="stack-tag">Pandas</span></div>
+        <div class="project-actions"><button class="btn-demo" data-i18n="projects.btnDemo" onclick="openModal('FIFA 23 Data Explorer', 'https://fifa23datasetkaique.streamlit.app/', 'link')">Ver demo →</button></div>
+      </div>
+
+      <div class="project-card reveal" data-cat="python">
+        <div class="project-head"><span class="project-type" data-i18n="projects.fpaPipeline.type">Python · API · Automação</span></div>
+        <div class="project-name" data-i18n="projects.fpaPipeline.name">Pipeline de Automação FP&amp;A</div>
+        <div class="project-desc" data-i18n="projects.fpaPipeline.desc">Pipeline em Python que consome a API do Banco Central, calcula variações (M/M, A/A, YTD) e gera relatórios em Excel formatados — automatizando uma rotina recorrente de FP&amp;A.</div>
+        <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">API BCB</span><span class="stack-tag">Pandas</span></div>
+        <div class="project-actions"><a href="https://github.com/kaiquermsouza/fpa-automation-pipeline" target="_blank" rel="noopener" class="btn-code" data-i18n="projects.btnCode">Ver código →</a></div>
+      </div>
+
+      <div class="project-card reveal" data-cat="python">
+        <div class="project-head"><span class="project-type" data-i18n="projects.claudeSkills.type">IA · Power BI · Claude Code</span></div>
+        <div class="project-name" data-i18n="projects.claudeSkills.name">Claude Skills para Power BI</div>
+        <div class="project-desc" data-i18n="projects.claudeSkills.desc">Conjunto de Skills para Claude Code que audita modelos PBIP com scorecard, gera documentação automática e cria medidas DAX a partir de descrições em português.</div>
+        <div class="project-stack"><span class="stack-tag">Claude Code</span><span class="stack-tag">Power BI</span><span class="stack-tag">DAX</span></div>
+        <div class="project-actions"><a href="https://github.com/kaiquermsouza/claude-code-powerbi-skills" target="_blank" rel="noopener" class="btn-code" data-i18n="projects.btnCode">Ver código →</a></div>
+      </div>
+
+      <div class="project-card reveal" data-cat="python">
+        <div class="project-head"><span class="project-type">Python · Streamlit</span></div>
+        <div class="project-name" data-i18n="projects.controllingPlanner.name">Planner de Controladoria</div>
+        <div class="project-desc" data-i18n="projects.controllingPlanner.desc">App em Streamlit para organizar e acompanhar tarefas recorrentes de Controladoria (fechamentos, conciliações, prazos) por status e prazo, dando visibilidade do fechamento.</div>
+        <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Streamlit</span><span class="stack-tag" data-i18n="projects.controllingPlanner.tag3">Controladoria</span></div>
+        <div class="project-actions"><a href="https://github.com/kaiquermsouza/planner_controladoria" target="_blank" rel="noopener" class="btn-code" data-i18n="projects.btnCode">Ver código →</a></div>
+      </div>
+
+      <!-- ===== SQL (placeholders honestos) ===== -->
+      <div class="project-card placeholder reveal" data-cat="sql">
+        <div class="project-head"><span class="project-type">SQL · Analytics</span><span class="project-badge" data-i18n="projects.soon">Em breve</span></div>
+        <div class="project-name" data-i18n="projects.sql1.name">Indicadores financeiros em SQL</div>
+        <div class="project-desc" data-i18n="projects.sql1.desc">Espaço reservado para projetos SQL aplicados à análise financeira — queries para receita, margem, clientes e operações. Publicação em breve.</div>
+        <div class="project-stack"><span class="stack-tag">SQL</span><span class="stack-tag">Analytics</span></div>
+      </div>
+
+      <div class="project-card placeholder reveal" data-cat="sql">
+        <div class="project-head"><span class="project-type">SQL · Data Modeling</span><span class="project-badge" data-i18n="projects.soon">Em breve</span></div>
+        <div class="project-name" data-i18n="projects.sql2.name">Modelagem &amp; preparação de bases para BI</div>
+        <div class="project-desc" data-i18n="projects.sql2.desc">Espaço reservado para projetos de consultas e modelagem de dados — preparação de bases para Power BI. Projetos SQL publicados em breve.</div>
+        <div class="project-stack"><span class="stack-tag">SQL</span><span class="stack-tag">Data Modeling</span><span class="stack-tag">Power BI</span></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1431,52 +963,41 @@
 <section id="faq">
   <div class="section-inner">
     <div class="section-label reveal" data-i18n="faq.label">// perguntas frequentes</div>
-    <h2 class="section-title reveal" data-i18n-html="faq.title">Antes de<br>conversarmos</h2>
+    <h2 class="section-title reveal" data-i18n-html="faq.title">Antes de conversarmos</h2>
     <div class="faq-list reveal">
       <div class="faq-item">
-        <button class="faq-question">
-          <span data-i18n="faq.q1">O que você faz?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner" data-i18n="faq.a1">Trabalho na interseção de FP&amp;A / Controladoria e dados: DRE gerencial, orçamento/forecast e análise de resultado, conectados a uma stack moderna de BI e automação — Power BI, SQL, Python, Databricks, Microsoft Fabric e Power Automate.</div>
-        </div>
+        <button class="faq-question"><span data-i18n="faq.q1">O que você faz?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a1">Trabalho na interseção de FP&amp;A / Controladoria e dados: DRE gerencial, orçamento/forecast e análise de resultado, conectados a uma stack moderna de BI e automação — Power BI, SQL, Python, Databricks, Microsoft Fabric e Power Automate.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">
-          <span data-i18n="faq.q2">Como você trabalha e entrega?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner" data-i18n="faq.a2">Parto do problema de negócio e dos dados disponíveis, modelo e construo a solução (dashboard, pipeline ou automação), valido com a área e entrego com documentação para manutenção — com foco em reduzir retrabalho e dar confiabilidade aos números.</div>
-        </div>
+        <button class="faq-question"><span data-i18n="faq.q2">Que tipo de vaga você busca?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a2">Oportunidades como Analista de FP&amp;A Sênior, Analista de Dados Sênior, Analista de BI e posições híbridas entre FP&amp;A, BI, Dados e automação financeira.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">
-          <span data-i18n="faq.q3">Como falar comigo?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner" data-i18n="faq.a3">Por WhatsApp, e-mail ou LinkedIn, na seção de contato abaixo. Estou aberto a oportunidades em FP&amp;A, BI e Analytics.</div>
-        </div>
+        <button class="faq-question"><span data-i18n="faq.q3">Como você trabalha e entrega?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a3">Parto do problema de negócio e dos dados disponíveis, modelo e construo a solução (dashboard, pipeline ou automação), valido com a área e entrego com documentação — com foco em reduzir retrabalho e dar confiabilidade aos números.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><span data-i18n="faq.q4">Como falar comigo?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a4">Por WhatsApp, e-mail ou LinkedIn, na seção de contato abaixo (ou pelo botão fixo de WhatsApp). Estou aberto a oportunidades em FP&amp;A, BI e Analytics.</div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="on-dark">
   <div class="contact-inner">
     <span class="section-label reveal" data-i18n="contact.label">// contato</span>
-    <h2 class="section-title reveal" data-i18n-html="contact.title">Vamos conversar<em style="color:var(--accent)">?</em></h2>
+    <h2 class="contact-title reveal" data-i18n-html="contact.title">Vamos conversar<em>?</em></h2>
     <p class="contact-sub reveal" data-i18n="contact.sub">
-      Aberto a oportunidades em FP&amp;A, BI e Analytics — e a projetos na área. Me chama no WhatsApp, e-mail ou LinkedIn.
+      Aberto a oportunidades como Analista de FP&amp;A Sênior, Analista de Dados Sênior e posições híbridas em BI e automação financeira — e a projetos na área. Me chama no WhatsApp, e-mail ou LinkedIn.
     </p>
     <div class="contact-links reveal">
-      <a id="whatsapp-link" href="https://wa.me/5531971473725?text=Ol%C3%A1%2C%20Kaique!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" class="btn btn-primary" data-i18n="contact.whatsapp">WhatsApp →</a>
+      <a id="whatsapp-link" href="https://wa.me/5531971473725?text=Ol%C3%A1%2C%20Kaique!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" class="btn btn-wa" data-i18n="contact.whatsapp">WhatsApp →</a>
       <a href="mailto:kaiquerobertosouza@gmail.com" class="btn btn-ghost">Email</a>
-      <a href="https://www.linkedin.com/in/kaique-roberto-analista-de-dados/" target="_blank" class="btn btn-ghost">LinkedIn</a>
-      <a href="https://github.com/kaiquermsouza" target="_blank" class="btn btn-ghost">GitHub</a>
+      <a href="https://www.linkedin.com/in/kaique-roberto-analista-de-dados/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/kaiquermsouza" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
     </div>
   </div>
 </section>
@@ -1487,256 +1008,264 @@
   <div class="footer-copy" data-i18n="footer.made">Feito com HTML · CSS · GitHub Pages</div>
 </footer>
 
+<!-- FLOATING WHATSAPP -->
+<a id="wa-float" class="wa-float" href="https://wa.me/5531971473725?text=Ol%C3%A1%2C%20Kaique!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.207zm5.741-7.711c-.272-.061-.471-.092-.671.092-.197.184-.475.471-.475.471-.184.184-.359.205-.659.061-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+</a>
+
 <script>
-  // ── i18n: PT/EN language toggle ──
+  // ── i18n: PT/EN ──
   let currentLang = localStorage.getItem('site-lang') || 'pt';
 
   const translations = {
     pt: {
-      'nav.about': 'Sobre',
-      'nav.skills': 'Skills',
-      'nav.projects': 'Projetos',
-      'nav.contact': 'Contato',
+      'nav.about': 'Sobre', 'nav.skills': 'Skills', 'nav.projects': 'Projetos', 'nav.contact': 'Contato',
 
-      'hero.tag': 'Disponível para projetos',
-      'hero.byline': 'Kaique Souza <strong>·</strong> Analista de FP&A & Dados',
-      'hero.title': 'Dados financeiros,<br>decisões <em>executivas</em>.',
-      'hero.sub': 'Power BI, Microsoft Fabric e Python para transformar indicadores financeiros em relatórios, dashboards e automações — do dado bruto à decisão do comitê.',
-      'hero.ctaProjects': 'Ver projetos →',
-      'hero.ctaContact': 'Entre em contato',
+      'hero.tag': 'Disponível para novas oportunidades',
+      'hero.byline': 'Kaique Souza <strong>·</strong> Analista de FP&A Sênior & Dados',
+      'hero.title': 'Transformo dados financeiros em <em>decisões executivas</em>.',
+      'hero.sub': 'Uno FP&A, Controladoria e Business Intelligence a uma stack moderna de dados — Power BI, SQL, Python, Databricks e Microsoft Fabric — para entregar dashboards executivos, automações e análises confiáveis para a gestão.',
+      'hero.ctaProjects': 'Ver projetos',
+      'hero.role1': 'FP&A Sênior', 'hero.role2': 'Analista de Dados Sênior', 'hero.role3': 'Analista de BI', 'hero.role4': 'Automação financeira',
+
+      'profile.role': 'Analista de FP&A Sênior & Dados',
+      'profile.location': 'Contagem · MG · Brasil',
 
       'panel.label': 'dre_gerencial.pbix — painel executivo',
       'panel.live': 'ao vivo',
-      'panel.kpi1.label': 'Receita líquida',
-      'panel.kpi1.delta': '▲ 12,4% vs orçado',
-      'panel.kpi2.label': 'EBITDA',
-      'panel.kpi2.delta': '▲ 2,1 p.p. a/a',
-      'panel.kpi3.label': 'Backlog',
-      'panel.kpi3.delta': '▲ 6% no mês',
-      'panel.kpi4.label': 'NCG / Receita',
-      'panel.kpi4.delta': '▼ 3,2 p.p. a/a',
+      'panel.kpi1.label': 'Receita líquida', 'panel.kpi1.delta': '▲ 12,4% vs orçado',
+      'panel.kpi2.label': 'EBITDA', 'panel.kpi2.delta': '▲ 2,1 p.p. a/a',
+      'panel.kpi3.label': 'Backlog', 'panel.kpi3.delta': '▲ 6% no mês',
+      'panel.kpi4.label': 'NCG / Receita', 'panel.kpi4.delta': '▼ 3,2 p.p. a/a',
       'panel.chartLabel': '// faturamento mensal · dados ilustrativos',
 
       'about.label': '// sobre mim',
       'about.photoName': 'Kaique Souza<br>Contagem · MG',
-      'about.p1': 'Profissional na interseção entre <strong>Controladoria / FP&A</strong> e <strong>dados</strong>, com cerca de 7 anos de experiência. Atuo de DRE, EBITDA, Backlog, NCG e orçamento/forecast até a construção de relatórios, dashboards e automações que sustentam a decisão da gestão.',
-      'about.p2': 'Combino a visão financeira com uma stack moderna — <strong>Power BI/DAX, SQL, Python, Databricks, Microsoft Fabric, Streamlit e Power Automate</strong> — para reduzir retrabalho manual, dar confiabilidade aos números e acelerar a análise. Experiência aplicada a indústria, energia, varejo, logística e controladoria.',
-      'about.stat1.num': 'Power<br>BI',
-      'about.stat1.label': 'Modelos PBIP / DAX / Calc. Groups',
-      'about.stat2.label': 'Lakehouse · Notebooks · Pipelines',
-      'about.stat3.label': 'DRE · EBITDA · Backlog · PBT',
-      'about.stat4.label': 'Power Automate · AI Builder',
+      'about.p1': 'Profissional de <strong>FP&A</strong> e <strong>Controladoria</strong> com perfil analítico e mais de 7 anos de experiência na integração entre finanças corporativas e dados. Atuo na construção de previsões estratégicas, análises financeiras, relatórios executivos e automações que transformam informações complexas em suporte claro para a tomada de decisão.',
+      'about.p2': 'Combino a visão financeira com uma stack moderna — <strong>Power BI/DAX, SQL, Python, Databricks, Microsoft Fabric, Excel/Power Query, Streamlit e Power Automate</strong> — para reduzir retrabalho manual, dar confiabilidade aos números e acelerar a análise. Experiência aplicada a indústria, energia, varejo, logística e controladoria.',
+      'about.stat1.num': 'Power BI', 'about.stat1.label': 'DAX · Power Query / Power M',
+      'about.stat2.label': 'Lakehouse · Data Warehouse · PySpark',
+      'about.stat3.label': 'DRE · EBITDA · Balance Sheet · Forecast',
+      'about.stat4.num': 'Automação', 'about.stat4.label': 'Power Automate · AI Builder · Python',
 
       'skills.label': '// stack técnica',
-      'skills.title': 'Ferramentas &<br>Tecnologias',
-      'skills.row1': 'FP&A & Controladoria',
-      'skills.row2': 'Dados & BI',
-      'skills.row3': 'Automação & Apoio',
-      'skills.tagBudget': 'Orçamento',
-      'skills.complementary.tagAI': 'IA Generativa',
+      'skills.title': 'Ferramentas & Tecnologias',
+      'skills.intro': 'Competências organizadas em duas frentes para facilitar a leitura rápida do meu perfil.',
+      'skills.cat1': 'FP&A & Controladoria',
+      'skills.cat1desc': 'Atuação em planejamento financeiro, análise de resultados, orçamento, forecast e construção de relatórios gerenciais para apoio à decisão executiva.',
+      'skills.cat2': 'Análise de Dados',
+      'skills.cat2desc': 'Construção de dashboards, automações, pipelines e análises com ferramentas modernas de BI, dados e programação.',
+      'skills.tagVariance': 'Análise de Variação',
+      'skills.tagKpis': 'Indicadores Financeiros',
+      'skills.tagReports': 'Relatórios Gerenciais',
 
       'projects.label': '// projetos',
-      'projects.title': 'O que tenho<br>construído',
-      'projects.expTitle': 'Experiência profissional',
-      'projects.expNote': '// entregas reais em empresa',
-      'projects.featuredTitle': 'Destaque — projetos interativos',
-      'projects.othersTitle': 'Outros projetos',
+      'projects.title': 'O que tenho construído',
+      'projects.intro': 'Projetos públicos de portfólio e cases profissionais (descritos em alto nível por confidencialidade). Filtre por tecnologia abaixo.',
+      'projects.filterAll': 'Todos',
+      'projects.filterPowerbi': 'Power BI',
+      'projects.filterPython': 'Python & Streamlit',
+      'projects.filterSql': 'SQL',
+      'projects.filterDatabricks': 'Databricks / Fabric',
+      'projects.filterCases': 'Cases profissionais',
+      'projects.caseBadge': 'Case · confidencial',
+      'projects.soon': 'Em breve',
+      'projects.btnDemo': 'Ver demo →',
+      'projects.btnCode': 'Ver código →',
+
       'exp.dre.impact': 'Modelo de DRE gerencial com DAX avançado e Calculation Groups, padronizando indicadores e a visão de resultado levada ao comitê.',
       'exp.pipeline.impact': 'Pipeline diário em Lakehouse + PySpark automatizando a transformação dos dados e entregando visão executiva de receita em Power BI.',
       'exp.orders.impact': 'Extração automática de dados de PDF para SharePoint List, eliminando digitação manual e padronizando o registro de pedidos.',
-      'projects.group1.title': 'Projetos profissionais',
       'projects.dre.name': 'DRE Gerencial',
-      'projects.dre.desc': 'A consolidação mensal do resultado era manual e sujeita a erro. Construí um modelo de DRE Gerencial em Power BI (PBIP) com DAX avançado e Calculation Groups, padronizando os indicadores financeiros e entregando uma visão única do resultado — com redução de retrabalho manual e mais confiabilidade nos números levados ao comitê.',
-      'projects.pipeline.name': 'Pipeline Faturamento Diário',
-      'projects.pipeline.desc': 'O acompanhamento de faturamento dependia de planilhas atualizadas manualmente, com defasagem. Construí um pipeline de faturamento diário em Microsoft Fabric (Lakehouse + PySpark), automatizando a transformação dos dados e entregando uma visão executiva em Power BI para acompanhamento diário de receita, variações e atingimento de metas — com mais confiabilidade dos dados e menos esforço de consolidação.',
+      'projects.pipeline.name': 'Pipeline de Faturamento Diário',
       'projects.orders.name': 'Registro de Novos Pedidos',
-      'projects.orders.desc': 'O cadastro de novos pedidos era feito via formulário básico, com digitação manual de dados de PDFs e alto risco de erro. Redesenhei o processo migrando para uma SharePoint List com extração automática de dados de PDF via Power Automate e AI Builder — eliminando retrabalho operacional e padronizando o registro de pedidos.',
 
-      'projects.group2.title': 'Cases de FP&A',
-      'projects.growthTrap.name': 'A Armadilha do Crescimento',
-      'projects.growthTrap.desc': 'Uma empresa cresce em receita, mas destrói caixa — e o resultado contábil não mostra isso. Neste case publicado no LinkedIn, analisei PMR, NCG, FCO e CCR para explicar a causa raiz do problema e construí um app interativo em Streamlit para visualizar o diagnóstico, reforçando a importância de olhar geração de caixa, não só resultado, na tomada de decisão.',
-      'projects.dreOrcFc.name': 'DRE · Orçamento · Forecast',
-      'projects.dreOrcFc.desc': 'DRE, orçamento e forecast viviam em planilhas separadas, dificultando a análise de variação. Construí um modelo integrado em Power BI com análise Budget vs Actual vs Forecast, padronizando indicadores entre as áreas e dando à gestão uma visão executiva única para acompanhar desvios e antecipar decisões.',
-      'projects.btnDemo': 'Ver demo →',
-
-      'projects.group3.title': 'Projetos de portfólio',
-      'projects.ambev.type': 'Power BI · Vendas',
-      'projects.ambev.desc': 'Projeto de portfólio com dados simulados: dashboard de performance comercial com análise de vendas, mix de produtos e acompanhamento de metas, demonstrando modelagem de dados e construção de indicadores para apoiar a gestão comercial.',
-      'projects.logisticsDashboard.type': 'Power BI · Logística',
-      'projects.logisticsDashboard.name': 'Dashboard Logística',
-      'projects.logisticsDashboard.desc': 'Projeto de portfólio com dados simulados: painel de controle logístico com monitoramento de entregas, SLA e rotas, transformando dados operacionais em indicadores de performance para apoiar a gestão logística.',
       'projects.salesTarget.type': 'Power BI · Comercial',
       'projects.salesTarget.name': 'Dashboard Vendas x Meta',
-      'projects.salesTarget.desc': 'Projeto de portfólio: painel de acompanhamento de vendas vs. metas por vendedor, região e período, com indicadores de atingimento e ranking de performance — demonstrando como padronizar indicadores comerciais para apoiar decisões da liderança de vendas.',
+      'projects.salesTarget.desc': 'Painel de acompanhamento de vendas vs. metas por vendedor, região e período, com indicadores de atingimento e ranking de performance — projeto de portfólio.',
       'projects.salesTarget.tag3': 'Vendas',
-      'projects.sucos.desc': 'Aplicação interativa em Streamlit para análise de dados de uma promotoria comercial, com visualizações dinâmicas e filtros por região e produto — projeto de portfólio que demonstra construção de ferramentas de análise sob medida em Python.',
-      'projects.fifa.type': 'Python · Streamlit · Dados',
-      'projects.fifa.desc': 'Explorador de dados do FIFA 23 com filtros por jogador, clube, nacionalidade e atributos, incluindo análises estatísticas e comparativas de performance — projeto de portfólio para praticar manipulação e visualização de dados em Python.',
-      'projects.carique.desc': 'Dashboard analítico de vendas de veículos (2019–2021) em Streamlit + Plotly, com KPIs de receita, margem e ticket médio, análise de sazonalidade (mapa de calor hora × dia) e comparativo anual com crescimento YoY — projeto de portfólio com filtros interativos e visual escuro e clean.',
+      'projects.ambev.type': 'Power BI · Vendas',
+      'projects.ambev.desc': 'Projeto de portfólio com dados simulados: performance comercial com análise de vendas, mix de produtos e metas, demonstrando modelagem de dados e construção de indicadores.',
+      'projects.dreOrcFc.name': 'DRE · Orçamento · Forecast',
+      'projects.dreOrcFc.desc': 'Modelo integrado em Power BI com análise Budget vs Actual vs Forecast, padronizando indicadores entre áreas e dando à gestão uma visão executiva única para acompanhar desvios.',
+      'projects.logisticsDashboard.type': 'Power BI · Logística',
+      'projects.logisticsDashboard.name': 'Dashboard Logística',
+      'projects.logisticsDashboard.desc': 'Projeto de portfólio com dados simulados: monitoramento de entregas, SLA e rotas, transformando dados operacionais em indicadores de performance.',
       'projects.pokemon.type': 'Power BI · Dados',
       'projects.pokemon.name': 'Dashboard Pokémon',
-      'projects.pokemon.desc': 'Projeto de portfólio para praticar modelagem de dados fora do contexto corporativo: análise da base completa de Pokémon, com indicadores de atributos, tipos e gerações em um painel interativo construído em Power BI.',
+      'projects.pokemon.desc': 'Projeto de portfólio para praticar modelagem fora do contexto corporativo: análise da base completa de Pokémon com indicadores de atributos, tipos e gerações.',
 
-      'projects.group4.title': 'Automação & Open Source',
+      'projects.carique.desc': 'Dashboard analítico de vendas de veículos (2019–2021) em Streamlit + Plotly, com KPIs de receita, margem e ticket médio, análise de sazonalidade e comparativo anual YoY.',
+      'projects.growthTrap.name': 'A Armadilha do Crescimento',
+      'projects.growthTrap.desc': 'Case publicado no LinkedIn: análise de PMR, NCG, FCO e CCR para explicar por que uma empresa cresce em receita mas destrói caixa, com app interativo em Streamlit para o diagnóstico.',
+      'projects.sucos.desc': 'Aplicação interativa em Streamlit para análise de dados de uma promotoria comercial, com visualizações dinâmicas e filtros por região e produto — projeto de portfólio.',
+      'projects.fifa.type': 'Python · Streamlit · Dados',
+      'projects.fifa.desc': 'Explorador de dados do FIFA 23 com filtros por jogador, clube, nacionalidade e atributos, incluindo análises estatísticas e comparativas — projeto de portfólio.',
       'projects.fpaPipeline.type': 'Python · API · Automação',
       'projects.fpaPipeline.name': 'Pipeline de Automação FP&A',
-      'projects.fpaPipeline.desc': 'Acompanhar indicadores macroeconômicos para premissas de orçamento e forecast exigia consulta manual em vários sites. Construí um pipeline em Python que consome a API do Banco Central, calcula variações (M/M, A/A, YTD) e gera relatórios em Excel formatados — automatizando uma rotina recorrente de FP&A.',
+      'projects.fpaPipeline.desc': 'Pipeline em Python que consome a API do Banco Central, calcula variações (M/M, A/A, YTD) e gera relatórios em Excel formatados — automatizando uma rotina recorrente de FP&A.',
       'projects.claudeSkills.type': 'IA · Power BI · Claude Code',
       'projects.claudeSkills.name': 'Claude Skills para Power BI',
-      'projects.claudeSkills.desc': 'Tarefas repetitivas de modelagem em Power BI (auditoria de modelo, documentação, criação de medidas DAX) consomem tempo de análise. Desenvolvi um conjunto de Skills para Claude Code que faz auditoria de modelos PBIP com scorecard, gera documentação automática e cria medidas DAX a partir de descrições em português.',
+      'projects.claudeSkills.desc': 'Conjunto de Skills para Claude Code que audita modelos PBIP com scorecard, gera documentação automática e cria medidas DAX a partir de descrições em português.',
       'projects.controllingPlanner.name': 'Planner de Controladoria',
-      'projects.controllingPlanner.desc': 'A rotina de Controladoria envolve múltiplas tarefas recorrentes (fechamentos, conciliações, prazos) difíceis de acompanhar em planilhas. Desenvolvi um app em Streamlit para organizar e acompanhar essas tarefas por status e prazo, dando visibilidade do andamento do fechamento para a área.',
+      'projects.controllingPlanner.desc': 'App em Streamlit para organizar e acompanhar tarefas recorrentes de Controladoria (fechamentos, conciliações, prazos) por status e prazo, dando visibilidade do fechamento.',
       'projects.controllingPlanner.tag3': 'Controladoria',
-      'projects.btnCode': 'Ver código →',
+
+      'projects.sql1.name': 'Indicadores financeiros em SQL',
+      'projects.sql1.desc': 'Espaço reservado para projetos SQL aplicados à análise financeira — queries para receita, margem, clientes e operações. Publicação em breve.',
+      'projects.sql2.name': 'Modelagem & preparação de bases para BI',
+      'projects.sql2.desc': 'Espaço reservado para projetos de consultas e modelagem de dados — preparação de bases para Power BI. Projetos SQL publicados em breve.',
 
       'preview.loading': 'carregando preview',
       'preview.foot': '// preview ao vivo — clique em "ver demo" para abrir',
-      'preview.label': '◆ preview ao vivo',
+      'preview.label': 'preview ao vivo',
 
       'faq.label': '// perguntas frequentes',
-      'faq.title': 'Antes de<br>conversarmos',
+      'faq.title': 'Antes de conversarmos',
       'faq.q1': 'O que você faz?',
       'faq.a1': 'Trabalho na interseção de FP&A / Controladoria e dados: DRE gerencial, orçamento/forecast e análise de resultado, conectados a uma stack moderna de BI e automação — Power BI, SQL, Python, Databricks, Microsoft Fabric e Power Automate.',
-      'faq.q2': 'Como você trabalha e entrega?',
-      'faq.a2': 'Parto do problema de negócio e dos dados disponíveis, modelo e construo a solução (dashboard, pipeline ou automação), valido com a área e entrego com documentação para manutenção — com foco em reduzir retrabalho e dar confiabilidade aos números.',
-      'faq.q3': 'Como falar comigo?',
-      'faq.a3': 'Por WhatsApp, e-mail ou LinkedIn, na seção de contato abaixo. Estou aberto a oportunidades em FP&A, BI e Analytics.',
+      'faq.q2': 'Que tipo de vaga você busca?',
+      'faq.a2': 'Oportunidades como Analista de FP&A Sênior, Analista de Dados Sênior, Analista de BI e posições híbridas entre FP&A, BI, Dados e automação financeira.',
+      'faq.q3': 'Como você trabalha e entrega?',
+      'faq.a3': 'Parto do problema de negócio e dos dados disponíveis, modelo e construo a solução (dashboard, pipeline ou automação), valido com a área e entrego com documentação — com foco em reduzir retrabalho e dar confiabilidade aos números.',
+      'faq.q4': 'Como falar comigo?',
+      'faq.a4': 'Por WhatsApp, e-mail ou LinkedIn, na seção de contato abaixo (ou pelo botão fixo de WhatsApp). Estou aberto a oportunidades em FP&A, BI e Analytics.',
 
       'contact.label': '// contato',
-      'contact.title': 'Vamos conversar<em style="color:var(--accent)">?</em>',
-      'contact.sub': 'Aberto a oportunidades em FP&A, BI e Analytics — e a projetos na área. Me chama no WhatsApp, e-mail ou LinkedIn.',
+      'contact.title': 'Vamos conversar<em>?</em>',
+      'contact.sub': 'Aberto a oportunidades como Analista de FP&A Sênior, Analista de Dados Sênior e posições híbridas em BI e automação financeira — e a projetos na área. Me chama no WhatsApp, e-mail ou LinkedIn.',
       'contact.whatsapp': 'WhatsApp →',
       'contact.whatsappHref': 'https://wa.me/5531971473725?text=Ol%C3%A1%2C%20Kaique!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.',
 
       'footer.made': 'Feito com HTML · CSS · GitHub Pages',
-
-      'doc.title': 'Kaique Roberto Machado Souza — FP&A & Dados',
+      'doc.title': 'Kaique Roberto Machado Souza — FP&A Sênior & Dados',
     },
     en: {
-      'nav.about': 'About',
-      'nav.skills': 'Skills',
-      'nav.projects': 'Projects',
-      'nav.contact': 'Contact',
+      'nav.about': 'About', 'nav.skills': 'Skills', 'nav.projects': 'Projects', 'nav.contact': 'Contact',
 
-      'hero.tag': 'Available for projects',
-      'hero.byline': 'Kaique Souza <strong>·</strong> FP&A & Data Analyst',
-      'hero.title': 'Financial data,<br><em>executive</em> decisions.',
-      'hero.sub': 'Power BI, Microsoft Fabric and Python to turn financial indicators into reports, dashboards and automations — from raw data to boardroom decisions.',
-      'hero.ctaProjects': 'View projects →',
-      'hero.ctaContact': 'Get in touch',
+      'hero.tag': 'Available for new opportunities',
+      'hero.byline': 'Kaique Souza <strong>·</strong> Senior FP&A & Data Analyst',
+      'hero.title': 'I turn financial data into <em>executive decisions</em>.',
+      'hero.sub': 'I combine FP&A, Controlling and Business Intelligence with a modern data stack — Power BI, SQL, Python, Databricks and Microsoft Fabric — to deliver executive dashboards, automations and reliable analysis for management.',
+      'hero.ctaProjects': 'View projects',
+      'hero.role1': 'Senior FP&A', 'hero.role2': 'Senior Data Analyst', 'hero.role3': 'BI Analyst', 'hero.role4': 'Financial automation',
+
+      'profile.role': 'Senior FP&A & Data Analyst',
+      'profile.location': 'Contagem · Brazil',
 
       'panel.label': 'managerial_pnl.pbix — executive dashboard',
       'panel.live': 'live',
-      'panel.kpi1.label': 'Net revenue',
-      'panel.kpi1.delta': '▲ 12.4% vs budget',
-      'panel.kpi2.label': 'EBITDA',
-      'panel.kpi2.delta': '▲ 2.1 p.p. YoY',
-      'panel.kpi3.label': 'Backlog',
-      'panel.kpi3.delta': '▲ 6% MoM',
-      'panel.kpi4.label': 'WCR / Revenue',
-      'panel.kpi4.delta': '▼ 3.2 p.p. YoY',
+      'panel.kpi1.label': 'Net revenue', 'panel.kpi1.delta': '▲ 12.4% vs budget',
+      'panel.kpi2.label': 'EBITDA', 'panel.kpi2.delta': '▲ 2.1 p.p. YoY',
+      'panel.kpi3.label': 'Backlog', 'panel.kpi3.delta': '▲ 6% MoM',
+      'panel.kpi4.label': 'WCR / Revenue', 'panel.kpi4.delta': '▼ 3.2 p.p. YoY',
       'panel.chartLabel': '// monthly revenue · illustrative data',
 
       'about.label': '// about me',
       'about.photoName': 'Kaique Souza<br>Contagem, Brazil',
-      'about.p1': 'Professional at the intersection of <strong>Controlling / FP&A</strong> and <strong>data</strong>, with around 7 years of experience. I work from P&L, EBITDA, Backlog, Working Capital and budget/forecast through to building reports, dashboards and automations that support management decisions.',
-      'about.p2': 'I combine a finance mindset with a modern stack — <strong>Power BI/DAX, SQL, Python, Databricks, Microsoft Fabric, Streamlit and Power Automate</strong> — to reduce manual rework, improve data reliability and speed up analysis. Experience applied to industry, energy, retail, logistics and controlling.',
-      'about.stat1.num': 'Power<br>BI',
-      'about.stat1.label': 'PBIP Models / DAX / Calc. Groups',
-      'about.stat2.label': 'Lakehouse · Notebooks · Pipelines',
-      'about.stat3.label': 'P&L · EBITDA · Backlog · PBT',
-      'about.stat4.label': 'Power Automate · AI Builder',
+      'about.p1': 'FP&A and Controlling professional with an analytical profile and 7+ years of experience integrating corporate finance and data. I build strategic forecasts, financial analyses, executive reports and automations that turn complex information into clear support for decision-making.',
+      'about.p2': 'I combine a finance mindset with a modern stack — <strong>Power BI/DAX, SQL, Python, Databricks, Microsoft Fabric, Excel/Power Query, Streamlit and Power Automate</strong> — to reduce manual rework, improve data reliability and speed up analysis. Experience applied to industry, energy, retail, logistics and controlling.',
+      'about.stat1.num': 'Power BI', 'about.stat1.label': 'DAX · Power Query / Power M',
+      'about.stat2.label': 'Lakehouse · Data Warehouse · PySpark',
+      'about.stat3.label': 'P&L · EBITDA · Balance Sheet · Forecast',
+      'about.stat4.num': 'Automation', 'about.stat4.label': 'Power Automate · AI Builder · Python',
 
       'skills.label': '// tech stack',
-      'skills.title': 'Tools &<br>Technologies',
-      'skills.row1': 'FP&A & Controlling',
-      'skills.row2': 'Data & BI',
-      'skills.row3': 'Automation & Support',
-      'skills.tagBudget': 'Budget',
-      'skills.complementary.tagAI': 'Generative AI',
+      'skills.title': 'Tools & Technologies',
+      'skills.intro': 'Skills organized into two areas so you can quickly read my profile.',
+      'skills.cat1': 'FP&A & Controlling',
+      'skills.cat1desc': 'Financial planning, results analysis, budgeting, forecasting and management reporting to support executive decision-making.',
+      'skills.cat2': 'Data Analysis',
+      'skills.cat2desc': 'Building dashboards, automations, pipelines and analyses with modern BI, data and programming tools.',
+      'skills.tagVariance': 'Variance Analysis',
+      'skills.tagKpis': 'Financial KPIs',
+      'skills.tagReports': 'Management Reports',
 
       'projects.label': '// projects',
-      'projects.title': "What I've<br>built",
-      'projects.expTitle': 'Professional experience',
-      'projects.expNote': '// real deliverables on the job',
-      'projects.featuredTitle': 'Highlights — interactive projects',
-      'projects.othersTitle': 'Other projects',
+      'projects.title': "What I've built",
+      'projects.intro': 'Public portfolio projects and professional cases (described at a high level for confidentiality). Filter by technology below.',
+      'projects.filterAll': 'All',
+      'projects.filterPowerbi': 'Power BI',
+      'projects.filterPython': 'Python & Streamlit',
+      'projects.filterSql': 'SQL',
+      'projects.filterDatabricks': 'Databricks / Fabric',
+      'projects.filterCases': 'Professional cases',
+      'projects.caseBadge': 'Case · confidential',
+      'projects.soon': 'Coming soon',
+      'projects.btnDemo': 'View demo →',
+      'projects.btnCode': 'View code →',
+
       'exp.dre.impact': 'Managerial P&L model with advanced DAX and Calculation Groups, standardizing indicators and the results view presented to the board.',
       'exp.pipeline.impact': 'Daily Lakehouse + PySpark pipeline automating data transformation and delivering an executive revenue view in Power BI.',
       'exp.orders.impact': 'Automatic PDF data extraction into a SharePoint List, eliminating manual entry and standardizing order registration.',
-      'projects.group1.title': 'Professional projects',
       'projects.dre.name': 'Managerial P&L',
-      'projects.dre.desc': 'Monthly results consolidation was manual and error-prone. I built a Managerial P&L model in Power BI (PBIP) with advanced DAX and Calculation Groups, standardizing financial indicators and delivering a single view of results — reducing manual rework and increasing reliability of the numbers presented to the board.',
       'projects.pipeline.name': 'Daily Revenue Pipeline',
-      'projects.pipeline.desc': 'Revenue tracking depended on manually updated spreadsheets with lag. I built a daily revenue pipeline in Microsoft Fabric (Lakehouse + PySpark), automating data transformation and delivering an executive view in Power BI for daily tracking of revenue, variances and target attainment — improving data reliability and reducing consolidation effort.',
       'projects.orders.name': 'New Order Registration',
-      'projects.orders.desc': 'New order registration was done via a basic form, with manual data entry from PDFs and high error risk. I redesigned the process by migrating to a SharePoint List with automatic PDF data extraction via Power Automate and AI Builder — eliminating operational rework and standardizing order registration.',
 
-      'projects.group2.title': 'FP&A Case Studies',
-      'projects.growthTrap.name': 'The Growth Trap',
-      'projects.growthTrap.desc': "A company grows revenue but burns cash — and accounting results don't show it. In this case published on LinkedIn, I analyzed DSO, Working Capital, OCF and the Cash Conversion Cycle to explain the root cause and built an interactive Streamlit app to visualize the diagnosis, reinforcing the importance of looking at cash generation, not just accounting results, for decision-making.",
-      'projects.dreOrcFc.name': 'P&L · Budget · Forecast',
-      'projects.dreOrcFc.desc': 'P&L, budget and forecast lived in separate spreadsheets, making variance analysis difficult. I built an integrated Power BI model with Budget vs Actual vs Forecast analysis, standardizing indicators across departments and giving management a single executive view to track deviations and anticipate decisions.',
-      'projects.btnDemo': 'View demo →',
-
-      'projects.group3.title': 'Portfolio projects',
-      'projects.ambev.type': 'Power BI · Sales',
-      'projects.ambev.desc': 'Portfolio project with simulated data: sales performance dashboard with sales analysis, product mix and target tracking, demonstrating data modeling and indicator design to support sales management.',
-      'projects.logisticsDashboard.type': 'Power BI · Logistics',
-      'projects.logisticsDashboard.name': 'Logistics Dashboard',
-      'projects.logisticsDashboard.desc': 'Portfolio project with simulated data: logistics control dashboard with delivery, SLA and route monitoring, turning operational data into performance indicators to support logistics management.',
       'projects.salesTarget.type': 'Power BI · Sales',
       'projects.salesTarget.name': 'Sales vs Target Dashboard',
-      'projects.salesTarget.desc': 'Portfolio project: dashboard tracking sales vs. targets by rep, region and period, with attainment indicators and performance rankings — demonstrating how to standardize sales indicators to support sales leadership decisions.',
+      'projects.salesTarget.desc': 'Dashboard tracking sales vs. targets by rep, region and period, with attainment indicators and performance rankings — portfolio project.',
       'projects.salesTarget.tag3': 'Sales',
-      'projects.sucos.desc': 'Interactive Streamlit app for analyzing sales promotion data, with dynamic visualizations and filters by region and product — a portfolio project demonstrating the development of custom analysis tools in Python.',
-      'projects.fifa.type': 'Python · Streamlit · Data',
-      'projects.fifa.desc': 'FIFA 23 data explorer with filters by player, club, nationality and attributes, including statistical and performance comparison analyses — a portfolio project to practice data manipulation and visualization in Python.',
-      'projects.carique.desc': 'Analytical vehicle sales dashboard (2019–2021) built in Streamlit + Plotly, with revenue, margin and average ticket KPIs, seasonality analysis (hour × day heatmap) and a year-over-year comparison — a portfolio project with interactive filters and a clean dark theme.',
+      'projects.ambev.type': 'Power BI · Sales',
+      'projects.ambev.desc': 'Portfolio project with simulated data: sales performance with sales analysis, product mix and targets, demonstrating data modeling and indicator design.',
+      'projects.dreOrcFc.name': 'P&L · Budget · Forecast',
+      'projects.dreOrcFc.desc': 'Integrated Power BI model with Budget vs Actual vs Forecast analysis, standardizing indicators across departments and giving management a single executive view to track deviations.',
+      'projects.logisticsDashboard.type': 'Power BI · Logistics',
+      'projects.logisticsDashboard.name': 'Logistics Dashboard',
+      'projects.logisticsDashboard.desc': 'Portfolio project with simulated data: delivery, SLA and route monitoring, turning operational data into performance indicators.',
       'projects.pokemon.type': 'Power BI · Data',
       'projects.pokemon.name': 'Pokémon Dashboard',
-      'projects.pokemon.desc': 'Portfolio project to practice data modeling outside a corporate context: analysis of the full Pokémon dataset, with indicators on stats, types and generations in an interactive Power BI dashboard.',
+      'projects.pokemon.desc': 'Portfolio project to practice data modeling outside a corporate context: analysis of the full Pokémon dataset with stats, types and generations.',
 
-      'projects.group4.title': 'Automation & Open Source',
+      'projects.carique.desc': 'Analytical vehicle sales dashboard (2019–2021) in Streamlit + Plotly, with revenue, margin and average ticket KPIs, seasonality analysis and a year-over-year comparison.',
+      'projects.growthTrap.name': 'The Growth Trap',
+      'projects.growthTrap.desc': "Case published on LinkedIn: DSO, Working Capital, OCF and Cash Conversion Cycle analysis explaining why a company grows revenue but burns cash, with an interactive Streamlit app for the diagnosis.",
+      'projects.sucos.desc': 'Interactive Streamlit app for analyzing sales promotion data, with dynamic visualizations and filters by region and product — portfolio project.',
+      'projects.fifa.type': 'Python · Streamlit · Data',
+      'projects.fifa.desc': 'FIFA 23 data explorer with filters by player, club, nationality and attributes, including statistical and performance comparisons — portfolio project.',
       'projects.fpaPipeline.type': 'Python · API · Automation',
       'projects.fpaPipeline.name': 'FP&A Automation Pipeline',
-      'projects.fpaPipeline.desc': 'Tracking macroeconomic indicators for budget and forecast assumptions required manual lookups across multiple websites. I built a Python pipeline that consumes the Brazilian Central Bank API, calculates variances (MoM, YoY, YTD) and generates formatted Excel reports — automating a recurring FP&A routine.',
+      'projects.fpaPipeline.desc': 'Python pipeline that consumes the Brazilian Central Bank API, calculates variances (MoM, YoY, YTD) and generates formatted Excel reports — automating a recurring FP&A routine.',
       'projects.claudeSkills.type': 'AI · Power BI · Claude Code',
       'projects.claudeSkills.name': 'Claude Skills for Power BI',
-      'projects.claudeSkills.desc': 'Repetitive Power BI modeling tasks (model auditing, documentation, DAX measure creation) eat into analysis time. I developed a set of Claude Code Skills that audits PBIP models with a scorecard, generates automatic documentation and creates DAX measures from natural language descriptions.',
+      'projects.claudeSkills.desc': 'A set of Claude Code Skills that audits PBIP models with a scorecard, generates automatic documentation and creates DAX measures from natural language descriptions.',
       'projects.controllingPlanner.name': 'Controlling Planner',
-      'projects.controllingPlanner.desc': 'Controlling routines involve multiple recurring tasks (closings, reconciliations, deadlines) that are hard to track in spreadsheets. I developed a Streamlit app to organize and track these tasks by status and deadline, giving the team visibility into closing progress.',
+      'projects.controllingPlanner.desc': 'Streamlit app to organize and track recurring Controlling tasks (closings, reconciliations, deadlines) by status and deadline, giving visibility into closing progress.',
       'projects.controllingPlanner.tag3': 'Controlling',
-      'projects.btnCode': 'View code →',
+
+      'projects.sql1.name': 'Financial indicators in SQL',
+      'projects.sql1.desc': 'Reserved space for SQL projects applied to financial analysis — queries for revenue, margin, customers and operations. Coming soon.',
+      'projects.sql2.name': 'Modeling & data prep for BI',
+      'projects.sql2.desc': 'Reserved space for query and data modeling projects — preparing datasets for Power BI. SQL projects published soon.',
 
       'preview.loading': 'loading preview',
       'preview.foot': '// live preview — click "view demo" to open',
-      'preview.label': '◆ live preview',
+      'preview.label': 'live preview',
 
       'faq.label': '// frequently asked questions',
-      'faq.title': 'Before we<br>talk',
+      'faq.title': 'Before we talk',
       'faq.q1': 'What do you do?',
       'faq.a1': 'I work at the intersection of FP&A / Controlling and data: managerial P&L, budget/forecast and results analysis, connected to a modern BI and automation stack — Power BI, SQL, Python, Databricks, Microsoft Fabric and Power Automate.',
-      'faq.q2': 'How do you work and deliver?',
-      'faq.a2': 'I start from the business problem and the available data, model and build the solution (dashboard, pipeline or automation), validate it with the team, and deliver it with documentation for maintenance — focused on reducing rework and improving the reliability of the numbers.',
-      'faq.q3': 'How do I reach you?',
-      'faq.a3': "Via WhatsApp, email or LinkedIn, in the contact section below. I'm open to opportunities in FP&A, BI and Analytics.",
+      'faq.q2': 'What roles are you looking for?',
+      'faq.a2': 'Opportunities as Senior FP&A Analyst, Senior Data Analyst, BI Analyst and hybrid positions across FP&A, BI, Data and financial automation.',
+      'faq.q3': 'How do you work and deliver?',
+      'faq.a3': 'I start from the business problem and available data, model and build the solution (dashboard, pipeline or automation), validate it with the team, and deliver it with documentation — focused on reducing rework and improving data reliability.',
+      'faq.q4': 'How do I reach you?',
+      'faq.a4': "Via WhatsApp, email or LinkedIn, in the contact section below (or the floating WhatsApp button). I'm open to opportunities in FP&A, BI and Analytics.",
 
       'contact.label': '// contact',
-      'contact.title': 'Let\'s talk<em style="color:var(--accent)">?</em>',
-      'contact.sub': "Open to opportunities in FP&A, BI and Analytics — and to projects in the field. Reach me on WhatsApp, email or LinkedIn.",
+      'contact.title': "Let's talk<em>?</em>",
+      'contact.sub': 'Open to opportunities as Senior FP&A Analyst, Senior Data Analyst and hybrid roles in BI and financial automation — and to projects in the field. Reach me on WhatsApp, email or LinkedIn.',
       'contact.whatsapp': 'WhatsApp →',
       'contact.whatsappHref': 'https://wa.me/5531971473725?text=Hi%20Kaique!%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20project.',
 
       'footer.made': 'Built with HTML · CSS · GitHub Pages',
-
-      'doc.title': 'Kaique Roberto Machado Souza — FP&A & Data',
+      'doc.title': 'Kaique Roberto Machado Souza — Senior FP&A & Data',
     }
   };
 
   function applyLanguage(lang) {
     const dict = translations[lang];
-
     document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
     document.title = dict['doc.title'];
 
@@ -1744,21 +1273,18 @@
       const key = el.dataset.i18n;
       if (dict[key] !== undefined) el.textContent = dict[key];
     });
-
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       const key = el.dataset.i18nHtml;
       if (dict[key] !== undefined) el.innerHTML = dict[key];
     });
-
     document.querySelectorAll('[data-preview]').forEach(el => {
       el.setAttribute('data-preview-label', dict['preview.label']);
     });
 
-    const whatsapp = document.getElementById('whatsapp-link');
-    if (whatsapp) whatsapp.href = dict['contact.whatsappHref'];
+    const waLink = document.getElementById('whatsapp-link');
+    if (waLink) waLink.href = dict['contact.whatsappHref'];
 
-    // Only reformat KPI numbers if the count-up animation already finished —
-    // otherwise it would skip straight to the final values on first load.
+    // Reformat KPI numbers if count-up already finished
     const heroPanel = document.getElementById('hero-panel');
     if (heroPanel && heroPanel.classList.contains('animate')) {
       document.querySelectorAll('[data-count]').forEach(el => {
@@ -1777,44 +1303,18 @@
   }
 
   applyLanguage(currentLang);
-
   document.getElementById('lang-toggle').addEventListener('click', () => {
     applyLanguage(currentLang === 'pt' ? 'en' : 'pt');
   });
 
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  function animCursor() {
-    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-    rx += (mx - rx) * .12; ry += (my - ry) * .12;
-    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-    requestAnimationFrame(animCursor);
-  }
-  animCursor();
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.width = '16px'; cursor.style.height = '16px';
-      ring.style.width = '50px'; ring.style.height = '50px';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.width = '10px'; cursor.style.height = '10px';
-      ring.style.width = '36px'; ring.style.height = '36px';
-    });
-  });
-
-  // Hero panel — animate KPI counters and bars in on load
+  // Hero panel — count up + bars
   (function () {
     const panel = document.getElementById('hero-panel');
     if (!panel) return;
-
     function countUp(el) {
       const target = parseFloat(el.dataset.count);
       const decimals = parseInt(el.dataset.decimals || '0', 10);
-      const duration = 1100;
-      const start = performance.now();
+      const duration = 1000, start = performance.now();
       function tick(now) {
         const p = Math.min(1, (now - start) / duration);
         const eased = 1 - Math.pow(1 - p, 3);
@@ -1824,11 +1324,10 @@
       }
       requestAnimationFrame(tick);
     }
-
     setTimeout(() => {
       panel.classList.add('animate');
       panel.querySelectorAll('[data-count]').forEach(countUp);
-    }, 500);
+    }, 400);
   })();
 
   // Reveal on scroll
@@ -1836,113 +1335,94 @@
   const observer = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
       }
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // Project preview modal
+  // Project filter tabs
+  document.querySelectorAll('.proj-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.proj-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const cat = tab.dataset.cat;
+      document.querySelectorAll('#projects-grid .project-card').forEach(card => {
+        const cats = (card.dataset.cat || '').split(' ');
+        card.style.display = (cat === 'all' || cats.includes(cat)) ? '' : 'none';
+      });
+    });
+  });
+
+  // Project modal
   function openModal(title, src, type = 'iframe') {
     document.getElementById('modal-title').textContent = title;
     const body = document.getElementById('modal-body');
     if (type === 'iframe') {
       body.innerHTML = `<iframe class="modal-iframe" src="${src}" allowfullscreen></iframe>`;
     } else {
-      body.innerHTML = `
-        <div style="text-align:center; padding: 3rem 1rem;">
-          <p style="color:#6b7280; margin-bottom:1.5rem; font-size:.95rem;">
-            Esta aplicação abre em uma nova aba.
-          </p>
-          <a href="${src}" target="_blank" class="btn btn-primary">Acessar aplicação →</a>
-        </div>`;
+      const msg = currentLang === 'en' ? 'This app opens in a new tab.' : 'Esta aplicação abre em uma nova aba.';
+      const cta = currentLang === 'en' ? 'Open app →' : 'Acessar aplicação →';
+      body.innerHTML = `<div style="text-align:center; padding:2.5rem 1rem;"><p style="color:var(--muted); margin-bottom:1.5rem; font-size:.95rem;">${msg}</p><a href="${src}" target="_blank" rel="noopener" class="btn btn-primary">${cta}</a></div>`;
     }
     document.getElementById('modal-overlay').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
-
   function closeModal() {
     document.getElementById('modal-overlay').classList.remove('active');
     document.getElementById('modal-body').innerHTML = '';
     document.body.style.overflow = '';
   }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-  });
-
-  // Floating hover preview — live iframe window that follows the cursor
+  // Floating hover preview (desktop only)
   (function () {
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
     const panel = document.getElementById('hover-preview');
     const frame = document.getElementById('hp-iframe');
     const label = document.getElementById('hp-label');
     const loading = document.getElementById('hp-loading');
     const cards = document.querySelectorAll('.project-card[data-preview]');
-
-    let mx = 0, my = 0, px = 0, py = 0, raf = null;
-    let activeUrl = null, loadTimer = null;
+    let mx = 0, my = 0, px = 0, py = 0, raf = null, activeUrl = null, loadTimer = null;
 
     function track() {
-      px += (mx - px) * .18;
-      py += (my - py) * .18;
+      px += (mx - px) * .18; py += (my - py) * .18;
       const w = panel.offsetWidth, h = panel.offsetHeight;
-      let x = px + 32, y = py + 32;
-      if (x + w > window.innerWidth - 16) x = px - w - 32;
-      if (y + h > window.innerHeight - 16) y = py - h - 32;
-      x = Math.max(16, x);
-      y = Math.max(16, y);
-      panel.style.left = x + 'px';
-      panel.style.top = y + 'px';
+      let x = px + 28, y = py + 28;
+      if (x + w > window.innerWidth - 16) x = px - w - 28;
+      if (y + h > window.innerHeight - 16) y = py - h - 28;
+      panel.style.left = Math.max(16, x) + 'px';
+      panel.style.top = Math.max(16, y) + 'px';
       raf = requestAnimationFrame(track);
     }
-
     cards.forEach(card => {
       const url = card.dataset.preview;
       const name = card.querySelector('.project-name')?.textContent || 'Preview';
-
       card.addEventListener('mouseenter', e => {
-        mx = px = e.clientX;
-        my = py = e.clientY;
+        mx = px = e.clientX; my = py = e.clientY;
         label.textContent = name;
         panel.classList.add('active');
-
         if (activeUrl !== url) {
           loading.classList.remove('hidden');
           clearTimeout(loadTimer);
-          loadTimer = setTimeout(() => {
-            frame.src = url;
-            activeUrl = url;
-          }, 200);
-        } else {
-          loading.classList.add('hidden');
-        }
-
+          loadTimer = setTimeout(() => { frame.src = url; activeUrl = url; }, 200);
+        } else { loading.classList.add('hidden'); }
         if (!raf) track();
       });
-
-      card.addEventListener('mousemove', e => {
-        mx = e.clientX;
-        my = e.clientY;
-      });
-
+      card.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
       card.addEventListener('mouseleave', () => {
         panel.classList.remove('active');
         clearTimeout(loadTimer);
-        cancelAnimationFrame(raf);
-        raf = null;
+        cancelAnimationFrame(raf); raf = null;
       });
     });
-
     frame.addEventListener('load', () => loading.classList.add('hidden'));
   })();
 
   // FAQ accordion
   document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.closest('.faq-item').classList.toggle('open');
-    });
+    btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open'));
   });
 </script>
 </body>
